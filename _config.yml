@@ -16,3 +16,5 @@ github_username:  rubyfrea
 
 # Build settings
 markdown: kramdown
+highlighter: rouge
+encoding: utf-8
