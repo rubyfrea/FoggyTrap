@@ -762,68 +762,7 @@
 				background: #f7f7f7 url('images/bg02.png');
 			}
 
-	#footer-wrapper
-	{
-		position: relative;
-		color: #858484;
-	}
-
-		#footer-wrapper:before
-		{
-			content: '';
-			position: absolute;
-			top: 0;
-			left: 0;
-			width: 100%;
-			background: url('images/bg01.png');
-			background-size: 100% 100%;
-			z-index: 0;
-			opacity: 0.5;
-		}
-
-		#footer-wrapper a
-		{
-			color: #c5c4c4;
-		}
-
-		#footer-wrapper h2,
-		#footer-wrapper h3,
-		#footer-wrapper h4,
-		#footer-wrapper h5,
-		#footer-wrapper h6,
-		#footer-wrapper strong,
-		#footer-wrapper b
-		{
-			color: #fff;
-		}
-
-		#footer-wrapper h1 a,
-		#footer-wrapper h2 a,
-		#footer-wrapper h3 a,
-		#footer-wrapper h4 a,
-		#footer-wrapper h5 a,
-		#footer-wrapper h6 a
-		{
-			color: inherit;
-		}
-
-		#footer-wrapper ul.contact li
-		{
-			border-top-color: #353434;
-			border-top-color: rgba(255,255,255,0.05);
-		}
-
-		#footer-wrapper ul.dates li
-		{
-			border-top-color: #353434;
-			border-top-color: rgba(255,255,255,0.05);
-		}
-
-		#footer-wrapper ul.divided li
-		{
-			border-top-color: #353434;
-			border-top-color: rgba(255,255,255,0.05);
-		}
+	
 
 /**
  * Site footer
