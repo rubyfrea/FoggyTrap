@@ -8,11 +8,13 @@
 # Site settings
 title: Shirley && Kivi
 email: rubyfrea@gmail.com
+email: kivikivi1993@gmail.com
 description: > # this means to ignore newlines until "baseurl:"
   This is a blog for technical thinking and findings 
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "http://limmm.com" # the base hostname & protocol for your site
 github_username:  rubyfrea
+github_username:  qifanj
 
 # Build settings
 markdown: kramdown
