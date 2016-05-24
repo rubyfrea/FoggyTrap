@@ -1,5 +1,5 @@
 ---
-layout:default
+layout:post
 title: 我们是傻逼
 ---
 {{page.title}}
