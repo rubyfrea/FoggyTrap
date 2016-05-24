@@ -1,7 +1,7 @@
 <div class="4u">
 
 	<!-- Sidebar -->
-	{% for post in site.posts offset: 0 limit: 2 %}
+	{% for post in site.posts offset: 0 limit: 3 %}
 		<section class="box">
 			<a href="#" class="image featured"><img src="{{ site.baseurl }}{{ post.featured }}" alt="" /></a>
 			<header>
@@ -9,7 +9,7 @@
 			</header>
 			{{ post.excerpt }}
 			<footer>
-				<a href="{{ site.baseurl }}{{ post.url }}" class="button alt">Magna sed taciti</a>
+				<a href="{{ site.baseurl }}{{ post.url }}" class="button alt">轻戳</a>
 			</footer>
 		</section>
 	{% endfor %}
