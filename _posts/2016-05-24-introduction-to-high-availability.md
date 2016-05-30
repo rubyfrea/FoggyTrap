@@ -12,7 +12,7 @@ MySQL Replication是MySQL保持数据冗余的一种方式，常用的结构有M
 
 如果Master发生故障，可以立刻将一台Slave切换成Master，Replicaiton则是这个过程的基础，但故障转移还是要结合一个管理层来完成，比如ZooKeeper、Keepalive
 
-```   
+```  
 #安装环境
 
 
