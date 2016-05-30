@@ -10,5 +10,8 @@ github_username2:  qifanj
 
 # Build settings
 markdown: kramdown
+kramdown:
+  input: GFM
+highlight: true
 highlighter: rouge
 encoding: utf-8

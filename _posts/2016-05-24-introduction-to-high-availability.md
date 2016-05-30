@@ -4,15 +4,16 @@ title:  "数据库高可用方案分析"
 date:   2016-05-24 14:54:58 +0800
 categories: jekyll 数据库
 ---
-
-{% highlight ruby %}
-讨论范围
-{% endhighlight %}
 如果对以下主题不感兴趣，可以移步Google啦。不占用大家伙时间。
 
 ![主题]({{site.url}}/image/db1theme.png)
+Line
+MySQL Replication是MySQL保持数据冗余的一种方式，常用的结构有Master-Slave，Multi-Master，Multi-Source几种方式。
 
-{% highlight ruby %}
+如果Master发生故障，可以立刻将一台Slave切换成Master，Replicaiton则是这个过程的基础，但故障转移还是要结合一个管理层来完成，比如ZooKeeper、Keepalive
+
+
+{% highlight bash %}
 
 
 #安装环境
