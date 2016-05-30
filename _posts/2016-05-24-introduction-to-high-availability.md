@@ -12,7 +12,7 @@ MySQL Replication是MySQL保持数据冗余的一种方式，常用的结构有M
 
 如果Master发生故障，可以立刻将一台Slave切换成Master，Replicaiton则是这个过程的基础，但故障转移还是要结合一个管理层来完成，比如ZooKeeper、Keepalive
 
-```  
+{% highlight Lang lineos %}
 #安装环境
 
 
@@ -159,7 +159,7 @@ ifconfig a | grep eth
 # if you want to see details, another way of above
 sudo lshw -class network
 
-```
+{% endhighlight %}
 
 Check out the [Jekyll docs][jekyll-docs] for more info on how to get the most out of Jekyll. File all bugs/feature requests at [Jekyll’s GitHub repo][jekyll-gh]. If you have questions, you can ask them on [Jekyll Talk][jekyll-talk].
 
