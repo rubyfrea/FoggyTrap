@@ -2,7 +2,7 @@
 layout: post
 title:  "MySQL Replication 入门"
 date:   2016-05-24 14:54:58 +0800
-categories: 数据库
+categories: 技术 Rui 数据库
 ---
 By *[Rui](https://github.com/rubyfrea)*
 

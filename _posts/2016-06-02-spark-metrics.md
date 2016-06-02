@@ -2,9 +2,8 @@
 layout: post
 title:  "Spark metrics源码介绍"
 date:   2016-06-02 13:58:58 +0800
-categories: spark
+categories: 技术 Kivi spark
 ---
-
 By *[Kivi](https://github.com/qifanj)*
 
 Metric是Apache Spark里用于监测参数的一个package，路径是`spark/core/src/main/scala/org/apache/spark/metrics/`
