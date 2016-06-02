@@ -4,6 +4,7 @@ title:  "MySQL Replication 入门"
 date:   2016-05-24 14:54:58 +0800
 categories: 数据库
 ---
+By *[Rui](https://github.com/rubyfrea)*
 
 本系列主题是数据库高可用方案，从MySQL出发，遍历rdbms，再过渡到非关系型数据库。
 关系型数据库的研究范围：
@@ -26,7 +27,6 @@ MySQL Replication是MySQL保持数据冗余的一种方式，常用的结构有M
     sudo apt-get install oracle-java7-installer
 
 # 设置默认 jdk
-
     sudo update-alternatives --config java
 
 # 配置 Java Home 编辑 ~/.bashrc
@@ -60,45 +60,45 @@ MySQL Replication是MySQL保持数据冗余的一种方式，常用的结构有M
     sync_binlog = 1
     binlog_do_db = logdb 
 
-#comment the following line
+# comment the following line
 
     bind-address = 127.0.0.1
 
-#保存 my.cnf
+# 保存 my.cnf
 
-#重启
+# 重启
 
     service mysql restart
 
-#进入mysql shell
+# 进入mysql shell
 
     mysql -u root -proot  
 
-#创建远程连接用户
+# 创建远程连接用户
 
     mysql>  create user 'replic'@'%' identified by 'replicpassword';
     mysql>  GRANT REPLICATION SLAVE ON *.* TO 'replic'@'%' IDENTIFIED BY 'replicpassword';   
 
-#先锁住log
+# 先锁住log
 
     mysql>  FLUSH TABLES WITH READ LOCK;   
 
-#记录结果binlon
+# 记录结果binlon
 
     mysql>  SHOW MASTER STATUS;    
 
-#解锁
+# 解锁
 
     mysql> unlock tables;    
 
-#在server2上
+# 在server2上
 
-#修改my.cnf
+# 修改my.cnf
 
     sudo su
     vi /etc/mysql/my.cnf
 
-#修改以下行
+# 修改以下行
 
     server-id   = 2
     log-bin = mysql-bin
@@ -106,27 +106,27 @@ MySQL Replication是MySQL保持数据冗余的一种方式，常用的结构有M
     sync_binlog = 1
     binlog_do_db = logdb
 
-#注释掉下一句
+# 注释掉下一句
 
     bind-address= 127.0.0.1
 
-#保存
+# 保存
 
-#重启
+# 重启
 
     service mysql restart
 
-#进入mysql shell
+# 进入mysql shell
 
     mysql -u root -proot
 
-#根据server1 status里的信息在server2端配置master
+# 根据server1 status里的信息在server2端配置master
 
     mysql> stop slave;
     mysql> change master to master_host = '172.16.13.211', master_user = 'replic', master_password = 'replicpassword', master_log_file = '之前在server1中记录的log file', master_log_pos = 在server1记录的log编号；
     mysql> start slave;
 
-**完成**
+- **完成**
 
 
     
