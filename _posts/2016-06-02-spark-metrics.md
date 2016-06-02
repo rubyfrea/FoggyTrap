@@ -24,7 +24,7 @@ source其实就是数据来源，就是这些metrics是从哪里采集来的。�
 
 它包括了source name 和 MetricRegistry，MetricRegistry是codahale的metrics包里来的，理解成用来“装”metrics的
 虽然source下面只有JVMsource一个具体的实现类，实际上spark还有各种各样的source实现类来提供metrics。
-![kivi](/Users/qf_jin/Documents/rubyfrea.github.io/image/sourceclass.png "Source Classes")
+![kivi]({{site.url}}/image/sourceclass.png "Source Classes")
 
 - **sink**
 
