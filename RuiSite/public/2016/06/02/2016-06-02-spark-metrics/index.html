@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Kivi spark," />
 
 
 
@@ -84,15 +84,24 @@
 
 
 
-<meta name="description" content="two cmuer">
-<meta property="og:type" content="website">
-<meta property="og:title" content="RI + KI">
-<meta property="og:url" content="http://limmm.com/index.html">
+<meta name="description" content="By Kivi
+Metric是Apache Spark里用于监测参数的一个package，路径是spark/core/src/main/scala/org/apache/spark/metrics/
+大多数的公司都有自己的一套metrics监测系统，Spark，IBM都有，这些都是高度定制化的，别人没法用。像Spark这个其实也是引入了一个外部的包，出自codahale。这个包提供了一系列的“量具">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Spark metrics源码介绍">
+<meta property="og:url" content="http://limmm.com/2016/06/02/2016-06-02-spark-metrics/index.html">
 <meta property="og:site_name" content="RI + KI">
-<meta property="og:description" content="two cmuer">
+<meta property="og:description" content="By Kivi
+Metric是Apache Spark里用于监测参数的一个package，路径是spark/core/src/main/scala/org/apache/spark/metrics/
+大多数的公司都有自己的一套metrics监测系统，Spark，IBM都有，这些都是高度定制化的，别人没法用。像Spark这个其实也是引入了一个外部的包，出自codahale。这个包提供了一系列的“量具">
+<meta property="og:image" content="http://limmm.com/image/sourceclass.png">
+<meta property="og:updated_time" content="2016-06-02T12:50:00.727Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="RI + KI">
-<meta name="twitter:description" content="two cmuer">
+<meta name="twitter:title" content="Spark metrics源码介绍">
+<meta name="twitter:description" content="By Kivi
+Metric是Apache Spark里用于监测参数的一个package，路径是spark/core/src/main/scala/org/apache/spark/metrics/
+大多数的公司都有自己的一套metrics监测系统，Spark，IBM都有，这些都是高度定制化的，别人没法用。像Spark这个其实也是引入了一个外部的包，出自codahale。这个包提供了一系列的“量具">
+<meta name="twitter:image" content="http://limmm.com/image/sourceclass.png">
 
 
 
@@ -110,7 +119,7 @@
   };
 </script>
 
-  <title> RI + KI </title>
+  <title> Spark metrics源码介绍 | RI + KI </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -131,9 +140,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left 
-   page-home 
- ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -230,9 +237,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
   
@@ -252,123 +259,7 @@
             
             
               
-                
-                <a class="post-title-link" href="/2016/06/02/2016-06-02-parallel-replication/" itemprop="url">
-                  MySQL 并行复制
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-06-02T14:42:35+08:00" content="2016-06-02">
-              2016-06-02
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/数据库/" itemprop="url" rel="index">
-                    <span itemprop="name">数据库</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><img src="/image/parallel.png" alt="并行复制"></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/06/02/2016-06-02-spark-metrics/" itemprop="url">
-                  Spark metrics源码介绍
-                </a>
+                Spark metrics源码介绍
               
             
           </h1>
@@ -427,9 +318,7 @@
       
 
       
-        
-          
-            <p>By <em><a href="https://github.com/qifanj" target="_blank" rel="external">Kivi</a></em></p>
+        <p>By <em><a href="https://github.com/qifanj" target="_blank" rel="external">Kivi</a></em></p>
 <p>Metric是Apache Spark里用于监测参数的一个package，路径是<code>spark/core/src/main/scala/org/apache/spark/metrics/</code></p>
 <p>大多数的公司都有自己的一套metrics监测系统，Spark，IBM都有，这些都是高度定制化的，别人没法用。像Spark这个其实也是引入了一个外部的包，出自codahale。这个包提供了一系列的“量具”来提供metrics监测的功能，简单来说，我们只需要找出要监测的变量或方法，然后注册到系统中，它就可以提供不同的度量方式如值（Gauge），计数器（Counters），直方图（Histograms），计时器（Timers）和Health check，并可以用不同的形式输出，像JMX，csv，console，graphite等。总之是个好工具，<a href="http://metrics.dropwizard.io/" target="_blank" rel="external">官网</a>  <a href="https://github.com/dropwizard/metrics" target="_blank" rel="external">Github</a></p>
 <p>下面来说Spark</p>
@@ -528,312 +417,62 @@ def registerSource(source: Source) {
 }
 </code></pre><p>这边也是通过反射新建了一个sink的对象，然后把这对象放到MetricsSystem的sinks集合里。</p>
 
-          
+      
+    </div>
+
+    <div>
+      
         
       
     </div>
 
     <div>
       
-    </div>
+        
 
-    <div>
       
     </div>
 
     <footer class="post-footer">
       
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/05/24/2016-05-24-introduction-to-high-availability/" itemprop="url">
-                  MySQL Replication 入门
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-05-24T14:54:58+08:00" content="2016-05-24">
-              2016-05-24
-            </time>
-          </span>
-
+        <div class="post-tags">
           
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/技术/" itemprop="url" rel="index">
-                    <span itemprop="name">技术</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
+            <a href="/tags/Kivi-spark/" rel="tag">#Kivi spark</a>
           
         </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          
-            <p>By <em><a href="https://github.com/rubyfrea" target="_blank" rel="external">Rui</a></em></p>
-<p>本系列主题是数据库高可用方案，从MySQL出发，遍历rdbms，再过渡到非关系型数据库。<br>关系型数据库的研究范围：</p>
-<p><img src="/image/db1theme.png" alt="主题"></p>
-<p>MySQL Replication是MySQL保持数据冗余的一种方式，常用的结构有Master-Slave，Multi-Master，Multi-Source几种方式。</p>
-<p>如果Master发生故障，可以立刻将一台Slave切换成Master，Replicaiton则是这个过程的基础，但故障转移还是要结合一个管理层来完成，比如ZooKeeper、Keepalive。</p>
-<p>我们先从最简单的master-slave开说。OS用的Ubuntu 14.04。</p>
-<p>#安装环境</p>
-<h1 id="安装-java-maven"><a href="#安装-java-maven" class="headerlink" title="安装 java,maven"></a>安装 java,maven</h1><pre><code>sudo add-apt-repository ppa:webupd8team/java
-sudo apt-get update
-sudo apt-get install oracle-java7-installer
-</code></pre><h1 id="设置默认-jdk"><a href="#设置默认-jdk" class="headerlink" title="设置默认 jdk"></a>设置默认 jdk</h1><pre><code>sudo update-alternatives --config java
-</code></pre><h1 id="配置-Java-Home-编辑-bashrc"><a href="#配置-Java-Home-编辑-bashrc" class="headerlink" title="配置 Java Home 编辑 ~/.bashrc"></a>配置 Java Home 编辑 ~/.bashrc</h1><pre><code>JAVA_HOME=/usr/lib/jvm/java-7-oracle
-export JAVA_HOME
-PATH=$PATH:$JAVA_HOME
-export PATH
-</code></pre><h1 id="安装mysql最新版本"><a href="#安装mysql最新版本" class="headerlink" title="安装mysql最新版本"></a>安装mysql最新版本</h1><h1 id="download-deb-file-at-http-dev-mysql-com-downloads-repo-apt"><a href="#download-deb-file-at-http-dev-mysql-com-downloads-repo-apt" class="headerlink" title="download deb file at http://dev.mysql.com/downloads/repo/apt/"></a>download deb file at <a href="http://dev.mysql.com/downloads/repo/apt/" target="_blank" rel="external">http://dev.mysql.com/downloads/repo/apt/</a></h1><pre><code>wget http://dev.mysql.com/get/mysql-apt-config_0.7.2-1_all.deb  
-sudo dpkg -i mysql-apt-config_0.7.2-1_all.deb  
-sudo apt-get update
-sudo apt-get install mysql-server
-</code></pre><h1 id="配置简单的主从"><a href="#配置简单的主从" class="headerlink" title="配置简单的主从"></a>配置简单的主从</h1><h1 id="在server-1端"><a href="#在server-1端" class="headerlink" title="在server 1端"></a>在server 1端</h1><pre><code>sudo su
-vi /etc/mysql/my.cnf
-</code></pre><h1 id="修改-my-cnf"><a href="#修改-my-cnf" class="headerlink" title="修改 my.cnf"></a>修改 my.cnf</h1><pre><code>[mysqld]
-log-bin = mysql-bin
-server-id = 1
-innodb_flush_log_at_trx_commit = 1
-sync_binlog = 1
-binlog_do_db = logdb 
-</code></pre><h1 id="comment-the-following-line"><a href="#comment-the-following-line" class="headerlink" title="comment the following line"></a>comment the following line</h1><pre><code>bind-address = 127.0.0.1
-</code></pre><h1 id="保存-my-cnf"><a href="#保存-my-cnf" class="headerlink" title="保存 my.cnf"></a>保存 my.cnf</h1><h1 id="重启"><a href="#重启" class="headerlink" title="重启"></a>重启</h1><pre><code>service mysql restart
-</code></pre><h1 id="进入mysql-shell"><a href="#进入mysql-shell" class="headerlink" title="进入mysql shell"></a>进入mysql shell</h1><pre><code>mysql -u root -proot  
-</code></pre><h1 id="创建远程连接用户"><a href="#创建远程连接用户" class="headerlink" title="创建远程连接用户"></a>创建远程连接用户</h1><pre><code>mysql&gt;  create user &apos;replic&apos;@&apos;%&apos; identified by &apos;replicpassword&apos;;
-mysql&gt;  GRANT REPLICATION SLAVE ON *.* TO &apos;replic&apos;@&apos;%&apos; IDENTIFIED BY &apos;replicpassword&apos;;   
-</code></pre><h1 id="先锁住log"><a href="#先锁住log" class="headerlink" title="先锁住log"></a>先锁住log</h1><pre><code>mysql&gt;  FLUSH TABLES WITH READ LOCK;   
-</code></pre><h1 id="记录结果binlon"><a href="#记录结果binlon" class="headerlink" title="记录结果binlon"></a>记录结果binlon</h1><pre><code>mysql&gt;  SHOW MASTER STATUS;    
-</code></pre><h1 id="解锁"><a href="#解锁" class="headerlink" title="解锁"></a>解锁</h1><pre><code>mysql&gt; unlock tables;    
-</code></pre><h1 id="在server2上"><a href="#在server2上" class="headerlink" title="在server2上"></a>在server2上</h1><h1 id="修改my-cnf"><a href="#修改my-cnf" class="headerlink" title="修改my.cnf"></a>修改my.cnf</h1><pre><code>sudo su
-vi /etc/mysql/my.cnf
-</code></pre><h1 id="修改以下行"><a href="#修改以下行" class="headerlink" title="修改以下行"></a>修改以下行</h1><pre><code>server-id   = 2
-log-bin = mysql-bin
-innodb_flush_log_at_trx_commit = 1
-sync_binlog = 1
-binlog_do_db = logdb
-</code></pre><h1 id="注释掉下一句"><a href="#注释掉下一句" class="headerlink" title="注释掉下一句"></a>注释掉下一句</h1><pre><code>bind-address= 127.0.0.1
-</code></pre><h1 id="保存"><a href="#保存" class="headerlink" title="保存"></a>保存</h1><h1 id="重启-1"><a href="#重启-1" class="headerlink" title="重启"></a>重启</h1><pre><code>service mysql restart
-</code></pre><h1 id="进入mysql-shell-1"><a href="#进入mysql-shell-1" class="headerlink" title="进入mysql shell"></a>进入mysql shell</h1><pre><code>mysql -u root -proot
-</code></pre><h1 id="根据server1-status里的信息在server2端配置master"><a href="#根据server1-status里的信息在server2端配置master" class="headerlink" title="根据server1 status里的信息在server2端配置master"></a>根据server1 status里的信息在server2端配置master</h1><pre><code>mysql&gt; stop slave;
-mysql&gt; change master to master_host = &apos;172.16.13.211&apos;, master_user = &apos;replic&apos;, master_password = &apos;replicpassword&apos;, master_log_file = &apos;之前在server1中记录的log file&apos;, master_log_pos = 在server1记录的log编号；
-mysql&gt; start slave;
-</code></pre><ul>
-<li><strong>完成</strong></li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
             
+              <a href="/2016/05/24/2016-05-24-introduction-to-high-availability/" rel="next" title="MySQL Replication 入门">
+                <i class="fa fa-chevron-left"></i> MySQL Replication 入门
+              </a>
             
-              
-                
-                <a class="post-title-link" href="/2016/05/24/2016-05-25-xpath/" itemprop="url">
-                  XPath使用方法
-                </a>
-              
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
             
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-05-24T14:54:58+08:00" content="2016-05-24">
-              2016-05-24
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/技术/" itemprop="url" rel="index">
-                    <span itemprop="name">技术</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
+              <a href="/2016/06/02/2016-06-02-parallel-replication/" rel="prev" title="MySQL 并行复制">
+                MySQL 并行复制 <i class="fa fa-chevron-right"></i>
+              </a>
             
-          
-
-          
-
-          
-          
-
-          
+          </div>
         </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          
-            <p><img src="/image/xpath1.png" alt="元素位置"><br><img src="/image/xpath2.png" alt="元素条件"><br><img src="/image/xpath3.png" alt="简便写法"></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </article>
 
 
-    
-  </section>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -841,6 +480,10 @@ mysql&gt; start slave;
 
 
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
         
@@ -860,8 +503,17 @@ mysql&gt; start slave;
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.gif"
@@ -911,6 +563,17 @@ mysql&gt; start slave;
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <p class="post-toc-empty">此文章未包含目录</p>
+            
+          </div>
+        </section>
       
 
     </div>
@@ -1007,6 +670,10 @@ mysql&gt; start slave;
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
 
   
 

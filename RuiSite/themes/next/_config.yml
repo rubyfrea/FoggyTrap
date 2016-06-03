@@ -26,11 +26,12 @@ rss:
 # When running the site in a subdirectory (e.g. domain.tld/blog), remove the leading slash (/archives -> archives)
 menu:
   home: /
-  #categories: /categories
+  categories: categories
   #about: /about
   archives: /archives
-  tags: /tags
+  tags: tags
   #commonweal: /404.html
+  search: /search 
 
 
 # Enable/Disable menu icons.
@@ -47,6 +48,7 @@ menu_icons:
   tags: tags
   archives: archive
   commonweal: heartbeat
+  search: search
 
 
 
