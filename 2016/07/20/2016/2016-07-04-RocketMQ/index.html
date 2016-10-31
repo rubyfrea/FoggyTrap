@@ -1,0 +1,747 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+<meta name="baidu-site-verification" content="o62nQQzTiW" />
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="中间件,消息," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="By Rui
+安装JDKJDK下载http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="RocketMQ">
+<meta property="og:url" content="http://limmm.com/2016/07/20/2016/2016-07-04-RocketMQ/index.html">
+<meta property="og:site_name" content="P U M E L A">
+<meta property="og:description" content="By Rui
+安装JDKJDK下载http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html">
+<meta property="og:updated_time" content="2016-10-31T22:55:55.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="RocketMQ">
+<meta name="twitter:description" content="By Rui
+安装JDKJDK下载http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 6309441470214440000,
+      author: '草字头'
+    }
+  };
+</script>
+
+  <title> RocketMQ | P U M E L A </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-81061808-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta custom-logo">
+  
+    <div class="site-meta-headline">
+      <a>
+        <img class="custom-logo-image" src="/image/by3.jpg"
+             alt="P U M E L A"/>
+      </a>
+    </div>
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">P U M E L A</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">SuperEn Rui</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-search">
+          <a href="/search" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-search"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                RocketMQ
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-07-20T23:54:02-04:00" content="2016-07-20">
+              2016-07-20
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/技术/" itemprop="url" rel="index">
+                    <span itemprop="name">技术</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/07/20/2016/2016-07-04-RocketMQ/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/20/2016/2016-07-04-RocketMQ/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>By <em><a href="https://github.com/rubyfrea" target="_blank" rel="external">Rui</a></em></p>
+<h1 id="安装JDK"><a href="#安装JDK" class="headerlink" title="安装JDK"></a>安装JDK</h1><h2 id="JDK下载"><a href="#JDK下载" class="headerlink" title="JDK下载"></a>JDK下载</h2><p><a href="http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html" target="_blank" rel="external">http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html</a><br><a id="more"></a></p>
+<h2 id="解压"><a href="#解压" class="headerlink" title="解压"></a>解压</h2><pre><code>sudo tar zxvf ./（对应文件）
+sudo mv (更改目录名字) jdk1.7
+</code></pre><h2 id="设置环境变量"><a href="#设置环境变量" class="headerlink" title="设置环境变量"></a>设置环境变量</h2><pre><code>vi ~/.bashrc
+export JAVA_HOME = 对应的文件夹
+export JRE_NOME = ${JAVA_HOME}/jre
+export CLASSPATH = .:${JAVA_HOME}/lib:${JRE_HOME}/lib
+export PATH = ${ JAVA_HOME }/bin:$PATH
+</code></pre><h2 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h2><pre><code>source ~/.bashrc
+</code></pre><h2 id="修改前可以选择备份-bashrc"><a href="#修改前可以选择备份-bashrc" class="headerlink" title="修改前可以选择备份.bashrc"></a>修改前可以选择备份.bashrc</h2><pre><code>cp ./bashrc ./old_bashrc
+</code></pre><h2 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h2><pre><code>java –version
+</code></pre><h1 id="安装maven"><a href="#安装maven" class="headerlink" title="安装maven"></a>安装maven</h1><pre><code>sudo apt-get purge maven maven2 maven3
+sudo apt-add-repository ppa:andrei-pozolotin/maven3
+sudo apt-get update
+sudo apt-get install maven3
+</code></pre><h2 id="验证是否安装成功"><a href="#验证是否安装成功" class="headerlink" title="验证是否安装成功"></a>验证是否安装成功</h2><pre><code>mvn –version
+</code></pre><h1 id="安装Git"><a href="#安装Git" class="headerlink" title="安装Git"></a>安装Git</h1><pre><code>sudo apt-get install git
+</code></pre><h2 id="配置git帐号信息"><a href="#配置git帐号信息" class="headerlink" title="配置git帐号信息"></a>配置git帐号信息</h2><pre><code>git config --global user.name “LeiXH”
+git config –global user.email “969321258@qq.com” //我的帐号信息
+</code></pre><h2 id="创建验证用的公钥"><a href="#创建验证用的公钥" class="headerlink" title="创建验证用的公钥"></a>创建验证用的公钥</h2><pre><code>ssh-keygen -C ‘969321258@qq.com’ -t rsa
+</code></pre><blockquote>
+<p>在~/.ssh/ 下找到相应的密钥文件 在Github上增加SSH Keys：将id_rsa.pub的内容增加到Github上。<br>再ssh-add</p>
+</blockquote>
+<p>#安装tomcat#</p>
+<pre><code>wget http://mirrors.hust.edu.cn/apache/tomcat/tomcat-8/v8.0.36/bin/apache-tomcat-8.0.36.tar.gz
+tar -zxvf apache-tomcat-8.0.36.tar.gz -C /opt/
+mv apache-tomcat-8.0.36.tar.gz tomcat
+</code></pre><h2 id="设置环境变量-1"><a href="#设置环境变量-1" class="headerlink" title="设置环境变量"></a>设置环境变量</h2><h2 id="bashrc"><a href="#bashrc" class="headerlink" title="~/.bashrc"></a>~/.bashrc</h2><pre><code>vi  ~/.bashrc
+</code></pre><blockquote>
+<p>添加</p>
+</blockquote>
+<pre><code>export JAVA_HOME=/usr/lib/jvm/default-java/
+export CATALINA_HOME=/opt/tomcat/
+export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/opt/tomcat/bin/
+</code></pre><h3 id="保存后重新运行sh"><a href="#保存后重新运行sh" class="headerlink" title="保存后重新运行sh"></a>保存后重新运行sh</h3><pre><code>.  ~/.bashrc
+</code></pre><h2 id="catalina-sh"><a href="#catalina-sh" class="headerlink" title="catalina.sh"></a>catalina.sh</h2><pre><code>vi /opt/tomcat/bin/catalina.sh
+cygwin=false这一句上面加入:
+JAVA_HOME=/usr/lib/jvm/default-java/
+</code></pre><p>将以下变为可执行文件<br>    chmod +x $CATALINA_HOME/bin/startup.sh<br>    chmod +x $CATALINA_HOME/bin/shutdown.sh<br>    chmod +x $CATALINA_HOME/bin/catalina.sh</p>
+<h1 id="安装MQ"><a href="#安装MQ" class="headerlink" title="安装MQ"></a>安装MQ</h1><pre><code>mkdir /usr/local/alibaba-rocketmq
+wget https://github.com/alibaba/RocketMQ/releases/download/v3.2.6/alibaba-rocketmq-3.2.6.tar.gz
+wget https://github.com/alibaba/RocketMQ/releases/download/v3.2.6/alibaba-rocketmq-client-java-3.2.6.tar.gz
+tar -zxvf alibaba-rocketmq-3.2.6.tar.gz -C /usr/local/
+</code></pre><h2 id="启动Name-Server"><a href="#启动Name-Server" class="headerlink" title="启动Name Server"></a>启动Name Server</h2><pre><code>nohup sh mqnamesrv &amp;
+</code></pre><h2 id="设置环境变量-2"><a href="#设置环境变量-2" class="headerlink" title="设置环境变量"></a>设置环境变量</h2><pre><code>export NAMESRV_ADDR = 127.0.0.1:9876
+</code></pre><h2 id="启动Broker"><a href="#启动Broker" class="headerlink" title="启动Broker"></a>启动Broker</h2><pre><code>nohup sh mqbroker &amp;
+</code></pre><h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><pre><code>jps
+</code></pre><h2 id="测试MQ是否安装成功Demo"><a href="#测试MQ是否安装成功Demo" class="headerlink" title="测试MQ是否安装成功Demo"></a>测试MQ是否安装成功Demo</h2><pre><code>git clone https://code.aliyun.com/MiddlewareRace/PreliminaryDemo.git
+cd PreliminaryDemo.git
+mvn clean &amp;&amp; mvn test
+</code></pre><p>整个安装RocketMQ的教程：<br>网上的资料：<a href="http://blog.csdn.net/cxz0593/article/details/37662673" target="_blank" rel="external">http://blog.csdn.net/cxz0593/article/details/37662673</a></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/中间件/" rel="tag">#中间件</a>
+          
+            <a href="/tags/消息/" rel="tag">#消息</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/07/20/2016/2016-07-20-%D5%EE%F9%F5%A6%BC%FE%DC%E4%DA%F8%BF/" rel="next" title="北京的雨">
+                <i class="fa fa-chevron-left"></i> 北京的雨
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/07/20/2016/2016-07-12-Twisted%B5%ED%E5%B5%D7%C2/" rel="prev" title="Twisted框架">
+                Twisted框架 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2016/07/20/2016/2016-07-04-RocketMQ/"
+     data-title="RocketMQ"
+     data-content=""
+     data-url="http://limmm.com/2016/07/20/2016/2016-07-04-RocketMQ/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/07/20/2016/2016-07-04-RocketMQ/"
+           data-title="RocketMQ" data-url="http://limmm.com/2016/07/20/2016/2016-07-04-RocketMQ/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Rui Tian" />
+          <p class="site-author-name" itemprop="name">Rui Tian</p>
+          <p class="site-description motion-element" itemprop="description">Big Head Developer</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">18</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">24</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/rubyfrea" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://weibo.com/" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  微博
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#安装JDK"><span class="nav-number">1.</span> <span class="nav-text">安装JDK</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#JDK下载"><span class="nav-number">1.1.</span> <span class="nav-text">JDK下载</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解压"><span class="nav-number">1.2.</span> <span class="nav-text">解压</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设置环境变量"><span class="nav-number">1.3.</span> <span class="nav-text">设置环境变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#运行"><span class="nav-number">1.4.</span> <span class="nav-text">运行</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修改前可以选择备份-bashrc"><span class="nav-number">1.5.</span> <span class="nav-text">修改前可以选择备份.bashrc</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#验证"><span class="nav-number">1.6.</span> <span class="nav-text">验证</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#安装maven"><span class="nav-number">2.</span> <span class="nav-text">安装maven</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#验证是否安装成功"><span class="nav-number">2.1.</span> <span class="nav-text">验证是否安装成功</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#安装Git"><span class="nav-number">3.</span> <span class="nav-text">安装Git</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#配置git帐号信息"><span class="nav-number">3.1.</span> <span class="nav-text">配置git帐号信息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建验证用的公钥"><span class="nav-number">3.2.</span> <span class="nav-text">创建验证用的公钥</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设置环境变量-1"><span class="nav-number">3.3.</span> <span class="nav-text">设置环境变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#bashrc"><span class="nav-number">3.4.</span> <span class="nav-text">~/.bashrc</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#保存后重新运行sh"><span class="nav-number">3.4.1.</span> <span class="nav-text">保存后重新运行sh</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#catalina-sh"><span class="nav-number">3.5.</span> <span class="nav-text">catalina.sh</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#安装MQ"><span class="nav-number">4.</span> <span class="nav-text">安装MQ</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#启动Name-Server"><span class="nav-number">4.1.</span> <span class="nav-text">启动Name Server</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设置环境变量-2"><span class="nav-number">4.2.</span> <span class="nav-text">设置环境变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#启动Broker"><span class="nav-number">4.3.</span> <span class="nav-text">启动Broker</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#测试"><span class="nav-number">4.4.</span> <span class="nav-text">测试</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#测试MQ是否安装成功Demo"><span class="nav-number">4.5.</span> <span class="nav-text">测试MQ是否安装成功Demo</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2016/05/25 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Rui Tian</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"rubyfrea"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+      
+      <script src="/vendors/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+      <script src="/js/src/hook-duoshuo.js"></script>
+    
+  
+
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+<script type="text/javascript" async src="//push.zhanzhang.baidu.com/push.js">
+</script>
+
+
+</body>
+</html>

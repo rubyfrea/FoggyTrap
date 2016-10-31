@@ -1,0 +1,757 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+<meta name="baidu-site-verification" content="o62nQQzTiW" />
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="数据库,高可用," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="By Rui
+本系列主题是数据库高可用方案，从MySQL出发，遍历rdbms，再过渡到非关系型数据库。关系型数据库的研究范围：
+
+MySQL Replication是MySQL保持数据冗余的一种方式，常用的结构有Master-Slave，Multi-Master，Multi-Source几种方式。
+如果Master发生故障，可以立刻将一台Slave切换成Master，Replicaiton则是这个">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MySQL Replication 入门">
+<meta property="og:url" content="http://limmm.com/2016/05/24/2016/2016-05-24-introduction-to-high-availability/index.html">
+<meta property="og:site_name" content="P U M E L A">
+<meta property="og:description" content="By Rui
+本系列主题是数据库高可用方案，从MySQL出发，遍历rdbms，再过渡到非关系型数据库。关系型数据库的研究范围：
+
+MySQL Replication是MySQL保持数据冗余的一种方式，常用的结构有Master-Slave，Multi-Master，Multi-Source几种方式。
+如果Master发生故障，可以立刻将一台Slave切换成Master，Replicaiton则是这个">
+<meta property="og:image" content="http://limmm.com/image/db1theme.png">
+<meta property="og:updated_time" content="2016-10-31T22:55:55.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="MySQL Replication 入门">
+<meta name="twitter:description" content="By Rui
+本系列主题是数据库高可用方案，从MySQL出发，遍历rdbms，再过渡到非关系型数据库。关系型数据库的研究范围：
+
+MySQL Replication是MySQL保持数据冗余的一种方式，常用的结构有Master-Slave，Multi-Master，Multi-Source几种方式。
+如果Master发生故障，可以立刻将一台Slave切换成Master，Replicaiton则是这个">
+<meta name="twitter:image" content="http://limmm.com/image/db1theme.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 6309441470214440000,
+      author: '草字头'
+    }
+  };
+</script>
+
+  <title> MySQL Replication 入门 | P U M E L A </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-81061808-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta custom-logo">
+  
+    <div class="site-meta-headline">
+      <a>
+        <img class="custom-logo-image" src="/image/by3.jpg"
+             alt="P U M E L A"/>
+      </a>
+    </div>
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">P U M E L A</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">SuperEn Rui</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-search">
+          <a href="/search" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-search"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                MySQL Replication 入门
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-05-24T02:54:58-04:00" content="2016-05-24">
+              2016-05-24
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/技术/" itemprop="url" rel="index">
+                    <span itemprop="name">技术</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/05/24/2016/2016-05-24-introduction-to-high-availability/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/24/2016/2016-05-24-introduction-to-high-availability/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>By <em><a href="https://github.com/rubyfrea" target="_blank" rel="external">Rui</a></em></p>
+<p>本系列主题是数据库高可用方案，从MySQL出发，遍历rdbms，再过渡到非关系型数据库。<br>关系型数据库的研究范围：</p>
+<p><img src="/image/db1theme.png" alt="主题"></p>
+<p>MySQL Replication是MySQL保持数据冗余的一种方式，常用的结构有Master-Slave，Multi-Master，Multi-Source几种方式。</p>
+<p>如果Master发生故障，可以立刻将一台Slave切换成Master，Replicaiton则是这个过程的基础，但故障转移还是要结合一个管理层来完成，比如ZooKeeper、Keepalive。</p>
+<p>我们先从最简单的master-slave开说。OS用的Ubuntu 14.04。<br><a id="more"></a></p>
+<p>#安装环境</p>
+<h1 id="安装-java-maven"><a href="#安装-java-maven" class="headerlink" title="安装 java,maven"></a>安装 java,maven</h1><pre><code>sudo add-apt-repository ppa:webupd8team/java
+sudo apt-get update
+sudo apt-get install oracle-java7-installer
+</code></pre><h1 id="设置默认-jdk"><a href="#设置默认-jdk" class="headerlink" title="设置默认 jdk"></a>设置默认 jdk</h1><pre><code>sudo update-alternatives --config java
+</code></pre><h1 id="配置-Java-Home-编辑-bashrc"><a href="#配置-Java-Home-编辑-bashrc" class="headerlink" title="配置 Java Home 编辑 ~/.bashrc"></a>配置 Java Home 编辑 ~/.bashrc</h1><pre><code>JAVA_HOME=/usr/lib/jvm/java-7-oracle
+export JAVA_HOME
+PATH=$PATH:$JAVA_HOME
+export PATH
+</code></pre><h1 id="安装mysql最新版本"><a href="#安装mysql最新版本" class="headerlink" title="安装mysql最新版本"></a>安装mysql最新版本</h1><h1 id="download-deb-file-at-http-dev-mysql-com-downloads-repo-apt"><a href="#download-deb-file-at-http-dev-mysql-com-downloads-repo-apt" class="headerlink" title="download deb file at http://dev.mysql.com/downloads/repo/apt/"></a>download deb file at <a href="http://dev.mysql.com/downloads/repo/apt/" target="_blank" rel="external">http://dev.mysql.com/downloads/repo/apt/</a></h1><pre><code>wget http://dev.mysql.com/get/mysql-apt-config_0.7.2-1_all.deb  
+sudo dpkg -i mysql-apt-config_0.7.2-1_all.deb  
+sudo apt-get update
+sudo apt-get install mysql-server
+</code></pre><h1 id="配置简单的主从"><a href="#配置简单的主从" class="headerlink" title="配置简单的主从"></a>配置简单的主从</h1><h1 id="在server-1端"><a href="#在server-1端" class="headerlink" title="在server 1端"></a>在server 1端</h1><pre><code>sudo su
+vi /etc/mysql/my.cnf
+</code></pre><h1 id="修改-my-cnf"><a href="#修改-my-cnf" class="headerlink" title="修改 my.cnf"></a>修改 my.cnf</h1><pre><code>[mysqld]
+log-bin = mysql-bin
+server-id = 1
+innodb_flush_log_at_trx_commit = 1
+sync_binlog = 1
+binlog_do_db = logdb
+</code></pre><h1 id="comment-the-following-line"><a href="#comment-the-following-line" class="headerlink" title="comment the following line"></a>comment the following line</h1><pre><code>bind-address = 127.0.0.1
+</code></pre><h1 id="保存-my-cnf"><a href="#保存-my-cnf" class="headerlink" title="保存 my.cnf"></a>保存 my.cnf</h1><h1 id="重启"><a href="#重启" class="headerlink" title="重启"></a>重启</h1><pre><code>service mysql restart
+</code></pre><h1 id="进入mysql-shell"><a href="#进入mysql-shell" class="headerlink" title="进入mysql shell"></a>进入mysql shell</h1><pre><code>mysql -u root -proot  
+</code></pre><h1 id="创建远程连接用户"><a href="#创建远程连接用户" class="headerlink" title="创建远程连接用户"></a>创建远程连接用户</h1><pre><code>mysql&gt;  create user &apos;replic&apos;@&apos;%&apos; identified by &apos;replicpassword&apos;;
+mysql&gt;  GRANT REPLICATION SLAVE ON *.* TO &apos;replic&apos;@&apos;%&apos; IDENTIFIED BY &apos;replicpassword&apos;;   
+</code></pre><h1 id="先锁住log"><a href="#先锁住log" class="headerlink" title="先锁住log"></a>先锁住log</h1><pre><code>mysql&gt;  FLUSH TABLES WITH READ LOCK;   
+</code></pre><h1 id="记录结果binlon"><a href="#记录结果binlon" class="headerlink" title="记录结果binlon"></a>记录结果binlon</h1><pre><code>mysql&gt;  SHOW MASTER STATUS;    
+</code></pre><h1 id="解锁"><a href="#解锁" class="headerlink" title="解锁"></a>解锁</h1><pre><code>mysql&gt; unlock tables;    
+</code></pre><h1 id="在server2上"><a href="#在server2上" class="headerlink" title="在server2上"></a>在server2上</h1><h1 id="修改my-cnf"><a href="#修改my-cnf" class="headerlink" title="修改my.cnf"></a>修改my.cnf</h1><pre><code>sudo su
+vi /etc/mysql/my.cnf
+</code></pre><h1 id="修改以下行"><a href="#修改以下行" class="headerlink" title="修改以下行"></a>修改以下行</h1><pre><code>server-id   = 2
+log-bin = mysql-bin
+innodb_flush_log_at_trx_commit = 1
+sync_binlog = 1
+binlog_do_db = logdb
+</code></pre><h1 id="注释掉下一句"><a href="#注释掉下一句" class="headerlink" title="注释掉下一句"></a>注释掉下一句</h1><pre><code>bind-address= 127.0.0.1
+</code></pre><h1 id="保存"><a href="#保存" class="headerlink" title="保存"></a>保存</h1><h1 id="重启-1"><a href="#重启-1" class="headerlink" title="重启"></a>重启</h1><pre><code>service mysql restart
+</code></pre><h1 id="进入mysql-shell-1"><a href="#进入mysql-shell-1" class="headerlink" title="进入mysql shell"></a>进入mysql shell</h1><pre><code>mysql -u root -proot
+</code></pre><h1 id="根据server1-status里的信息在server2端配置master"><a href="#根据server1-status里的信息在server2端配置master" class="headerlink" title="根据server1 status里的信息在server2端配置master"></a>根据server1 status里的信息在server2端配置master</h1><pre><code>mysql&gt; stop slave;
+mysql&gt; change master to master_host = &apos;172.16.13.211&apos;, master_user = &apos;replic&apos;, master_password = &apos;replicpassword&apos;, master_log_file = &apos;之前在server1中记录的log file&apos;, master_log_pos = 在server1记录的log编号；
+mysql&gt; start slave;
+</code></pre><ul>
+<li><strong>完成</strong></li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/数据库/" rel="tag">#数据库</a>
+          
+            <a href="/tags/高可用/" rel="tag">#高可用</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/05/24/2016/2016-05-25-xpath/" rel="next" title="XPath使用方法">
+                <i class="fa fa-chevron-left"></i> XPath使用方法
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/05/24/2016/2016-06-08-JAVAա%D5%E9%BF/" rel="prev" title="JAVA存储">
+                JAVA存储 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2016/05/24/2016/2016-05-24-introduction-to-high-availability/"
+     data-title="MySQL Replication 入门"
+     data-content=""
+     data-url="http://limmm.com/2016/05/24/2016/2016-05-24-introduction-to-high-availability/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/05/24/2016/2016-05-24-introduction-to-high-availability/"
+           data-title="MySQL Replication 入门" data-url="http://limmm.com/2016/05/24/2016/2016-05-24-introduction-to-high-availability/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Rui Tian" />
+          <p class="site-author-name" itemprop="name">Rui Tian</p>
+          <p class="site-description motion-element" itemprop="description">Big Head Developer</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">18</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">24</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/rubyfrea" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://weibo.com/" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  微博
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#安装-java-maven"><span class="nav-number">1.</span> <span class="nav-text">安装 java,maven</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#设置默认-jdk"><span class="nav-number">2.</span> <span class="nav-text">设置默认 jdk</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#配置-Java-Home-编辑-bashrc"><span class="nav-number">3.</span> <span class="nav-text">配置 Java Home 编辑 ~/.bashrc</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#安装mysql最新版本"><span class="nav-number">4.</span> <span class="nav-text">安装mysql最新版本</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#download-deb-file-at-http-dev-mysql-com-downloads-repo-apt"><span class="nav-number">5.</span> <span class="nav-text">download deb file at http://dev.mysql.com/downloads/repo/apt/</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#配置简单的主从"><span class="nav-number">6.</span> <span class="nav-text">配置简单的主从</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#在server-1端"><span class="nav-number">7.</span> <span class="nav-text">在server 1端</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#修改-my-cnf"><span class="nav-number">8.</span> <span class="nav-text">修改 my.cnf</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#comment-the-following-line"><span class="nav-number">9.</span> <span class="nav-text">comment the following line</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#保存-my-cnf"><span class="nav-number">10.</span> <span class="nav-text">保存 my.cnf</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#重启"><span class="nav-number">11.</span> <span class="nav-text">重启</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#进入mysql-shell"><span class="nav-number">12.</span> <span class="nav-text">进入mysql shell</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#创建远程连接用户"><span class="nav-number">13.</span> <span class="nav-text">创建远程连接用户</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#先锁住log"><span class="nav-number">14.</span> <span class="nav-text">先锁住log</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#记录结果binlon"><span class="nav-number">15.</span> <span class="nav-text">记录结果binlon</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#解锁"><span class="nav-number">16.</span> <span class="nav-text">解锁</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#在server2上"><span class="nav-number">17.</span> <span class="nav-text">在server2上</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#修改my-cnf"><span class="nav-number">18.</span> <span class="nav-text">修改my.cnf</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#修改以下行"><span class="nav-number">19.</span> <span class="nav-text">修改以下行</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#注释掉下一句"><span class="nav-number">20.</span> <span class="nav-text">注释掉下一句</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#保存"><span class="nav-number">21.</span> <span class="nav-text">保存</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#重启-1"><span class="nav-number">22.</span> <span class="nav-text">重启</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#进入mysql-shell-1"><span class="nav-number">23.</span> <span class="nav-text">进入mysql shell</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#根据server1-status里的信息在server2端配置master"><span class="nav-number">24.</span> <span class="nav-text">根据server1 status里的信息在server2端配置master</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2016/05/25 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Rui Tian</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"rubyfrea"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+      
+      <script src="/vendors/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+      <script src="/js/src/hook-duoshuo.js"></script>
+    
+  
+
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+<script type="text/javascript" async src="//push.zhanzhang.baidu.com/push.js">
+</script>
+
+
+</body>
+</html>
