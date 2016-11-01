@@ -69,7 +69,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Rui, Tech, Balance" />
+  <meta name="keywords" content=",,," />
 
 
 
@@ -87,19 +87,19 @@
 
 
 
-<meta name="description" content="link
-dj">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Distributed System">
-<meta property="og:url" content="http://limmm.com/2016/10/31/2016/2016-10-31-distributed-system/index.html">
+<meta name="description" content="By Rui
+数据库使用索引来减少磁盘IO次数，提升查询效率。MySQL使用B+树索引，Oracle使用B-树索引，PostgreSQL使用多种索引类型：B-Tree、Hash、GiST和GIN，默认创建B-树索引。本篇讲MySQL的B+树索引和新版本的一些特性。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Mysql索引原理及应用">
+<meta property="og:url" content="http://limmm.com/drafts/2016-06-03-MySQLindexPrincipalsandApplication.html">
 <meta property="og:site_name" content="P U M E L A">
-<meta property="og:description" content="link
-dj">
-<meta property="og:updated_time" content="2016-10-31T23:59:52.000Z">
+<meta property="og:description" content="By Rui
+数据库使用索引来减少磁盘IO次数，提升查询效率。MySQL使用B+树索引，Oracle使用B-树索引，PostgreSQL使用多种索引类型：B-Tree、Hash、GiST和GIN，默认创建B-树索引。本篇讲MySQL的B+树索引和新版本的一些特性。">
+<meta property="og:updated_time" content="2016-10-31T22:55:55.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Distributed System">
-<meta name="twitter:description" content="link
-dj">
+<meta name="twitter:title" content="Mysql索引原理及应用">
+<meta name="twitter:description" content="By Rui
+数据库使用索引来减少磁盘IO次数，提升查询效率。MySQL使用B+树索引，Oracle使用B-树索引，PostgreSQL使用多种索引类型：B-Tree、Hash、GiST和GIN，默认创建B-树索引。本篇讲MySQL的B+树索引和新版本的一些特性。">
 
 
 
@@ -117,7 +117,7 @@ dj">
   };
 </script>
 
-  <title> Distributed System | P U M E L A </title>
+  <title> Mysql索引原理及应用 | P U M E L A </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -273,7 +273,7 @@ dj">
             
             
               
-                Distributed System
+                Mysql索引原理及应用
               
             
           </h1>
@@ -285,19 +285,50 @@ dj">
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-10-31T17:12:00-04:00" content="2016-10-31">
-              2016-10-31
+            <time itemprop="dateCreated" datetime="2016-06-03T14:17:23-04:00" content="2016-06-03">
+              2016-06-03
             </time>
           </span>
 
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/" itemprop="url" rel="index">
+                    <span itemprop="name"></span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/" itemprop="url" rel="index">
+                    <span itemprop="name"></span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
           
 
           
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/10/31/2016/2016-10-31-distributed-system/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/10/31/2016/2016-10-31-distributed-system/" itemprop="commentsCount"></span>
+                <a href="/drafts/2016-06-03-MySQLindexPrincipalsandApplication.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="drafts/2016-06-03-MySQLindexPrincipalsandApplication.html" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -320,31 +351,9 @@ dj">
       
 
       
-        <p><a href="#definition">link</a></p>
-<p>d<br>j<br><a id="more"></a><br>d</p>
-<p>k<br>d</p>
-<p>d</p>
-<p>d</p>
-<p>d</p>
-<p>d</p>
-<p>d</p>
-<p>d</p>
-<p>d</p>
-<p>d</p>
-<p>d</p>
-<p>d</p>
-<p>d</p>
-<p>d</p>
-<p>d</p>
-<p>d</p>
-<p>d</p>
-<p>d</p>
-<p>d</p>
-<p>d</p>
-<p>d</p>
-<p>d</p>
-<p>d</p>
-<div id="definition"><br>what ???????<br></div>
+        <p>By <em><a href="https://github.com/rubyfrea" target="_blank" rel="external">Rui</a></em></p>
+<p>数据库使用索引来减少磁盘IO次数，提升查询效率。MySQL使用B+树索引，Oracle使用B-树索引，PostgreSQL使用多种索引类型：B-Tree、Hash、GiST和GIN，默认创建B-树索引。本篇讲MySQL的B+树索引和新版本的一些特性。<br><a id="more"></a></p>
+<h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><p><a href="http://www.mysqlpub.com/thread-59646-1-1.html" title="索引原理及慢查询优化" target="_blank" rel="external">索引原理及慢查询优化 http://www.mysqlpub.com/thread-59646-1-1.html</a></p>
 
       
     </div>
@@ -364,21 +373,17 @@ dj">
 
     <footer class="post-footer">
       
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2016/10/29/2016/2016-10-29-beLazy/" rel="next" title="好吃懒做">
-                <i class="fa fa-chevron-left"></i> 好吃懒做
-              </a>
-            
-          </div>
-
-          <div class="post-nav-prev post-nav-item">
-            
-          </div>
+        <div class="post-tags">
+          
+            <a href="/" rel="tag">#</a>
+          
+            <a href="/" rel="tag">#</a>
+          
+            <a href="/" rel="tag">#</a>
+          
         </div>
+      
+
       
 
       
@@ -390,10 +395,10 @@ dj">
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2016/10/31/2016/2016-10-31-distributed-system/"
-     data-title="Distributed System"
+        <div class="ds-share flat" data-thread-key="drafts/2016-06-03-MySQLindexPrincipalsandApplication.html"
+     data-title="Mysql索引原理及应用"
      data-content=""
-     data-url="http://limmm.com/2016/10/31/2016/2016-10-31-distributed-system/">
+     data-url="http://limmm.com/drafts/2016-06-03-MySQLindexPrincipalsandApplication.html">
   <div class="ds-share-inline">
     <ul  class="ds-share-icons-16">
 
@@ -420,8 +425,8 @@ dj">
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/10/31/2016/2016-10-31-distributed-system/"
-           data-title="Distributed System" data-url="http://limmm.com/2016/10/31/2016/2016-10-31-distributed-system/">
+      <div class="ds-thread" data-thread-key="drafts/2016-06-03-MySQLindexPrincipalsandApplication.html"
+           data-title="Mysql索引原理及应用" data-url="http://limmm.com/drafts/2016-06-03-MySQLindexPrincipalsandApplication.html">
       </div>
     
   </div>
@@ -466,7 +471,7 @@ dj">
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">18</span>
+              <span class="site-state-item-count">12</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -532,7 +537,7 @@ dj">
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#参考"><span class="nav-number">1.</span> <span class="nav-text">参考</span></a></li></ol></div>
             
           </div>
         </section>
