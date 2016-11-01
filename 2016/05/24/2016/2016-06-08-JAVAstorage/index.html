@@ -123,7 +123,13 @@
   };
 </script>
 
-  <title> JAVA存储 | P U M E L A </title>
+  <title>
+  
+
+  
+    JAVA存储 | P U M E L A
+  
+</title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -153,7 +159,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left page-post-detail ">
+  <div class="container one-collumn sidebar-position-left  ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -260,92 +266,8 @@
 
   <div id="posts" class="posts-expand">
     
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
     
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                JAVA存储
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-05-24T02:54:58-04:00" content="2016-05-24">
-              2016-05-24
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/技术/" itemprop="url" rel="index">
-                    <span itemprop="name">技术</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/05/24/2016/2016-06-08-JAVAstorage/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/24/2016/2016-06-08-JAVAstorage/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        <p>By <em><a href="https://github.com/rubyfrea" target="_blank" rel="external">Rui</a></em></p>
+      <p>By <em><a href="https://github.com/rubyfrea" target="_blank" rel="external">Rui</a></em></p>
 <p>在JAVA中，有六个不同的地方可以存储数据：  </p>
 <h3 id="寄存器（register"><a href="#寄存器（register" class="headerlink" title="寄存器（register)"></a>寄存器（register)</h3><p>这是最快的存储区，因为它位于不同于其他存储区的地方——处理器内部。但是寄存器的数量极其有限，所以<br>寄存器由编译器根据需求进行分配。你不能直接控制，也不能在程序中感觉到寄存器存在的任何迹象。  </p>
 <h3 id="堆栈（stack）"><a href="#堆栈（stack）" class="headerlink" title="堆栈（stack）"></a>堆栈（stack）</h3><p>位于通用RAM中，但通过它的“堆栈指针”可以从处理器哪里获得支持。堆栈指针若向下移动，则分配新的内存；若向上移动，则释放那些内存。这是一种快速有效的分配存储方法，仅次于寄存器。创建程序时候，JAVA编译器必须知道存储在堆栈内所<br>有数据的确切大小和生命周期，因为它必须生成相应的代码，以便上下移动堆栈指针。这一约束限制了程序的灵活性，所以虽然某些JAVA数据存储在堆栈中——特别是对象引用，但是JAVA对象不存储其中。<br><a id="more"></a></p>
@@ -355,84 +277,7 @@
 <h3 id="非RAM存储"><a href="#非RAM存储" class="headerlink" title="非RAM存储"></a>非RAM存储</h3><p>如果数据完全存活于程序之外，那么它可以不受程序的任何控制，在程序没有运行时也可以存在。  </p>
 <p>就速度来说，有如下关系：<br>寄存器 &lt; 堆栈 &lt; 堆 &lt; 其他  </p>
 
-      
-    </div>
-
-    <div>
-      
-        
-      
-    </div>
-
-    <div>
-      
-        
-
-      
-    </div>
-
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/JAVA/" rel="tag">#JAVA</a>
-          
-            <a href="/tags/存储/" rel="tag">#存储</a>
-          
-            <a href="/tags/虚拟机/" rel="tag">#虚拟机</a>
-          
-        </div>
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2016/05/24/2016/2016-05-24-introduction-to-high-availability/" rel="next" title="MySQL Replication 入门">
-                <i class="fa fa-chevron-left"></i> MySQL Replication 入门
-              </a>
-            
-          </div>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/06/02/2016/2016-06-02-spark-metrics/" rel="prev" title="Spark metrics源码介绍">
-                Spark metrics源码介绍 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
-  </article>
-
-
-
-    <div class="post-spread">
-      
-        <div class="ds-share flat" data-thread-key="2016/05/24/2016/2016-06-08-JAVAstorage/"
-     data-title="JAVA存储"
-     data-content=""
-     data-url="http://limmm.com/2016/05/24/2016/2016-06-08-JAVAstorage/">
-  <div class="ds-share-inline">
-    <ul  class="ds-share-icons-16">
-
-      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
-      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
-      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
-      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
-      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
-
-    </ul>
-    <div class="ds-share-icons-more">
-    </div>
-  </div>
-</div>
-      
-    </div>
+    
   </div>
 
 
@@ -655,10 +500,6 @@
   
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
-
-
 
   
 
