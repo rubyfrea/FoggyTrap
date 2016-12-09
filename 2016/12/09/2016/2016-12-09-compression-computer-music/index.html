@@ -87,18 +87,58 @@
 
 
 
-<meta name="description" content="这篇是我对知识的整理。">
+<meta name="description" content="一共有三类：代码级的冗余、取样级的冗余、听众接受级的冗余。(也就是变量级、一串音乐级、听的人听不听得出来级)从这三方面对音乐进行压缩，不同的方法对应的级别不一样，分为有损和无损。
+
+
+
+Categories
+Compression Methods
+
+
+
+
+Coding Redundancy
+variable-length Coding; quantization
+
+
+inter-sample r">
 <meta property="og:type" content="article">
-<meta property="og:title" content="CMU Notes">
-<meta property="og:url" content="http://limmm.com/2016/11/29/2016/2016-11-29-cmu-notes/index.html">
+<meta property="og:title" content="15622_音乐压缩">
+<meta property="og:url" content="http://limmm.com/2016/12/09/2016/2016-12-09-compression-computer-music/index.html">
 <meta property="og:site_name" content="P U M E L A">
-<meta property="og:description" content="这篇是我对知识的整理。">
-<meta property="og:image" content="http://limmm.com/image/snapshot.jpeg">
-<meta property="og:updated_time" content="2016-12-04T05:52:01.000Z">
+<meta property="og:description" content="一共有三类：代码级的冗余、取样级的冗余、听众接受级的冗余。(也就是变量级、一串音乐级、听的人听不听得出来级)从这三方面对音乐进行压缩，不同的方法对应的级别不一样，分为有损和无损。
+
+
+
+Categories
+Compression Methods
+
+
+
+
+Coding Redundancy
+variable-length Coding; quantization
+
+
+inter-sample r">
+<meta property="og:updated_time" content="2016-12-09T20:26:44.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="CMU Notes">
-<meta name="twitter:description" content="这篇是我对知识的整理。">
-<meta name="twitter:image" content="http://limmm.com/image/snapshot.jpeg">
+<meta name="twitter:title" content="15622_音乐压缩">
+<meta name="twitter:description" content="一共有三类：代码级的冗余、取样级的冗余、听众接受级的冗余。(也就是变量级、一串音乐级、听的人听不听得出来级)从这三方面对音乐进行压缩，不同的方法对应的级别不一样，分为有损和无损。
+
+
+
+Categories
+Compression Methods
+
+
+
+
+Coding Redundancy
+variable-length Coding; quantization
+
+
+inter-sample r">
 
 
 
@@ -116,7 +156,7 @@
   };
 </script>
 
-  <title> CMU Notes | P U M E L A </title>
+  <title> 15622_音乐压缩 | P U M E L A </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -262,7 +302,7 @@
             
             
               
-                CMU Notes
+                15622_音乐压缩
               
             
           </h1>
@@ -274,8 +314,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-11-29T00:32:00-05:00" content="2016-11-29">
-              2016-11-29
+            <time itemprop="dateCreated" datetime="2016-12-09T14:35:00-05:00" content="2016-12-09">
+              2016-12-09
             </time>
           </span>
 
@@ -285,8 +325,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/11/29/2016/2016-11-29-cmu-notes/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/29/2016/2016-11-29-cmu-notes/" itemprop="commentsCount"></span>
+                <a href="/2016/12/09/2016/2016-12-09-compression-computer-music/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/09/2016/2016-12-09-compression-computer-music/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -309,11 +349,29 @@
       
 
       
-        <script src="/assets/js/APlayer.min.js"> </script><p>这篇是我对知识的整理。<br><a id="more"></a></p>
-<h1 id="Distributed-Systems"><a href="#Distributed-Systems" class="headerlink" title="Distributed Systems"></a>Distributed Systems</h1><h2 id="Naming-and-Directory-service"><a href="#Naming-and-Directory-service" class="headerlink" title="Naming and Directory service"></a>Naming and Directory service</h2><p>就是写个代码来匹配中间件或是资源。客户有需求就通过JNDI这样的接口（JNDI API)来联系name server, nameserver接到请求也通过JNDI(JNDI SPI)来找相应的资源。相关的名词有：Namespace(例如youtube.com),Context(一个包含name和object映射的集合，可以bind、unbind等)，Naming Conventions(例如c://user/ vs c.user.andrew)</p>
-<h2 id="Snapshot-Algorithm"><a href="#Snapshot-Algorithm" class="headerlink" title="Snapshot Algorithm"></a>Snapshot Algorithm</h2><p>简单来说，就是在不妨碍业务过程的条件下通过一个Marker消息来确认其他业务消息的先后，利用快照得到分布式系统的整体情况。</p>
-<p>举个简单的例子：一桌打黑牌的人（近似赌博，有人在门口放哨），主人公A收到了外界传来的Marker消息（快速撤离），喵了一眼自己手里的牌并做了记录。然后向每个牌友发出Marker，声明在Marker之后打出的牌对手都不能再计算（可能有诈）。其他牌友也照做。这样，将所有牌友记录的牌加起来，黑桃、梅花、方块、红桃各自的总数是一定的。当然，收到一个牌友的Marker只是停止计算与这位特定牌友的输赢，没收到某位牌友的Marker就说明两人之间情况正常，赢的牌还是要算的。如果收到了所有牌友的Marker，就说明真的有问题了，得退出牌局，这一轮所做的记录就到此为止。</p>
-<h4 id="成功的关键是做事的顺序！"><a href="#成功的关键是做事的顺序！" class="headerlink" title="成功的关键是做事的顺序！"></a>成功的关键是做事的顺序！</h4><h5 id="“第一次收到Marker，先记录自己手里的牌再发marker。”"><a href="#“第一次收到Marker，先记录自己手里的牌再发marker。”" class="headerlink" title="“第一次收到Marker，先记录自己手里的牌再发marker。”"></a>“第一次收到Marker，先记录自己手里的牌再发marker。”</h5><h5 id="“接下来收到Marker，断了这条通路，然后把这条通路上从第一次收到Marker开始到收到这条通路上的Marker为止赢的牌加到记录里”"><a href="#“接下来收到Marker，断了这条通路，然后把这条通路上从第一次收到Marker开始到收到这条通路上的Marker为止赢的牌加到记录里”" class="headerlink" title="“接下来收到Marker，断了这条通路，然后把这条通路上从第一次收到Marker开始到收到这条通路上的Marker为止赢的牌加到记录里”"></a>“接下来收到Marker，断了这条通路，然后把这条通路上从第一次收到Marker开始到收到这条通路上的Marker为止赢的牌加到记录里”</h5><h5 id="“收到最后一个Marker就上报记录，退出。”"><a href="#“收到最后一个Marker就上报记录，退出。”" class="headerlink" title="“收到最后一个Marker就上报记录，退出。”"></a>“收到最后一个Marker就上报记录，退出。”</h5><p><img src="/image/snapshot.jpeg" alt="snapshot"></p>
+        <script src="/assets/js/APlayer.min.js"> </script><p>一共有三类：<br>代码级的冗余、取样级的冗余、听众接受级的冗余。(也就是变量级、一串音乐级、听的人听不听得出来级)<br>从这三方面对音乐进行压缩，不同的方法对应的级别不一样，分为有损和无损。</p>
+<table>
+<thead>
+<tr>
+<th>Categories</th>
+<th>Compression Methods</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Coding Redundancy</td>
+<td>variable-length Coding; quantization</td>
+</tr>
+<tr>
+<td>inter-sample redundancy</td>
+<td>Zip files(using LZ compression, which codes repeated sequences of characters);         Standard MIDI File timestamps (each timestamp is encoded as the difference between the current timestamp and the previous timestamp);                                run-length encoding (e.g. indicating the lengths of consecutive runs of white or black pixels in each scan line)</td>
+</tr>
+<tr>
+<td>psycho-perceptual redundancy</td>
+<td>JPEG image compression; MP3 audio</td>
+</tr>
+</tbody>
+</table>
 
       
     </div>
@@ -338,17 +396,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/11/28/2016/2016-11-28-decay-is-normal/" rel="next" title="Decay is Normal">
-                <i class="fa fa-chevron-left"></i> Decay is Normal
+              <a href="/2016/12/09/2021/2021-08-20-mrsorange/" rel="next" title="生活的细节">
+                <i class="fa fa-chevron-left"></i> 生活的细节
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/12/09/2021/2021-08-20-mrsorange/" rel="prev" title="生活的细节">
-                生活的细节 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -363,10 +417,10 @@
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2016/11/29/2016/2016-11-29-cmu-notes/"
-     data-title="CMU Notes"
+        <div class="ds-share flat" data-thread-key="2016/12/09/2016/2016-12-09-compression-computer-music/"
+     data-title="15622_音乐压缩"
      data-content=""
-     data-url="http://limmm.com/2016/11/29/2016/2016-11-29-cmu-notes/">
+     data-url="http://limmm.com/2016/12/09/2016/2016-12-09-compression-computer-music/">
   <div class="ds-share-inline">
     <ul  class="ds-share-icons-16">
 
@@ -393,8 +447,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/11/29/2016/2016-11-29-cmu-notes/"
-           data-title="CMU Notes" data-url="http://limmm.com/2016/11/29/2016/2016-11-29-cmu-notes/">
+      <div class="ds-thread" data-thread-key="2016/12/09/2016/2016-12-09-compression-computer-music/"
+           data-title="15622_音乐压缩" data-url="http://limmm.com/2016/12/09/2016/2016-12-09-compression-computer-music/">
       </div>
     
   </div>
@@ -505,7 +559,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Distributed-Systems"><span class="nav-number">1.</span> <span class="nav-text">Distributed Systems</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Naming-and-Directory-service"><span class="nav-number">1.1.</span> <span class="nav-text">Naming and Directory service</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Snapshot-Algorithm"><span class="nav-number">1.2.</span> <span class="nav-text">Snapshot Algorithm</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#成功的关键是做事的顺序！"><span class="nav-number">1.2.0.1.</span> <span class="nav-text">成功的关键是做事的顺序！</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#“第一次收到Marker，先记录自己手里的牌再发marker。”"><span class="nav-number">1.2.0.1.1.</span> <span class="nav-text">“第一次收到Marker，先记录自己手里的牌再发marker。”</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#“接下来收到Marker，断了这条通路，然后把这条通路上从第一次收到Marker开始到收到这条通路上的Marker为止赢的牌加到记录里”"><span class="nav-number">1.2.0.1.2.</span> <span class="nav-text">“接下来收到Marker，断了这条通路，然后把这条通路上从第一次收到Marker开始到收到这条通路上的Marker为止赢的牌加到记录里”</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#“收到最后一个Marker就上报记录，退出。”"><span class="nav-number">1.2.0.1.3.</span> <span class="nav-text">“收到最后一个Marker就上报记录，退出。”</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></div>
+              <p class="post-toc-empty">此文章未包含目录</p>
             
           </div>
         </section>
