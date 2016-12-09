@@ -87,17 +87,17 @@
 
 
 
-<meta name="description" content="Nyquist is a sound synthesis and composition language offering a Lisp syntax as well as an imperative language syntax and a powerful integrated development environment.. Nyquist is an elegant and pow">
+<meta name="description" content="Nyquist是一门底层使用C++语言编写，基于Lisp，自带Lisp编译器，可以使用XLisp或者SAL两种语言格式进行编程来合成声音的声音合成系统。XLisp和SAL可以看作是一种语言，只是使用的标记符号不一样。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Nyquist详述">
 <meta property="og:url" content="http://limmm.com/2016/12/09/2016/2016-12-09-nyquist详述/index.html">
 <meta property="og:site_name" content="P U M E L A">
-<meta property="og:description" content="Nyquist is a sound synthesis and composition language offering a Lisp syntax as well as an imperative language syntax and a powerful integrated development environment.. Nyquist is an elegant and pow">
+<meta property="og:description" content="Nyquist是一门底层使用C++语言编写，基于Lisp，自带Lisp编译器，可以使用XLisp或者SAL两种语言格式进行编程来合成声音的声音合成系统。XLisp和SAL可以看作是一种语言，只是使用的标记符号不一样。">
 <meta property="og:image" content="http://limmm.com/image/nyquistbasicdemo.png">
-<meta property="og:updated_time" content="2016-12-09T22:48:25.000Z">
+<meta property="og:updated_time" content="2016-12-09T22:50:49.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Nyquist详述">
-<meta name="twitter:description" content="Nyquist is a sound synthesis and composition language offering a Lisp syntax as well as an imperative language syntax and a powerful integrated development environment.. Nyquist is an elegant and pow">
+<meta name="twitter:description" content="Nyquist是一门底层使用C++语言编写，基于Lisp，自带Lisp编译器，可以使用XLisp或者SAL两种语言格式进行编程来合成声音的声音合成系统。XLisp和SAL可以看作是一种语言，只是使用的标记符号不一样。">
 <meta name="twitter:image" content="http://limmm.com/image/nyquistbasicdemo.png">
 
 
@@ -309,7 +309,8 @@
       
 
       
-        <script src="/assets/js/APlayer.min.js"> </script><p>Nyquist is a sound synthesis and composition language offering a Lisp syntax as well as an imperative language syntax and a powerful integrated development environment.. Nyquist is an elegant and powerful system based on functional programming.<br>Nyquist是一门底层使用C++语言编写，基于Lisp，自带Lisp编译器，可以使用XLisp或者SAL两种语言格式进行编程来合成声音的声音合成系统。XLisp和SAL可以看作是一种语言，只是使用的标记符号不一样。<br><img src="/image/nyquistbasicdemo.png" alt="一个简单的声音合成代码示例"></p>
+        <script src="/assets/js/APlayer.min.js"> </script><p>Nyquist是一门底层使用C++语言编写，基于Lisp，自带Lisp编译器，可以使用XLisp或者SAL两种语言格式进行编程来合成声音的声音合成系统。XLisp和SAL可以看作是一种语言，只是使用的标记符号不一样。<br><a id="more"></a><br>Nyquist is a sound synthesis and composition language offering a Lisp syntax as well as an imperative language syntax and a powerful integrated development environment.. Nyquist is an elegant and powerful system based on functional programming.</p>
+<p><img src="/image/nyquistbasicdemo.png" alt="一个简单的声音合成代码示例"></p>
 <h3 id="Building-Waveforms"><a href="#Building-Waveforms" class="headerlink" title="Building Waveforms"></a>Building Waveforms</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">define variable *table* =</div><div class="line">    sim(0.5 * build-harmonic(1.0, 2048),</div><div class="line">        0.25 * build-harmonic(2.0, 2048),</div><div class="line">        0.125 * build-harmonic(3.0, 2048),</div><div class="line">        0.062 * build-harmonic(4.0, 2048))</div><div class="line">set *table* = list(*table*, hz-to-step(1), #t)</div></pre></td></tr></table></figure>
 <p><code>build-harmonic(n periods of sinusoid, table-size)</code><br>table-size指取样时的table大小。</p>
 
