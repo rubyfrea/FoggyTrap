@@ -94,10 +94,10 @@
 <meta property="og:site_name" content="P U M E L A">
 <meta property="og:description" content="本篇介绍的是计算机音乐的一些基本概念。Unit GeneratorHarmonicsWave Table">
 <meta property="og:image" content="http://limmm.com/image/unit.png">
-<meta property="og:image" content="http://limmm.com/image/waveform.png">
+<meta property="og:image" content="http://limmm.com/image/wavetable.png">
 <meta property="og:image" content="http://limmm.com/image/generatesound.png">
 <meta property="og:image" content="http://limmm.com/image/adsr.png">
-<meta property="og:updated_time" content="2016-12-09T22:50:43.000Z">
+<meta property="og:updated_time" content="2016-12-09T22:52:24.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Computer Music Learning 1">
 <meta name="twitter:description" content="本篇介绍的是计算机音乐的一些基本概念。Unit GeneratorHarmonicsWave Table">
@@ -318,7 +318,7 @@
 <p>Tree:</p>
 <p>Concepts:</p>
 <h5 id="unit-generator"><a href="#unit-generator" class="headerlink" title="unit generator"></a>unit generator</h5><p>音响系统的基础，50年代由Max Mathews提出，把组成音响系统的各个基础模块称为“Unit Generator”。<br><img src="/image/unit.png" alt="unit generator"></p>
-<h5 id="harmonics"><a href="#harmonics" class="headerlink" title="harmonics"></a>harmonics</h5><h5 id="wavetable"><a href="#wavetable" class="headerlink" title="wavetable"></a>wavetable</h5><p>一个用来使声音更为和谐的表格，在相应的位置插入harmonics来动态改变音色。<br><img src="/image/waveform.png" alt="waveform"><br>如上图所示，</p>
+<h5 id="harmonics"><a href="#harmonics" class="headerlink" title="harmonics"></a>harmonics</h5><h5 id="wavetable"><a href="#wavetable" class="headerlink" title="wavetable"></a>wavetable</h5><p>一个用来使声音更为和谐的表格，在相应的位置插入harmonics来动态改变音色。<br><img src="/image/wavetable.png" alt="waveform"><br>如上图所示，</p>
 <p>Content:<br>音响单元包括Oscillator、Multiplier、Envelope三类。<br>Oscillator决定频率和振幅（音调和响度），Envelope决定振幅变化，Multiplier将Oscillator和Envelope结合起来并输出。如下图所示。<br><img src="/image/generatesound.png" alt="generate sound"><br>图中的ADSR代表着Attack Decay Sustain Release。<br><img src="/image/adsr.png" alt="ADSR"></p>
 <p>用简单的SAL例子来讲就是：<br>osc(c4) * pwl(0.03, 1, 0.8, 1, 1)<br>Unit Generators是以对象的形式存在的。<br>注意：在Nyquist中用户不能接触到这些对象，而只能通过调用方法得到这些UG产生的SOUNDS对象。UG对象被包含在SOUNDS对象中。Nyquist在执行“exec”、“play”等命令的时候才会计算Sample，这样做可以节省空间。因此，在写Nyquist程序的时候尽量少用设置全局变量的方式来设置产生Sound对象的声音变量（在谱曲中常常会有重复的段落需要使用），而是使用define function的方式。</p>
 
