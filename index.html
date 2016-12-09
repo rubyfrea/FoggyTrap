@@ -468,8 +468,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/12/09/2016/2016-12-09-compression-computer-music/" itemprop="url">
-                  15622_音乐压缩
+                <a class="post-title-link" href="/2016/12/09/2016/2016-12-09-nyquist详述/" itemprop="url">
+                  Nyquist详述
                 </a>
               
             
@@ -482,7 +482,7 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-12-09T14:35:00-05:00" content="2016-12-09">
+            <time itemprop="dateCreated" datetime="2016-12-09T17:10:00-05:00" content="2016-12-09">
               2016-12-09
             </time>
           </span>
@@ -493,8 +493,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/12/09/2016/2016-12-09-compression-computer-music/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/09/2016/2016-12-09-compression-computer-music/" itemprop="commentsCount"></span>
+                <a href="/2016/12/09/2016/2016-12-09-nyquist详述/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/09/2016/2016-12-09-nyquist详述/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -518,12 +518,17 @@
 
       
         
-          <h1 id="15622-Introduction-to-Computer-Music"><a href="#15622-Introduction-to-Computer-Music" class="headerlink" title="15622 Introduction to Computer Music"></a>15622 Introduction to Computer Music</h1><p>这篇谈论的是音乐压缩相关知识。<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/12/09/2016/2016-12-09-compression-computer-music/#posts" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+          
+            <script src="/assets/js/APlayer.min.js"> </script><p>Nyquist is a sound synthesis and composition language offering a Lisp syntax as well as an imperative language syntax and a powerful integrated development environment.. Nyquist is an elegant and powerful system based on functional programming.<br>底层用C++语言编写，基于Lisp，自带Lisp编译器。可以使用XLisp或者SAL两种语言编程来合成声音。XLisp和SAL可以看作是一种语言，只是使用的标记符号不一样。<br><img src="./image/nyquistbasicdemo" alt="一个简单的声音合成代码示例"></p>
+<h3 id="Building-Waveforms"><a href="#Building-Waveforms" class="headerlink" title="Building Waveforms"></a>Building Waveforms</h3><p><code>define variable *table* =
+    sim(0.5 * build-harmonic(1.0, 2048),
+        0.25 * build-harmonic(2.0, 2048),
+        0.125 * build-harmonic(3.0, 2048),
+        0.062 * build-harmonic(4.0, 2048))
+set *table* = list(*table*, hz-to-step(1), #t)</code></p>
+<p><code>build-harmonic(n periods of sinusoid, table-size)</code><br>table-size指取样时的table大小。</p>
+
+          
         
       
     </div>
@@ -554,7 +559,7 @@
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -595,7 +600,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">20</span>
+              <span class="site-state-item-count">22</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -612,7 +617,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">26</span>
+                <span class="site-state-item-count">27</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

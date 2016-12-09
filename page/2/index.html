@@ -262,6 +262,217 @@
             
               
                 
+                <a class="post-title-link" href="/2016/12/09/2016/2016-12-09-computer-music-learning-guide/" itemprop="url">
+                  Computer Music Learning 1
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-12-09T16:18:00-05:00" content="2016-12-09">
+              2016-12-09
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/12/09/2016/2016-12-09-computer-music-learning-guide/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/09/2016/2016-12-09-computer-music-learning-guide/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <script src="/assets/js/APlayer.min.js"> </script><p>先来简要介绍一下CMU的这门课15322/15622Introduction to Computer Music(略)<br>结构： nyquist底层架构及常用方法</p>
+<p>问题：<br>• What’s a Unit Generator?<br>• What are some unit generators in Nyquist?<br>• Unit Generator Implementation<br>• Functional Programming<br>• Wavetable Synthesis<br>• Scores in Nyquist<br>• Score Manipulation</p>
+<p>Tree:</p>
+<p>Concepts:</p>
+<h5 id="unit-generator"><a href="#unit-generator" class="headerlink" title="unit generator"></a>unit generator</h5><p>音响系统的基础，50年代由Max Mathews提出，把组成音响系统的各个基础模块称为“Unit Generator”。<br><img src="./image/unit.png" alt="unit generator"></p>
+<h5 id="harmonics"><a href="#harmonics" class="headerlink" title="harmonics"></a>harmonics</h5><h5 id="wavetable"><a href="#wavetable" class="headerlink" title="wavetable"></a>wavetable</h5><p>一个用来使声音更为和谐的表格，在相应的位置插入harmonics来动态改变音色。<br><img src="./image/waveform.png" alt="waveform"><br>如上图所示，</p>
+<p>Content:<br>音响单元包括Oscillator、Multiplier、Envelope三类。<br>Oscillator决定频率和振幅（音调和响度），Envelope决定振幅变化，Multiplier将Oscillator和Envelope结合起来并输出。如下图所示。<br><img src="./image/generatesound.png" alt="generate sound"><br>图中的ADSR代表着Attack Decay Sustain Release。<br><img src="./image/adsr.png" alt="ADSR"></p>
+<p>用简单的SAL例子来讲就是：<br>osc(c4) * pwl(0.03, 1, 0.8, 1, 1)<br>Unit Generators是以对象的形式存在的。<br>注意：在Nyquist中用户不能接触到这些对象，而只能通过调用方法得到这些UG产生的SOUNDS对象。UG对象被包含在SOUNDS对象中。Nyquist在执行“exec”、“play”等命令的时候才会计算Sample，这样做可以节省空间。因此，在写Nyquist程序的时候尽量少用设置全局变量的方式来设置产生Sound对象的声音变量（在谱曲中常常会有重复的段落需要使用），而是使用define function的方式。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/12/09/2016/2016-12-09-compression-computer-music/" itemprop="url">
+                  15622_音乐压缩
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-12-09T14:35:00-05:00" content="2016-12-09">
+              2016-12-09
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/12/09/2016/2016-12-09-compression-computer-music/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/09/2016/2016-12-09-compression-computer-music/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="15622-Introduction-to-Computer-Music"><a href="#15622-Introduction-to-Computer-Music" class="headerlink" title="15622 Introduction to Computer Music"></a>15622 Introduction to Computer Music</h1><p>这篇谈论的是音乐压缩相关知识。<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/12/09/2016/2016-12-09-compression-computer-music/#posts" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/11/28/2016/2016-11-28-decay-is-normal/" itemprop="url">
                   Decay is Normal
                 </a>
@@ -344,261 +555,11 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/11/24/2016/2016-11-24-easilybrokenheart/" itemprop="url">
-                  红豆
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-11-24T19:28:00-05:00" content="2016-11-24">
-              2016-11-24
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/小说/" itemprop="url" rel="index">
-                    <span itemprop="name">小说</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/11/24/2016/2016-11-24-easilybrokenheart/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/24/2016/2016-11-24-easilybrokenheart/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>红豆是一个成长于小城的姑娘。年轻的时候，喜欢骑着脚踏车载着妹妹，翻越大街小巷。妹妹梳着两条翘翘的马尾辫，红豆穿着桃红色的毛绒衣，小小的身体攒着巨大的能量，驾驶着四轮儿童车在小城的路上争分夺秒。妹妹有一双圆圆亮亮的眼睛，嘴唇樱红，特别会说脏话。红豆无法在口才上战胜妹妹，心里总有大大的气不过。</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/11/24/2016/2016-11-24-easilybrokenheart/#posts" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/11/13/2016/2016-11-13-AboutDamienRice/" itemprop="url">
-                  电子乐
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-11-13T10:43:00-05:00" content="2016-11-13">
-              2016-11-13
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/生活/" itemprop="url" rel="index">
-                    <span itemprop="name">生活</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/11/13/2016/2016-11-13-AboutDamienRice/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/13/2016/2016-11-13-AboutDamienRice/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>By <a href="http://github.com/rubyfrea">Rui</a></p>
-<script src="/assets/js/APlayer.min.js"> </script>
-<div id="aplayer0" class="aplayer" style="margin-bottom: 20px;"></div>
-<script>var aplayer0 = new APlayer({element: document.getElementById("aplayer0"),narrow: false,autoplay: false,showlrc: false,music : {title: "Volcano",author: "Damien Rice",url: "/music/volcano.mp3",pic: "/image/volcano.jpeg"}});aplayer0.init();</script>
-
-
-<p>Don’t hold yourself like that<br>You’ll hurt your knees<br>I kissed your mouth and back<br>But that’s all I need<br>Don’t build your world around<br>volcanoes melt you down<br>What I am to you is not real<br>What I am to you you do not need<br>What I am to you is not what you mean to me<br>You give me miles and miles of mountains<br>And I’ll ask for the sea<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/11/13/2016/2016-11-13-AboutDamienRice/#posts" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -639,7 +600,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">20</span>
+              <span class="site-state-item-count">22</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -656,7 +617,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">26</span>
+                <span class="site-state-item-count">27</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
