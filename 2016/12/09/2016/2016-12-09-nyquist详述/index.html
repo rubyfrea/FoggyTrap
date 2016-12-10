@@ -94,7 +94,8 @@
 <meta property="og:site_name" content="P U M E L A">
 <meta property="og:description" content="Nyquist是一门底层使用C++语言编写，基于Lisp，自带Lisp编译器，可以使用XLisp或者SAL两种语言格式进行编程来合成声音的声音合成系统。XLisp和SAL可以看作是一种语言，只是使用的标记符号不一样。">
 <meta property="og:image" content="http://limmm.com/image/nyquistbasicdemo.png">
-<meta property="og:updated_time" content="2016-12-10T05:38:44.000Z">
+<meta property="og:image" content="http://limmm.com/image/scoresort.png">
+<meta property="og:updated_time" content="2016-12-10T06:23:55.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Nyquist详述">
 <meta name="twitter:description" content="Nyquist是一门底层使用C++语言编写，基于Lisp，自带Lisp编译器，可以使用XLisp或者SAL两种语言格式进行编程来合成声音的声音合成系统。XLisp和SAL可以看作是一种语言，只是使用的标记符号不一样。">
@@ -280,6 +281,25 @@
           </span>
 
           
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/技术/" itemprop="url" rel="index">
+                    <span itemprop="name">技术</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
 
           
             
@@ -315,6 +335,7 @@
 <p><code>build-harmonic(n periods of sinusoid, table-size)</code><br>table-size指取样时的table大小。</p>
 <h3 id="Envelopes"><a href="#Envelopes" class="headerlink" title="Envelopes"></a>Envelopes</h3><p><strong>Piece-wise Linear Envelope</strong><br><code>pwl(t1, v1, t2, v2,..., tn)</code><br>开始和结局振幅都为0。(可以是振幅，也可以是其他的属性)<br><code>pwlv(v0, t1, v1, t2, v2, ..., tn, vn)</code><br>开始和结局都不为0（也可以为0，多个可选项能进行设置）<br><code>pwlr(i1, v1, i2, v2, ..., in)</code><br>不以时间点而以间隔时间为key</p>
 <p><strong>Piece-wise Exponential Envelope:</strong><br><code>pwe(t1, v1, t2, v2, ..., tn)</code></p>
+<h3 id="Score"><a href="#Score" class="headerlink" title="Score"></a>Score</h3><p><img src="/image/scoresort.png" alt="scoreplay"><br>          取自老师ppt</p>
 
       
     </div>
@@ -354,6 +375,10 @@
           </div>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/12/10/2016/2016-12-10-fayewang/" rel="prev" title="fayewang">
+                fayewang <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -444,7 +469,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">22</span>
+              <span class="site-state-item-count">23</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -510,7 +535,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Building-Waveforms"><span class="nav-number">1.</span> <span class="nav-text">Building Waveforms</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Envelopes"><span class="nav-number">2.</span> <span class="nav-text">Envelopes</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Building-Waveforms"><span class="nav-number">1.</span> <span class="nav-text">Building Waveforms</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Envelopes"><span class="nav-number">2.</span> <span class="nav-text">Envelopes</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Score"><span class="nav-number">3.</span> <span class="nav-text">Score</span></a></li></ol></div>
             
           </div>
         </section>

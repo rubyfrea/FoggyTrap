@@ -262,6 +262,130 @@
             
               
                 
+                <a class="post-title-link" href="/2016/06/02/2016/2016-06-02-spark-metrics/" itemprop="url">
+                  Spark metrics源码介绍
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-06-02T01:58:58-04:00" content="2016-06-02">
+              2016-06-02
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/技术/" itemprop="url" rel="index">
+                    <span itemprop="name">技术</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/06/02/2016/2016-06-02-spark-metrics/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/02/2016/2016-06-02-spark-metrics/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>By <em><a href="https://github.com/qifanj">Kivi</a></em></p>
+<p>Metric是Apache Spark里用于监测参数的一个package，路径是<code>spark/core/src/main/scala/org/apache/spark/metrics/</code></p>
+<p>大多数的公司都有自己的一套metrics监测系统，Spark，IBM都有，这些都是高度定制化的，别人没法用。像Spark这个其实也是引入了一个外部的包，出自codahale。这个包提供了一系列的“量具”来提供metrics监测的功能，简单来说，我们只需要找出要监测的变量或方法，然后注册到系统中，它就可以提供不同的度量方式如值（Gauge），计数器（Counters），直方图（Histograms），计时器（Timers）和Health check，并可以用不同的形式输出，像JMX，csv，console，graphite等。总之是个好工具，<a href="http://metrics.dropwizard.io/">官网</a>  <a href="https://github.com/dropwizard/metrics">Github</a><br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/06/02/2016/2016-06-02-spark-metrics/#posts" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/05/24/2016/2016-06-08-JAVAstorage/" itemprop="url">
                   JAVA存储
                 </a>
@@ -538,7 +662,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">22</span>
+              <span class="site-state-item-count">23</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
