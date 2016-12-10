@@ -87,17 +87,20 @@
 
 
 
-<meta name="description" content="这篇是我对知识的整理。Distributed Systems: Naming and Directory service | Snapshot Algorithm">
+<meta name="description" content="记 整理知识
+Distributed Systems: Naming and Directory service | Snapshot Algorithm">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CMU Notes">
 <meta property="og:url" content="http://limmm.com/2016/11/29/2016/2016-11-29-cmu-notes/index.html">
 <meta property="og:site_name" content="P U M E L A">
-<meta property="og:description" content="这篇是我对知识的整理。Distributed Systems: Naming and Directory service | Snapshot Algorithm">
+<meta property="og:description" content="记 整理知识
+Distributed Systems: Naming and Directory service | Snapshot Algorithm">
 <meta property="og:image" content="http://limmm.com/image/snapshot.jpeg">
-<meta property="og:updated_time" content="2016-12-10T05:26:30.000Z">
+<meta property="og:updated_time" content="2016-12-10T05:29:39.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CMU Notes">
-<meta name="twitter:description" content="这篇是我对知识的整理。Distributed Systems: Naming and Directory service | Snapshot Algorithm">
+<meta name="twitter:description" content="记 整理知识
+Distributed Systems: Naming and Directory service | Snapshot Algorithm">
 <meta name="twitter:image" content="http://limmm.com/image/snapshot.jpeg">
 
 
@@ -309,7 +312,8 @@
       
 
       
-        <script src="/assets/js/APlayer.min.js"> </script><p>这篇是我对知识的整理。<br>Distributed Systems: Naming and Directory service | Snapshot Algorithm</p>
+        <script src="/assets/js/APlayer.min.js"> </script><p>  记 整理知识</p>
+<p>Distributed Systems: Naming and Directory service | Snapshot Algorithm</p>
 <a id="more"></a>
 <h1 id="Distributed-Systems"><a href="#Distributed-Systems" class="headerlink" title="Distributed Systems"></a>Distributed Systems</h1><h2 id="Naming-and-Directory-service"><a href="#Naming-and-Directory-service" class="headerlink" title="Naming and Directory service"></a>Naming and Directory service</h2><p>就是写个代码来匹配中间件或是资源。客户有需求就通过JNDI这样的接口（JNDI API)来联系name server, nameserver接到请求也通过JNDI(JNDI SPI)来找相应的资源。相关的名词有：Namespace(例如youtube.com),Context(一个包含name和object映射的集合，可以bind、unbind等)，Naming Conventions(例如c://user/ vs c.user.andrew)</p>
 <h2 id="Snapshot-Algorithm"><a href="#Snapshot-Algorithm" class="headerlink" title="Snapshot Algorithm"></a>Snapshot Algorithm</h2><p>简单来说，就是在不妨碍业务过程的条件下通过一个Marker消息来确认其他业务消息的先后，利用快照得到分布式系统的整体情况。</p>
