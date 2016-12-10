@@ -99,7 +99,7 @@ Unit Generator | Harmonics | Wave Table">
 <meta property="og:image" content="http://limmm.com/image/generatesound.png">
 <meta property="og:image" content="http://limmm.com/image/adsr.png">
 <meta property="og:image" content="http://limmm.com/image/wavetable.png">
-<meta property="og:updated_time" content="2016-12-10T05:59:33.000Z">
+<meta property="og:updated_time" content="2016-12-10T06:02:08.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Computer Music Learning 1">
 <meta name="twitter:description" content="本篇介绍的是计算机音乐的一些基本概念。
@@ -326,7 +326,7 @@ Unit Generator | Harmonics | Wave Table">
 <p>这三者的关系用简单的SAL例子来讲就是：<br><code>osc(c4) * pwl(0.03, 1, 0.8, 1, 1)</code><br>调用osc()这个oscillater方法产生一个音阶为c4的音，并且让它按照pwl()这个envelope方法指定的（时间，振幅）进行变化。<br>在大部分软件中，Unit Generators是以对象的形式存在的，比如Max。而在Nyquist中用户不能接触到这些对象，只能通过调用方法得到这些UG产生的SOUNDS对象，UG对象则被包含在SOUNDS对象中（可以说是Nyquist的一个缺点）。<br>Nyquist在执行“exec”、“play”等命令的时候才会进行计算，这样做可以节省空间，所谓的“loose validation”。因为全局变量会被保存在Memory中，在写Nyquist程序的时候尽量少用Set变量的方式来设置产生Sound对象的声音变量（在谱曲中常常会有重复的段落需要使用），而是使用define function的方式。</p>
 <h2 id="Harmonics"><a href="#Harmonics" class="headerlink" title="Harmonics"></a>Harmonics</h2><h2 id="Wavetable"><a href="#Wavetable" class="headerlink" title="Wavetable"></a>Wavetable</h2><p>一个用来使声音更为和谐的表格，在相应的位置插入harmonics来动态改变音色。<br><img src="/image/wavetable.png" alt="waveform"></p>
 <p>这张＊table＊的意思就是插入频率为1的四个音，振幅分别是0.5，0.25，0.125，0.062。这样子原始的音就不会是一个单纯的音符了。<br><code>build-harmonic(n periods of sinusoid, table-size)</code><br>table-size指取样时的table大小。这个之后会详细讲。</p>
-<p>最基础的基于波表的声音合成便是：建一张wavetable，在使用Oscillator生成声音的时候加入这张表（比如osc(c4, dur, <em>table</em>)，与一个Envelope相乘。优点是非常直接，缺点是使用的harmonics是固定的，不能按照音阶和时间进行改变，不好听。</p>
+<p>综合以上知识，最基础的<strong>基于波表的声音合成</strong>便是：建一张wavetable，在使用Oscillator生成声音的时候加入这张表（比如osc(c4, dur, <em>table</em>)，与一个Envelope相乘。优点是非常直接，缺点是使用的harmonics是固定的，不能按照音阶和时间进行改变，不好听。</p>
 
       
     </div>
