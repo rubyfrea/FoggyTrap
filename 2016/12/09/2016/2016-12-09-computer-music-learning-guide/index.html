@@ -99,7 +99,7 @@ Unit Generator | Harmonics | Wave Table">
 <meta property="og:image" content="http://limmm.com/image/generatesound.png">
 <meta property="og:image" content="http://limmm.com/image/adsr.png">
 <meta property="og:image" content="http://limmm.com/image/wavetable.png">
-<meta property="og:updated_time" content="2016-12-10T05:40:52.000Z">
+<meta property="og:updated_time" content="2016-12-10T05:42:09.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Computer Music Learning 1">
 <meta name="twitter:description" content="本篇介绍的是计算机音乐的一些基本概念。
@@ -320,7 +320,7 @@ Unit Generator | Harmonics | Wave Table">
 <p>结构： nyquist底层架构及常用方法</p>
 <p>• What’s a Unit Generator?<br>• What are some unit generators in Nyquist?<br>• Unit Generator Implementation<br>• Functional Programming<br>• Wavetable Synthesis<br>• Scores in Nyquist<br>• Score Manipulation</p>
 <p>Tree:</p>
-<h2 id="Concepts"><a href="#Concepts" class="headerlink" title="Concepts"></a>Concepts</h2><h3 id="unit-generator"><a href="#unit-generator" class="headerlink" title="unit generator"></a>unit generator</h3><p>音响单元是音响系统的基础，50年代由<strong>Max Mathews</strong>提出，把组成音响系统的各个基础模块称为“Unit Generator”。<br><img src="/image/unit.png" alt="unit generator"></p>
+<h1 id="Concepts"><a href="#Concepts" class="headerlink" title="Concepts"></a>Concepts</h1><h2 id="unit-generator"><a href="#unit-generator" class="headerlink" title="unit generator"></a>unit generator</h2><p>音响单元是音响系统的基础，50年代由<strong>Max Mathews</strong>提出，把组成音响系统的各个基础模块称为“Unit Generator”。<br><img src="/image/unit.png" alt="unit generator"></p>
 <p><strong>音响单元包括Oscillator、Multiplier、Envelope三类。</strong></p>
 <p><strong>Oscillator决定频率和振幅（音调和响度）。</strong></p>
 <p>oscillate的字典翻译是：vary in magnitude or position in a regular manner around a central point。声音也是波，当然就会有频率和振幅。</p>
@@ -333,8 +333,7 @@ Unit Generator | Harmonics | Wave Table">
 <p>用osc()这个oscillater的方法产生一个音阶为c4的音，并且让它按照pwl()这个方法指定的（时间，振幅）进行变化。</p>
 <p>在大部分软件中，Unit Generators是以对象的形式存在的，比如Max。<br>注意，在Nyquist中用户不能接触到这些对象，而只能通过调用方法得到这些UG产生的SOUNDS对象，而UG对象被包含在SOUNDS对象中（可以说是Nyquist的一个缺点）。</p>
 <p>Nyquist在执行“exec”、“play”等命令的时候才会进行计算，这样做可以节省空间。因此，在写Nyquist程序的时候尽量少用Set变量的方式来设置产生Sound对象的声音变量（在谱曲中常常会有重复的段落需要使用），而是使用define function的方式。</p>
-<p>###harmonics</p>
-<p>###wavetable<br>一个用来使声音更为和谐的表格，在相应的位置插入harmonics来动态改变音色。</p>
+<h2 id="harmonics"><a href="#harmonics" class="headerlink" title="harmonics"></a>harmonics</h2><h2 id="wavetable"><a href="#wavetable" class="headerlink" title="wavetable"></a>wavetable</h2><p>一个用来使声音更为和谐的表格，在相应的位置插入harmonics来动态改变音色。</p>
 <p><img src="/image/wavetable.png" alt="waveform"></p>
 <p>这张＊table＊的意思就是插入频率为1的四个音，振幅分别是0.5，0.25，0.125，0.062。这样子原始的音就不会是一个单纯的音符了。</p>
 <p><code>build-harmonic(n periods of sinusoid, table-size)</code><br>table-size指取样时的table大小。这个之后会详细讲。</p>
@@ -537,7 +536,7 @@ Unit Generator | Harmonics | Wave Table">
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Concepts"><span class="nav-number">1.</span> <span class="nav-text">Concepts</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#unit-generator"><span class="nav-number">1.1.</span> <span class="nav-text">unit generator</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Concepts"><span class="nav-number">1.</span> <span class="nav-text">Concepts</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#unit-generator"><span class="nav-number">1.1.</span> <span class="nav-text">unit generator</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#harmonics"><span class="nav-number">1.2.</span> <span class="nav-text">harmonics</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#wavetable"><span class="nav-number">1.3.</span> <span class="nav-text">wavetable</span></a></li></ol></li></ol></div>
             
           </div>
         </section>
