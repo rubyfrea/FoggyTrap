@@ -99,7 +99,7 @@ Unit Generator | Harmonics | Wave Table">
 <meta property="og:image" content="http://limmm.com/image/generatesound.png =100*">
 <meta property="og:image" content="http://limmm.com/image/adsr.png =100*">
 <meta property="og:image" content="http://limmm.com/image/wavetable.png =100*">
-<meta property="og:updated_time" content="2016-12-10T06:03:47.000Z">
+<meta property="og:updated_time" content="2016-12-10T06:04:32.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Computer Music Learning 1">
 <meta name="twitter:description" content="本篇介绍的是计算机音乐的一些基本概念。
@@ -321,7 +321,7 @@ Unit Generator | Harmonics | Wave Table">
 <h1 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h1><p>• What’s a Unit Generator?<br>• What are some unit generators in Nyquist?<br>• Unit Generator Implementation<br>• Functional Programming<br>• Wavetable Synthesis<br>• Scores in Nyquist<br>• Score Manipulation</p>
 <p>Tree:</p>
 <h1 id="Concepts"><a href="#Concepts" class="headerlink" title="Concepts"></a>Concepts</h1><h2 id="Unit-Generator"><a href="#Unit-Generator" class="headerlink" title="Unit Generator"></a>Unit Generator</h2><p>音响单元是音响系统的基础，50年代由<strong>Max Mathews</strong>提出，把组成音响系统的各个基础模块称为“Unit Generator”。<br><img src="/image/unit.png =100*" alt="unit generator"></p>
-<p><strong>音响单元包括Oscillator、Multiplier、Envelope三类。</strong><br><strong>Oscillator决定频率和振幅（音调和响度）。</strong><br>oscillate的字典翻译是：vary in magnitude or position in a regular manner around a central point。声音也是波，当然就会有频率和振幅。<br><strong>Envelope决定振幅变化</strong>。<br><strong>Multiplier将Oscillator和Envelope结合起来并输出。</strong><br><img src="/image/generatesound.png =100*" alt="generate sound"></p>
+<p><strong>音响单元包括Oscillator、Multiplier、Envelope三类。</strong><br><strong>Oscillator决定频率和振幅（音调和响度）。</strong><br><strong>Envelope决定振幅变化</strong>。<br><strong>Multiplier将Oscillator和Envelope结合起来并输出。</strong><br>oscillate的字典翻译是：vary in magnitude or position in a regular manner around a central point。声音也是波，当然就会有频率和振幅。<br><img src="/image/generatesound.png =100*" alt="generate sound"></p>
 <p>左边是Oscillator，右边是Envelope，下面的x是Multiplier。<br>上图中的ADSR代表着Attack Decay Sustain Release，对应的阶段就是在振幅的维度冲上去、回下来、保持住、结束，如下图所示。<br><img src="/image/adsr.png =100*" alt="ADSR"></p>
 <p>这三者的关系用简单的SAL例子来讲就是：<br><code>osc(c4) * pwl(0.03, 1, 0.8, 1, 1)</code><br>调用osc()这个oscillater方法产生一个音阶为c4的音，并且让它按照pwl()这个envelope方法指定的（时间，振幅）进行变化。<br>在大部分软件中，Unit Generators是以对象的形式存在的，比如Max。而在Nyquist中用户不能接触到这些对象，只能通过调用方法得到这些UG产生的SOUNDS对象，UG对象则被包含在SOUNDS对象中（可以说是Nyquist的一个缺点）。<br>Nyquist在执行“exec”、“play”等命令的时候才会进行计算，这样做可以节省空间，所谓的“loose validation”。因为全局变量会被保存在Memory中，在写Nyquist程序的时候尽量少用Set变量的方式来设置产生Sound对象的声音变量（在谱曲中常常会有重复的段落需要使用），而是使用define function的方式。</p>
 <h2 id="Harmonics"><a href="#Harmonics" class="headerlink" title="Harmonics"></a>Harmonics</h2><h2 id="Wavetable"><a href="#Wavetable" class="headerlink" title="Wavetable"></a>Wavetable</h2><p>一个用来使声音更为和谐的表格，在相应的位置插入harmonics来动态改变音色。<br><img src="/image/wavetable.png =100*" alt="waveform"></p>
