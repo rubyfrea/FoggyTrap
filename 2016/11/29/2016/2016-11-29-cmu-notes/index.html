@@ -87,17 +87,17 @@
 
 
 
-<meta name="description" content="这篇是我对知识的整理。">
+<meta name="description" content="这篇是我对知识的整理。Distributed Systems: Naming and Directory service | Snapshot Algorithm">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CMU Notes">
 <meta property="og:url" content="http://limmm.com/2016/11/29/2016/2016-11-29-cmu-notes/index.html">
 <meta property="og:site_name" content="P U M E L A">
-<meta property="og:description" content="这篇是我对知识的整理。">
+<meta property="og:description" content="这篇是我对知识的整理。Distributed Systems: Naming and Directory service | Snapshot Algorithm">
 <meta property="og:image" content="http://limmm.com/image/snapshot.jpeg">
-<meta property="og:updated_time" content="2016-12-09T21:07:09.000Z">
+<meta property="og:updated_time" content="2016-12-10T05:26:30.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CMU Notes">
-<meta name="twitter:description" content="这篇是我对知识的整理。">
+<meta name="twitter:description" content="这篇是我对知识的整理。Distributed Systems: Naming and Directory service | Snapshot Algorithm">
 <meta name="twitter:image" content="http://limmm.com/image/snapshot.jpeg">
 
 
@@ -309,7 +309,8 @@
       
 
       
-        <script src="/assets/js/APlayer.min.js"> </script><p>这篇是我对知识的整理。<br><a id="more"></a></p>
+        <script src="/assets/js/APlayer.min.js"> </script><p>这篇是我对知识的整理。<br>Distributed Systems: Naming and Directory service | Snapshot Algorithm</p>
+<a id="more"></a>
 <h1 id="Distributed-Systems"><a href="#Distributed-Systems" class="headerlink" title="Distributed Systems"></a>Distributed Systems</h1><h2 id="Naming-and-Directory-service"><a href="#Naming-and-Directory-service" class="headerlink" title="Naming and Directory service"></a>Naming and Directory service</h2><p>就是写个代码来匹配中间件或是资源。客户有需求就通过JNDI这样的接口（JNDI API)来联系name server, nameserver接到请求也通过JNDI(JNDI SPI)来找相应的资源。相关的名词有：Namespace(例如youtube.com),Context(一个包含name和object映射的集合，可以bind、unbind等)，Naming Conventions(例如c://user/ vs c.user.andrew)</p>
 <h2 id="Snapshot-Algorithm"><a href="#Snapshot-Algorithm" class="headerlink" title="Snapshot Algorithm"></a>Snapshot Algorithm</h2><p>简单来说，就是在不妨碍业务过程的条件下通过一个Marker消息来确认其他业务消息的先后，利用快照得到分布式系统的整体情况。</p>
 <p>举个简单的例子：一桌打黑牌的人（近似赌博，有人在门口放哨），主人公A收到了外界传来的Marker消息（快速撤离），喵了一眼自己手里的牌并做了记录。然后向每个牌友发出Marker，声明在Marker之后打出的牌对手都不能再计算（可能有诈）。其他牌友也照做。这样，将所有牌友记录的牌加起来，黑桃、梅花、方块、红桃各自的总数是一定的。当然，收到一个牌友的Marker只是停止计算与这位特定牌友的输赢，没收到某位牌友的Marker就说明两人之间情况正常，赢的牌还是要算的。如果收到了所有牌友的Marker，就说明真的有问题了，得退出牌局，这一轮所做的记录就到此为止。</p>
