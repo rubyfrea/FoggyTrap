@@ -94,7 +94,7 @@
 <meta property="og:site_name" content="P U M E L A">
 <meta property="og:description" content="Nyquist是一门底层使用C++语言编写，基于Lisp，自带Lisp编译器，可以使用XLisp或者SAL两种语言格式进行编程来合成声音的声音合成系统。XLisp和SAL可以看作是一种语言，只是使用的标记符号不一样。">
 <meta property="og:image" content="http://limmm.com/image/nyquistbasicdemo.png">
-<meta property="og:updated_time" content="2016-12-09T22:50:49.000Z">
+<meta property="og:updated_time" content="2016-12-10T05:38:44.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Nyquist详述">
 <meta name="twitter:description" content="Nyquist是一门底层使用C++语言编写，基于Lisp，自带Lisp编译器，可以使用XLisp或者SAL两种语言格式进行编程来合成声音的声音合成系统。XLisp和SAL可以看作是一种语言，只是使用的标记符号不一样。">
@@ -313,6 +313,8 @@
 <p><img src="/image/nyquistbasicdemo.png" alt="一个简单的声音合成代码示例"></p>
 <h3 id="Building-Waveforms"><a href="#Building-Waveforms" class="headerlink" title="Building Waveforms"></a>Building Waveforms</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">define variable *table* =</div><div class="line">    sim(0.5 * build-harmonic(1.0, 2048),</div><div class="line">        0.25 * build-harmonic(2.0, 2048),</div><div class="line">        0.125 * build-harmonic(3.0, 2048),</div><div class="line">        0.062 * build-harmonic(4.0, 2048))</div><div class="line">set *table* = list(*table*, hz-to-step(1), #t)</div></pre></td></tr></table></figure>
 <p><code>build-harmonic(n periods of sinusoid, table-size)</code><br>table-size指取样时的table大小。</p>
+<h3 id="Envelopes"><a href="#Envelopes" class="headerlink" title="Envelopes"></a>Envelopes</h3><p><strong>Piece-wise Linear Envelope</strong><br><code>pwl(t1, v1, t2, v2,..., tn)</code><br>开始和结局振幅都为0。(可以是振幅，也可以是其他的属性)<br><code>pwlv(v0, t1, v1, t2, v2, ..., tn, vn)</code><br>开始和结局都不为0（也可以为0，多个可选项能进行设置）<br><code>pwlr(i1, v1, i2, v2, ..., in)</code><br>不以时间点而以间隔时间为key</p>
+<p><strong>Piece-wise Exponential Envelope:</strong><br><code>pwe(t1, v1, t2, v2, ..., tn)</code></p>
 
       
     </div>
@@ -508,7 +510,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Building-Waveforms"><span class="nav-number">1.</span> <span class="nav-text">Building Waveforms</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Building-Waveforms"><span class="nav-number">1.</span> <span class="nav-text">Building Waveforms</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Envelopes"><span class="nav-number">2.</span> <span class="nav-text">Envelopes</span></a></li></ol></div>
             
           </div>
         </section>
