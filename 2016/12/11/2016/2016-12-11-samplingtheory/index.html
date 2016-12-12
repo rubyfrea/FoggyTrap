@@ -87,25 +87,20 @@
 
 
 
-<meta name="description" content="Fourier Transform首先推荐一个很不错的网站：点这里
-一个意会的文章： 傅立叶级数与欧拉公式傅立叶级数就是把一个周期函数分解成许多正弦波的和。傅立叶变换基本上就是用欧拉公式来将在时间维度变化的振幅图转化为一段波谱。
-欧拉公式的形式是 对应的图是一条螺旋线，点随时间变化在复平面上做圆周运动，而投影到左侧的实数部分就是一个余弦函数。而波的振幅随时间周期性改变投影到频域就是频率振幅图。这">
+<meta name="description" content="范围：• Fourier Transform• What sample rate should we use?• Why does it matter?• How many bits per sample should weuse? Why does it matter?• Interpolation: How can we interpolatesamples to recover the sa">
 <meta property="og:type" content="article">
-<meta property="og:title" content="取样原理及傅立叶变换">
+<meta property="og:title" content="采样定理及傅立叶变换">
 <meta property="og:url" content="http://limmm.com/2016/12/11/2016/2016-12-11-samplingtheory/index.html">
 <meta property="og:site_name" content="P U M E L A">
-<meta property="og:description" content="Fourier Transform首先推荐一个很不错的网站：点这里
-一个意会的文章： 傅立叶级数与欧拉公式傅立叶级数就是把一个周期函数分解成许多正弦波的和。傅立叶变换基本上就是用欧拉公式来将在时间维度变化的振幅图转化为一段波谱。
-欧拉公式的形式是 对应的图是一条螺旋线，点随时间变化在复平面上做圆周运动，而投影到左侧的实数部分就是一个余弦函数。而波的振幅随时间周期性改变投影到频域就是频率振幅图。这">
+<meta property="og:description" content="范围：• Fourier Transform• What sample rate should we use?• Why does it matter?• How many bits per sample should weuse? Why does it matter?• Interpolation: How can we interpolatesamples to recover the sa">
 <meta property="og:image" content="http://limmm.com/image/fourier.png">
 <meta property="og:image" content="http://limmm.com/image/eura.png">
 <meta property="og:image" content="http://limmm.com/image/euro1.png">
-<meta property="og:updated_time" content="2016-12-11T07:06:32.000Z">
+<meta property="og:image" content="http://limmm.com/image/fourierppt.png">
+<meta property="og:updated_time" content="2016-12-12T05:19:02.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="取样原理及傅立叶变换">
-<meta name="twitter:description" content="Fourier Transform首先推荐一个很不错的网站：点这里
-一个意会的文章： 傅立叶级数与欧拉公式傅立叶级数就是把一个周期函数分解成许多正弦波的和。傅立叶变换基本上就是用欧拉公式来将在时间维度变化的振幅图转化为一段波谱。
-欧拉公式的形式是 对应的图是一条螺旋线，点随时间变化在复平面上做圆周运动，而投影到左侧的实数部分就是一个余弦函数。而波的振幅随时间周期性改变投影到频域就是频率振幅图。这">
+<meta name="twitter:title" content="采样定理及傅立叶变换">
+<meta name="twitter:description" content="范围：• Fourier Transform• What sample rate should we use?• Why does it matter?• How many bits per sample should weuse? Why does it matter?• Interpolation: How can we interpolatesamples to recover the sa">
 <meta name="twitter:image" content="http://limmm.com/image/fourier.png">
 
 
@@ -124,7 +119,7 @@
   };
 </script>
 
-  <title> 取样原理及傅立叶变换 | P U M E L A </title>
+  <title> 采样定理及傅立叶变换 | P U M E L A </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -270,7 +265,7 @@
             
             
               
-                取样原理及傅立叶变换
+                采样定理及傅立叶变换
               
             
           </h1>
@@ -317,11 +312,20 @@
       
 
       
-        <script src="/assets/js/APlayer.min.js"> </script><p>Fourier Transform<br>首先推荐一个很不错的网站：<a href="http://www.thefouriertransform.com/" title="傅立叶变换" target="_blank" rel="external">点这里</a></p>
+        <script src="/assets/js/APlayer.min.js"> </script><h2 id="范围："><a href="#范围：" class="headerlink" title="范围："></a>范围：</h2><p>• Fourier Transform<br>• What sample rate should we use?<br>• Why does it matter?<br>• How many bits per sample should we<br>use? Why does it matter?<br>• Interpolation: How can we interpolate<br>samples to recover the sampled signal?<br>• What’s the effect of rounding to the nearest<br>integer sample value?<br>• How do we convert analog to/from digital?<br><a id="more"></a></p>
+<p>分析信号有三种图，波谱图（spectrum），相位图，和振幅－时间图。学习采样定理的意义就是用离散的数据来定义一个连续的信号。<br>任何一个信号都可以表达为一群正弦波的叠加。在从时域到频域的转换中，我们需要用到傅立叶变换。</p>
+<h2 id="Fourier-Transform"><a href="#Fourier-Transform" class="headerlink" title="Fourier Transform"></a>Fourier Transform</h2><p>首先推荐一个很不错的网站：<a href="http://www.thefouriertransform.com/" title="傅立叶变换" target="_blank" rel="external">点这里</a></p>
 <p>一个意会的文章： <a href="http://blog.jobbole.com/70549/" target="_blank" rel="external">傅立叶级数与欧拉公式</a><br>傅立叶级数就是把一个周期函数分解成许多正弦波的和。<br>傅立叶变换基本上就是用欧拉公式来将在时间维度变化的振幅图转化为一段波谱。<br><img src="/image/fourier.png" alt="fourier"></p>
 <p>欧拉公式的形式是 <img src="/image/eura.png" alt="欧拉公式"><br>对应的图是一条螺旋线，点随时间变化在复平面上做圆周运动，而投影到左侧的实数部分就是一个余弦函数。而波的振幅随时间周期性改变投影到频域就是频率振幅图。这个公式关键的作用，是将正弦波统一成了简单的指数形式。<br>使用欧拉公式的另一种表达方式<br><img src="/image/euro1.png" alt=""></p>
 <p>e^(it)可以理解为一条逆时针旋转的螺旋线，那么e^(-it)则可以理解为一条顺时针旋转的螺旋线。</p>
-<p>总的来说，傅立叶变换就是利用欧拉公式投影。</p>
+<p>总的来说，傅立叶变换就是利用欧拉公式投影。<br>思路：</p>
+<ol>
+<li>一个正弦波的振幅－时间图就是圆心圆周连线逆时针旋转的余弦投影的长度变化图</li>
+<li>从欧拉公式：一条正弦波可以理解为点随时间在复平面上做圆周运动，画出图就是螺旋线，此时随t变化的公式转化为cosx + isinx。</li>
+<li>在余弦平面（实平面）的投影就是在频域的投影也就是cos(t)。又根据欧拉公式，得到cos(t) = (e^it + e^-it)/2，对t进行积分就是波谱的公式了。</li>
+<li>如果要求一个正弦波随时间变化的表达式，那么一开始的公式f(t) = A*sin(wt + a) 经由欧拉公式就成了以下：<br><img src="/image/fourierppt.png" alt="fourier result"></li>
+<li>将不同的螺旋线叠加起来就得到了一开始采样的波。<br>若是有表达不清的，请参加文章开头两个网站。</li>
+</ol>
 
       
     </div>
@@ -368,7 +372,7 @@
     <div class="post-spread">
       
         <div class="ds-share flat" data-thread-key="2016/12/11/2016/2016-12-11-samplingtheory/"
-     data-title="取样原理及傅立叶变换"
+     data-title="采样定理及傅立叶变换"
      data-content=""
      data-url="http://limmm.com/2016/12/11/2016/2016-12-11-samplingtheory/">
   <div class="ds-share-inline">
@@ -398,7 +402,7 @@
   <div class="comments" id="comments">
     
       <div class="ds-thread" data-thread-key="2016/12/11/2016/2016-12-11-samplingtheory/"
-           data-title="取样原理及傅立叶变换" data-url="http://limmm.com/2016/12/11/2016/2016-12-11-samplingtheory/">
+           data-title="采样定理及傅立叶变换" data-url="http://limmm.com/2016/12/11/2016/2016-12-11-samplingtheory/">
       </div>
     
   </div>
@@ -509,7 +513,7 @@
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#范围："><span class="nav-number">1.</span> <span class="nav-text">范围：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Fourier-Transform"><span class="nav-number">2.</span> <span class="nav-text">Fourier Transform</span></a></li></ol></div>
             
           </div>
         </section>
