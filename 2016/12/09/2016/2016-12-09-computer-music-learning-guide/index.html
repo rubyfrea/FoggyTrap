@@ -100,7 +100,9 @@ Unit Generator | Harmonics | Wave Table">
 <meta property="og:image" content="http://limmm.com/image/adsr.png">
 <meta property="og:image" content="http://limmm.com/image/wavetable.png">
 <meta property="og:image" content="http://limmm.com/image/aliasing.png">
-<meta property="og:updated_time" content="2016-12-12T18:39:20.000Z">
+<meta property="og:image" content="http://limmm.com/image/pulseshift.png">
+<meta property="og:image" content="http://limmm.com/image/overlap.png">
+<meta property="og:updated_time" content="2016-12-12T20:36:47.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Computer Music Learning 1">
 <meta name="twitter:description" content="本篇介绍的是计算机音乐的一些基本概念。
@@ -335,7 +337,7 @@ Unit Generator | Harmonics | Wave Table">
 <h2 id="Aliasing"><a href="#Aliasing" class="headerlink" title="Aliasing"></a>Aliasing</h2><p>两种情况：</p>
 <ol>
 <li>相近的信号难以分辨，比如用不同的sample rate进行取样时，取样点太少而造成频率错误。</li>
-<li>当频率超过了Nyquist Frequency时，就会出现下图所示的情况。<br><img src="/image/aliasing.png" alt="aliasing"></li>
+<li>当频率超过了Nyquist Frequency时，就会出现下图所示的情况。<br><img src="/image/aliasing.png" alt="aliasing"><br>构造波谱的过程是：基本频谱按照sampling rate向右移动。<br><img src="/image/pulseshift.png" alt="shift"><br>如果频率大于1/2 sampling rate，就会出现重叠。<br><img src="/image/overlap.png" alt="overlap"></li>
 </ol>
 <h2 id="Phase-Distortion"><a href="#Phase-Distortion" class="headerlink" title="Phase Distortion"></a>Phase Distortion</h2><p>相位错误导致pulse的方向错误，比如－0.1和0.1都被看作是0造成下降和上升难以分清。</p>
 <h2 id="Oversampling"><a href="#Oversampling" class="headerlink" title="Oversampling"></a>Oversampling</h2><p>用高于nyquist frequency的采样率进行采样。</p>

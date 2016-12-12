@@ -97,7 +97,7 @@
 <meta property="og:image" content="http://limmm.com/image/eura.png">
 <meta property="og:image" content="http://limmm.com/image/euro1.png">
 <meta property="og:image" content="http://limmm.com/image/fourierppt.png">
-<meta property="og:updated_time" content="2016-12-12T18:29:59.000Z">
+<meta property="og:updated_time" content="2016-12-12T20:36:45.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="傅立叶变换">
 <meta name="twitter:description" content="范围：• Fourier Transform• Interpolation: How can we interpolatesamples to recover the sampled signal?• How do we convert analog from digital?">
@@ -312,7 +312,7 @@
       
 
       
-        <script src="/assets/js/APlayer.min.js"> </script><h2 id="范围："><a href="#范围：" class="headerlink" title="范围："></a>范围：</h2><p>• Fourier Transform<br>• Interpolation: How can we interpolate<br>samples to recover the sampled signal?<br>• How do we convert analog from digital?<br><a id="more"></a><br>采样就是用离散的数据来定义一个连续的信号。<br>采样的结果有三种图，波谱图（spectrum），相位图，和振幅－时间图，对应的就是频域，相位域，时域。时域中的信号太过复杂，或重复或变化，难以找到分析的下手点。一个重要的基本理论：任何一个信号都可以表达为一群正弦波的叠加。因而频域中，信号转变成不同正弦波对应频率和振幅的组合，更易于分析。<br>在从时域到频域的转换中，我们需要用到傅立叶变换。</p>
+        <script src="/assets/js/APlayer.min.js"> </script><h2 id="范围："><a href="#范围：" class="headerlink" title="范围："></a>范围：</h2><p>• Fourier Transform<br>• Interpolation: How can we interpolate<br>samples to recover the sampled signal?<br>• How do we convert analog from digital?<br><a id="more"></a><br>采样就是用离散的数据来定义一个连续的信号。<br>采样的结果有三种图，波谱图（spectrum），相位图，和振幅－时间图，对应的就是频域，相位域，时域。时域中的信号太过复杂，或重复或变化，难以找到分析的下手点。一个重要的基本理论：任何一个信号都可以表达为一群正弦波的叠加。因而频域中，信号转变成不同正弦波对应频率和振幅的组合，更易于分析。<br>在从时域到频域的转换中，我们需要用到傅立叶变换。<br>(在analog to digital的过程里，每个sampling的位置乘以一个电压的impulse，同时使用了傅立叶变换得到波谱，每增加一个sample就向右边平移一个sample rate的距离，每个sample的值还要用sinc方法来求得最终值)</p>
 <h2 id="Fourier-Transform"><a href="#Fourier-Transform" class="headerlink" title="Fourier Transform"></a>Fourier Transform</h2><p>首先推荐一个很不错的网站：<a href="http://www.thefouriertransform.com/" title="傅立叶变换" target="_blank" rel="external">点这里</a></p>
 <p>一个意会的文章： <a href="http://blog.jobbole.com/70549/" target="_blank" rel="external">傅立叶级数与欧拉公式</a><br>傅立叶级数就是把一个周期函数分解成许多正弦波的和。<br>傅立叶变换基本上就是用欧拉公式来将在时间维度变化的振幅图转化为一段波谱。<br><img src="/image/fourier.png" alt="fourier"></p>
 <p>欧拉公式的形式是 <img src="/image/eura.png" alt="欧拉公式"><br>对应的图是一条螺旋线，点随时间变化在复平面上做圆周运动，而投影到左侧的实数部分就是一个余弦函数。而波的振幅随时间周期性改变投影到频域就是频率振幅图。这个公式关键的作用，是将正弦波统一成了简单的指数形式。<br>使用欧拉公式的另一种表达方式<br><img src="/image/euro1.png" alt=""></p>
