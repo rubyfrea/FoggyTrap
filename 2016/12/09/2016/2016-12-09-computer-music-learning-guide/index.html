@@ -99,10 +99,7 @@ Unit Generator | Harmonics | Wave Table">
 <meta property="og:image" content="http://limmm.com/image/generatesound.png">
 <meta property="og:image" content="http://limmm.com/image/adsr.png">
 <meta property="og:image" content="http://limmm.com/image/wavetable.png">
-<meta property="og:image" content="http://limmm.com/image/aliasing.png">
-<meta property="og:image" content="http://limmm.com/image/pulseshift.png">
-<meta property="og:image" content="http://limmm.com/image/overlap.png">
-<meta property="og:updated_time" content="2016-12-12T20:36:47.000Z">
+<meta property="og:updated_time" content="2016-12-12T22:30:28.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Computer Music Learning 1">
 <meta name="twitter:description" content="本篇介绍的是计算机音乐的一些基本概念。
@@ -319,7 +316,7 @@ Unit Generator | Harmonics | Wave Table">
 
       
         <script src="/assets/js/APlayer.min.js"> </script><p>本篇介绍的是计算机音乐的一些基本概念。</p>
-<p>Unit Generator | Harmonics | Wave Table<br><a id="more"></a><br>先来简要介绍一下CMU的这门课15322/15622Introduction to Computer Music(略)</p>
+<p>Unit Generator | Harmonics | Wave Table<br><a id="more"></a><br>CMU的这门课程15322/15622Introduction to Computer Music<br><a href="">信号处理基础</a><br><a href="">音乐基础</a><br><a href="">Nyquist基础</a><br><a href="">音乐分析</a><br><a href="">计算机音乐的制作技巧</a></p>
 <p>结构： nyquist底层架构及常用方法</p>
 <h1 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h1><p>• What’s a Unit Generator?<br>• What are some unit generators in Nyquist?<br>• Unit Generator Implementation<br>• Functional Programming<br>• Wavetable Synthesis<br>• Scores in Nyquist<br>• Score Manipulation</p>
 <p>Tree:</p>
@@ -331,17 +328,8 @@ Unit Generator | Harmonics | Wave Table">
 <h2 id="Wavetable"><a href="#Wavetable" class="headerlink" title="Wavetable"></a>Wavetable</h2><p>一个用来使声音更为和谐的表格，在相应的位置插入harmonics来动态改变音色。<br><img src="/image/wavetable.png" alt="waveform"></p>
 <p>这张＊table＊的意思就是插入频率为1的四个音，振幅分别是0.5，0.25，0.125，0.062。这样子原始的音就不会是一个单纯的音符了。<br><code>build-harmonic(n periods of sinusoid, table-size)</code><br>table-size指取样时的table大小。这个之后会详细讲。</p>
 <p>综合以上知识，最基础的<strong>基于波表的声音合成</strong>便是：建一张wavetable，在使用Oscillator生成声音的时候加入这张表（比如osc(c4, dur, <em>table</em>)，与一个Envelope相乘。优点是非常直接，缺点是使用的harmonics是固定的，不能按照音阶和时间进行改变，不好听。</p>
-<h2 id="Quantization"><a href="#Quantization" class="headerlink" title="Quantization"></a>Quantization</h2><p>量化，近似到最近的整数的过程。<br>＊To analyze the effect of quantization, we model quantization as: starting with the original exact signal and adding a new noise signal consisting of just the rounding error, which is uniformly and randomly distributed at each sample between -0.5 and +0.5.</p>
-<h2 id="White-noise"><a href="#White-noise" class="headerlink" title="White noise"></a>White noise</h2><p>白色噪音是与主信号振幅相同的频率在0到Nyquist Frequency之间的随机信号，用于解决量化误差。</p>
-<h2 id="Dithering"><a href="#Dithering" class="headerlink" title="Dithering"></a>Dithering</h2><p>信号处理中一种降低量化误差的手段，也是noise shaping的一种方式,举例说把24bit的数据量化为16bit的，直接砍掉8bit是不行的，因为量化误差与原始信号相关性很强，会造成频谱上严重的躁声。<br>这时候，给最低bit位补充一个随机信号（white noise），可以化解这个量化误差，让量化误差的能量在频谱上远离信号频率或者平均分布到整个频率。（dithering增加signal能量，相当于提高了信噪比，用提高bits per sample的方式也是在减少noise，提高信噪比）</p>
-<h2 id="Aliasing"><a href="#Aliasing" class="headerlink" title="Aliasing"></a>Aliasing</h2><p>两种情况：</p>
-<ol>
-<li>相近的信号难以分辨，比如用不同的sample rate进行取样时，取样点太少而造成频率错误。</li>
-<li>当频率超过了Nyquist Frequency时，就会出现下图所示的情况。<br><img src="/image/aliasing.png" alt="aliasing"><br>构造波谱的过程是：基本频谱按照sampling rate向右移动。<br><img src="/image/pulseshift.png" alt="shift"><br>如果频率大于1/2 sampling rate，就会出现重叠。<br><img src="/image/overlap.png" alt="overlap"></li>
-</ol>
-<h2 id="Phase-Distortion"><a href="#Phase-Distortion" class="headerlink" title="Phase Distortion"></a>Phase Distortion</h2><p>相位错误导致pulse的方向错误，比如－0.1和0.1都被看作是0造成下降和上升难以分清。</p>
-<h2 id="Oversampling"><a href="#Oversampling" class="headerlink" title="Oversampling"></a>Oversampling</h2><p>用高于nyquist frequency的采样率进行采样。</p>
-<h2 id="Perfect-Sampling"><a href="#Perfect-Sampling" class="headerlink" title="Perfect Sampling"></a>Perfect Sampling</h2>
+<h2 id="Convolution"><a href="#Convolution" class="headerlink" title="Convolution"></a>Convolution</h2><p>时域里相乘等于频域里的convolution。<br>一个信号被一个正弦波调制，波谱上就会得到一左一右两个边频。</p>
+
       
     </div>
 
@@ -474,7 +462,7 @@ Unit Generator | Harmonics | Wave Table">
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">26</span>
+              <span class="site-state-item-count">29</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -540,7 +528,7 @@ Unit Generator | Harmonics | Wave Table">
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Abstract"><span class="nav-number">1.</span> <span class="nav-text">Abstract</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Concepts"><span class="nav-number">2.</span> <span class="nav-text">Concepts</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Unit-Generator"><span class="nav-number">2.1.</span> <span class="nav-text">Unit Generator</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Harmonics"><span class="nav-number">2.2.</span> <span class="nav-text">Harmonics</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Wavetable"><span class="nav-number">2.3.</span> <span class="nav-text">Wavetable</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Quantization"><span class="nav-number">2.4.</span> <span class="nav-text">Quantization</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#White-noise"><span class="nav-number">2.5.</span> <span class="nav-text">White noise</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Dithering"><span class="nav-number">2.6.</span> <span class="nav-text">Dithering</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Aliasing"><span class="nav-number">2.7.</span> <span class="nav-text">Aliasing</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Phase-Distortion"><span class="nav-number">2.8.</span> <span class="nav-text">Phase Distortion</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Oversampling"><span class="nav-number">2.9.</span> <span class="nav-text">Oversampling</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Perfect-Sampling"><span class="nav-number">2.10.</span> <span class="nav-text">Perfect Sampling</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Abstract"><span class="nav-number">1.</span> <span class="nav-text">Abstract</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Concepts"><span class="nav-number">2.</span> <span class="nav-text">Concepts</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Unit-Generator"><span class="nav-number">2.1.</span> <span class="nav-text">Unit Generator</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Harmonics"><span class="nav-number">2.2.</span> <span class="nav-text">Harmonics</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Wavetable"><span class="nav-number">2.3.</span> <span class="nav-text">Wavetable</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Convolution"><span class="nav-number">2.4.</span> <span class="nav-text">Convolution</span></a></li></ol></li></ol></div>
             
           </div>
         </section>

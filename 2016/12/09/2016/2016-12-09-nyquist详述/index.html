@@ -95,7 +95,18 @@
 <meta property="og:description" content="Nyquist是一门底层使用C++语言编写，基于Lisp，自带Lisp编译器，可以使用XLisp或者SAL两种语言格式进行编程来合成声音的声音合成系统。XLisp和SAL可以看作是一种语言，只是使用的标记符号不一样。">
 <meta property="og:image" content="http://limmm.com/image/nyquistbasicdemo.png">
 <meta property="og:image" content="http://limmm.com/image/scoresort.png">
-<meta property="og:updated_time" content="2016-12-10T06:23:55.000Z">
+<meta property="og:image" content="http://limmm.com/image/am2.png">
+<meta property="og:image" content="http://limmm.com/image/am1.png">
+<meta property="og:image" content="http://limmm.com/image/fm1.png">
+<meta property="og:image" content="http://limmm.com/image/fm2.png">
+<meta property="og:image" content="http://limmm.com/image/fm3.png">
+<meta property="og:image" content="http://limmm.com/image/fm4.png">
+<meta property="og:image" content="http://limmm.com/image/fm5.png">
+<meta property="og:image" content="http://limmm.com/image/fm7.png">
+<meta property="og:image" content="http://limmm.com/image/fm6.png">
+<meta property="og:image" content="http://limmm.com/image/feedbackdelay.png">
+<meta property="og:image" content="http://limmm.com/image/nested.png">
+<meta property="og:updated_time" content="2016-12-13T04:37:05.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Nyquist详述">
 <meta name="twitter:description" content="Nyquist是一门底层使用C++语言编写，基于Lisp，自带Lisp编译器，可以使用XLisp或者SAL两种语言格式进行编程来合成声音的声音合成系统。XLisp和SAL可以看作是一种语言，只是使用的标记符号不一样。">
@@ -335,7 +346,12 @@
 <p><code>build-harmonic(n periods of sinusoid, table-size)</code><br>table-size指取样时的table大小。</p>
 <h3 id="Envelopes"><a href="#Envelopes" class="headerlink" title="Envelopes"></a>Envelopes</h3><p><strong>Piece-wise Linear Envelope</strong><br><code>pwl(t1, v1, t2, v2,..., tn)</code><br>开始和结局振幅都为0。(可以是振幅，也可以是其他的属性)<br><code>pwlv(v0, t1, v1, t2, v2, ..., tn, vn)</code><br>开始和结局都不为0（也可以为0，多个可选项能进行设置）<br><code>pwlr(i1, v1, i2, v2, ..., in)</code><br>不以时间点而以间隔时间为key</p>
 <p><strong>Piece-wise Exponential Envelope:</strong><br><code>pwe(t1, v1, t2, v2, ..., tn)</code></p>
-<h3 id="Score"><a href="#Score" class="headerlink" title="Score"></a>Score</h3><p><img src="/image/scoresort.png" alt="scoreplay"><br>          取自老师ppt</p>
+<h3 id="Score"><a href="#Score" class="headerlink" title="Score"></a>Score</h3><p><img src="/image/scoresort.png" alt="scoreplay"><br>          取自老师ppt<br>score-gen(score-len: 10, ioi: 1, dur: 1, name: quote(scoreA))</p>
+<h3 id="FM-amp-AM"><a href="#FM-amp-AM" class="headerlink" title="FM &amp; AM"></a>FM &amp; AM</h3><p>lfo(x) 频率为x，振幅为1的正弦波。<br>exec s-plot(2 ＋ lfo(6))<br><img src="/image/am2.png" alt="am2"><br>exec s-plot(pwlv(0.5, 1, 1) <em> (2 + lfo(20)))<br><img src="/image/am1.png" alt="am1"><br>exec s-plot(hzosc(40) </em> lfo(0.5))<br><img src="/image/fm1.png" alt="fm1"><br>exec s-plot(lfo(0.5) + hzosc(40))<br><img src="/image/fm2.png" alt="fm2"><br>exec s-plot(hzosc(lfo(0.5) <em> 40))<br>几乎等同于<br>exec s-plot(hzosc(pwl(0.5, 40, 1)))<br>几乎等同于<br>exec s-plot(fmosc(hz-to-step(4), lfo(0.5) </em> 20, <em>table</em>))<br><img src="/image/fm3.png" alt="fm3"></p>
+<p>Nyquist自带的fm方法<br>exec s-plot(fmosc(hz-to-step(40), lfo(0.5) <em> 8, </em>table<em>))<br>（question：不明白为什么图像和hzosc(40) </em> lfo(0.5)不一样）<br><img src="/image/fm4.png" alt="fm4"><br>exec s-plot(fmosc(hz-to-step(2), lfo(0.5) <em> 8, </em>table<em>)<br><img src="/image/fm5.png" alt="fm5"><br>exec s-plot(fmosc(hz-to-step(4), lfo(0.5) </em> 20, <em>table</em>))<br><img src="/image/fm7.png" alt="fm7"><br>exec s-plot(fmosc(hz-to-step(2), lfo(0.5) <em> 8, </em>table<em>) </em> pwl(0.6, 1, 1))<br><img src="/image/fm6.png" alt="fm6"><br>hzosc(pwl(0.5, 600, 1))</p>
+<p><strong>Produce a harmonic sound with about 10 harmonics and a fundamental of 100Hz.</strong><br>We can choose C = M = 100. Since the number of harmonics is 10 we need<br>9 sidebands, and so I+1 = 9 or I = 8. I = M/D or D = IM, so D = 8∗100 = 800.<br>Finally, we can write fmosc(hz-to-step(100), 800 * hzosc(100)).</p>
+<h3 id="Sound-Effects"><a href="#Sound-Effects" class="headerlink" title="Sound Effects"></a>Sound Effects</h3><p>play feedback-delay(osc(60), 0.25, 0.8)<br>play feedback-delay(osc(60), 0.15, osc(45))<br><img src="/image/feedbackdelay.png" alt="feedbackdelay"></p>
+<h3 id="Pattern"><a href="#Pattern" class="headerlink" title="Pattern"></a>Pattern</h3><p>make-cycle({a b c}) abcabc<br>make-panlindrome({a b c}, elide: first) abcbaabcba<br>make-heap({a b c}, max: 1) abccabcbaacb(every element randomly chosen)<br>make-accumulation({a b c}) aababcaababc<br>make-copier(make-cycle({a b c}, for: 1), repeat: 2) aabbcc<br>make-accumulate(make-cycle({1 3 -4})) 1 4 0<br>make-line({a b c}) abcccccc<br>nested Pattern<br><img src="/image/nested.png" alt="nested"></p>
 
       
     </div>
@@ -469,7 +485,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">26</span>
+              <span class="site-state-item-count">29</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -535,7 +551,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Building-Waveforms"><span class="nav-number">1.</span> <span class="nav-text">Building Waveforms</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Envelopes"><span class="nav-number">2.</span> <span class="nav-text">Envelopes</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Score"><span class="nav-number">3.</span> <span class="nav-text">Score</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Building-Waveforms"><span class="nav-number">1.</span> <span class="nav-text">Building Waveforms</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Envelopes"><span class="nav-number">2.</span> <span class="nav-text">Envelopes</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Score"><span class="nav-number">3.</span> <span class="nav-text">Score</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#FM-amp-AM"><span class="nav-number">4.</span> <span class="nav-text">FM & AM</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Sound-Effects"><span class="nav-number">5.</span> <span class="nav-text">Sound Effects</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Pattern"><span class="nav-number">6.</span> <span class="nav-text">Pattern</span></a></li></ol></div>
             
           </div>
         </section>

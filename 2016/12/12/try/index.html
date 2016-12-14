@@ -1,0 +1,785 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+<meta name="baidu-site-verification" content="o62nQQzTiW" />
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Rui, Tech, Balance" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+  <link rel="icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+
+<meta name="description" content="Under what assumptions does sampling capture all of the information in a signal?
+
+What determines the range of frequencies you can capture?
+
+half of the sampling rate.
+
+What determines the signal-to-">
+<meta property="og:type" content="article">
+<meta property="og:title" content="P U M E L A">
+<meta property="og:url" content="http://limmm.com/2016/12/12/try/index.html">
+<meta property="og:site_name" content="P U M E L A">
+<meta property="og:description" content="Under what assumptions does sampling capture all of the information in a signal?
+
+What determines the range of frequencies you can capture?
+
+half of the sampling rate.
+
+What determines the signal-to-">
+<meta property="og:image" content="http://limmm.com/image/reverb.png">
+<meta property="og:image" content="http://limmm.com/image/schroeder.png">
+<meta property="og:image" content="http://limmm.com/image/fletcher.png">
+<meta property="og:updated_time" content="2016-12-13T17:26:51.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="P U M E L A">
+<meta name="twitter:description" content="Under what assumptions does sampling capture all of the information in a signal?
+
+What determines the range of frequencies you can capture?
+
+half of the sampling rate.
+
+What determines the signal-to-">
+<meta name="twitter:image" content="http://limmm.com/image/reverb.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 6309441470214440000,
+      author: '草字头'
+    }
+  };
+</script>
+
+  <title>  | P U M E L A </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-81061808-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta custom-logo">
+  
+    <div class="site-meta-headline">
+      <a>
+        <img class="custom-logo-image" src="/image/by3.jpg"
+             alt="P U M E L A"/>
+      </a>
+    </div>
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">P U M E L A</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">SuperEn Rui</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-12-12T23:27:53-05:00" content="2016-12-12">
+              2016-12-12
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/12/12/try/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/12/try/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <script src="/assets/js/APlayer.min.js"> </script><p>Under what assumptions does sampling capture all of the information in a signal?</p>
+<ol>
+<li>What determines the range of frequencies you can capture?</li>
+</ol>
+<p>half of the sampling rate.</p>
+<ol>
+<li>What determines the signal-to-noise ratio of the captured signal?</li>
+</ol>
+<p>bits per sample.</p>
+<ol>
+<li><p>You should know how to represent sinusoids of varying amplitudes and frequencies in a spectrum (frequency domain) plot.</p>
+</li>
+<li><p>You should know how to interpret a filter frequency response plot, e.g. draw frequency responses for low-pass, band-pass, and high-pass filters. Show the effect of applying a given filter to a given signal using frequency domain representations.</p>
+</li>
+<li><p>If you wanted to create reverberation to match that of Carnegie Hall using convolution, what would you do? Describe what measurement you would make in the hall, what sound source and where, where to put microphones, what is the recording called, how do you use it to simulate reverberation? (We’re not looking for detailed audio engineering, but conceptually, how does this work?)</p>
+</li>
+</ol>
+<p>measure impulse response of the hall. Get four impulse responses for stereo.Multiply impulse responses using fast convolution. Reverberators can be seen as big filters. I will use the result to build models for the hall.</p>
+<p><img src="/image/reverb.png" alt="reverb"></p>
+<h5 id="What-are-the-main-components-of-Schroeder-style-reverb"><a href="#What-are-the-main-components-of-Schroeder-style-reverb" class="headerlink" title="What are the main components of Schroeder-style reverb?"></a>What are the main components of Schroeder-style reverb?</h5><p>4 comb filters and 2 all pass filters.<br><img src="/image/schroeder.png" alt="schroeder"></p>
+<h5 id="What-is-RT60-relating-to-reverberation"><a href="#What-is-RT60-relating-to-reverberation" class="headerlink" title="What is RT60? (relating to reverberation)"></a>What is RT60? (relating to reverberation)</h5><p> decay time for peak amplitude to decay to -60dB(1/1000 amplitude) usually 1.5-3 seconds. decay exponentially.</p>
+<h5 id="Of-the-two-main-types-of-reverb-Schroeder-style-and-Convolution-which-gives-the-most-accurate-model-of-a-room-Which-gives-the-most-parametric-control-Which-is-computationally-the-most-efficient"><a href="#Of-the-two-main-types-of-reverb-Schroeder-style-and-Convolution-which-gives-the-most-accurate-model-of-a-room-Which-gives-the-most-parametric-control-Which-is-computationally-the-most-efficient" class="headerlink" title="Of the two main types of reverb, Schroeder-style and Convolution, which gives the most accurate model of a room? Which gives the most parametric control? Which is computationally the most efficient?"></a>Of the two main types of reverb, Schroeder-style and Convolution, which gives the most accurate model of a room? Which gives the most parametric control? Which is computationally the most efficient?</h5><p>convolution is more accurate, the most parametric control, the most efficient.</p>
+<h5 id="You-should-know-about-amplitude-power-and-intensity-What-change-in-power-corresponds-to-10dB-What-change-in-amplitude-corresponds-to-10dB-What-change-in-amplitude-corresponds-to-6dB-We-did-not-talk-about-intensity-much-in-class-–-intensity-is-power-per-unit-of-area-so-at-a-fixed-distance-from-a-speaker-intensity-is-proportional-to-power"><a href="#You-should-know-about-amplitude-power-and-intensity-What-change-in-power-corresponds-to-10dB-What-change-in-amplitude-corresponds-to-10dB-What-change-in-amplitude-corresponds-to-6dB-We-did-not-talk-about-intensity-much-in-class-–-intensity-is-power-per-unit-of-area-so-at-a-fixed-distance-from-a-speaker-intensity-is-proportional-to-power" class="headerlink" title="You should know about amplitude, power, and intensity. What change in power corresponds to 10dB? What change in amplitude corresponds to 10dB? What change in amplitude corresponds to 6dB? (We did not talk about intensity much in class – intensity is power per unit of area, so at a fixed distance from a speaker, intensity is proportional to power.)"></a>You should know about amplitude, power, and intensity. What change in power corresponds to 10dB? What change in amplitude corresponds to 10dB? What change in amplitude corresponds to 6dB? (We did not talk about intensity much in class – intensity is power per unit of area, so at a fixed distance from a speaker, intensity is proportional to power.)</h5><p>10 times. root of 10 times. root of 2 times.</p>
+<h5 id="How-does-intensity-decrease-with-distance-assuming-no-reflections-or-absorption-How-does-amplitude-decrease-with-distance"><a href="#How-does-intensity-decrease-with-distance-assuming-no-reflections-or-absorption-How-does-amplitude-decrease-with-distance" class="headerlink" title="How does intensity decrease with distance (assuming no reflections or absorption)? How does amplitude decrease with distance?"></a>How does intensity decrease with distance (assuming no reflections or absorption)? How does amplitude decrease with distance?</h5><p>doubling the distance, -6dB. the same.</p>
+<h5 id="What-is-the-speed-of-sound"><a href="#What-is-the-speed-of-sound" class="headerlink" title="What is the speed of sound?"></a>What is the speed of sound?</h5><p>1ft/ms</p>
+<h5 id="What-is-the-smallest-difference-in-amplitude-we-can-hear"><a href="#What-is-the-smallest-difference-in-amplitude-we-can-hear" class="headerlink" title="What is the smallest difference in amplitude we can hear?"></a>What is the smallest difference in amplitude we can hear?</h5><p>1.12m</p>
+<h5 id="What-is-the-smallest-difference-in-frequency-we-can-hear"><a href="#What-is-the-smallest-difference-in-frequency-we-can-hear" class="headerlink" title="What is the smallest difference in frequency we can hear?"></a>What is the smallest difference in frequency we can hear?</h5><p>0.7567Hz</p>
+<p>Intensity I is the energy E flowing across a unit surface area per unit of time t.<br>the intensity range of human hearing is 120 dB.</p>
+<h5 id="Explain-the-Fletcher-Munson-graph-How-much-louder-is-the-threshold-of-hearing-at-100-Hz-than-at-1000-Hz-If-you-change-the-frequency-of-a-sinusoid-at-100Hz-and-70-dB-SPL-to-1000Hz-how-many-dB-quieter-should-you-make-the-sound-to-give-the-same-perceptual-loudness"><a href="#Explain-the-Fletcher-Munson-graph-How-much-louder-is-the-threshold-of-hearing-at-100-Hz-than-at-1000-Hz-If-you-change-the-frequency-of-a-sinusoid-at-100Hz-and-70-dB-SPL-to-1000Hz-how-many-dB-quieter-should-you-make-the-sound-to-give-the-same-perceptual-loudness" class="headerlink" title="Explain the Fletcher Munson graph. How much louder is the threshold of hearing at 100 Hz than at 1000 Hz? If you change the frequency of a sinusoid at 100Hz and 70 dB SPL to 1000Hz, how many dB quieter should you make the sound to give the same perceptual loudness?"></a>Explain the Fletcher Munson graph. How much louder is the threshold of hearing at 100 Hz than at 1000 Hz? If you change the frequency of a sinusoid at 100Hz and 70 dB SPL to 1000Hz, how many dB quieter should you make the sound to give the same perceptual loudness?</h5><p><img src="/image/fletcher.png" alt="fletcher"><br>people perception of loudness is more sensitive as frequency rises. 10 times louder. 10dB。</p>
+<p>the left speaker is at 0 radians and the right speaker is at π radians, giving us a panning range of θ ∈ [0; π], with the center position at θ = π.<br>linear panning: L(θ) + R(θ) = 1.<br>耳朵垂直线和左边的夹角是θ，linear的算法是，左边（pi/2 - θ) * 2/pi<br>右边 θ ＊ 2 ／ pi</p>
+<ol>
+<li>What is constant power panning? Why would you use constant power panning? With constant power panning, if a sound has an amplitude of 1 when panned full left, what amplitude do you send to both speakers when panning to the center?<br>L(θ) = cos(θ) and R(θ) = sin(θ)<br>One way of dealing with the ”hole-in-the-middle” effect is to use constant power panning. Basically, we exchange the linear function for L(θ) and R(θ) with the sine and cosine functions, such that L(θ) = cos(θ) and R(θ) = sin(θ).<br>Main idea: power is proportional to the squared amplitude, and cos2 + sin2 = 1, thus L(θ) = cos(θ) and R(θ) = sin(θ) yields constant power panning.<br>pan full left angle = 0</li>
+</ol>
+<p>In such a case, if the listener is always placed at the sweet-spot, and facing the speakers, the hole-in-the-middle effect may not be very significant. However, if the speakers are placed far from each other in a big room, then the phases</p>
+<ol>
+<li><p>What are the three types of data compression? Define these terms and give an example of each.<br>coding redundancy: variable-length coding （pcm,ulaw,alaw)<br>compress based on inter-sample redundancy: zip file\midi file<br>compress based on psycho-perceptual redundancy: jpeg</p>
+</li>
+<li><p>What is frequency masking? Explain the roll of frequency masking in MP3 music compression.<br>Using ear as filter bank. loud sound in a channel masks soft sound in adjacent channels.<br>hide equalization effects.</p>
+</li>
+<li><p>You should be familiar with the steps of MP3 encoding. E.g. what is the purpose of Huffman Coding in MP3?1<br>Why does MP3 encode music using a frequency-based representation rather than a time-based one?<br>step 1: filter bank(32 bands of equal width)<br>step 2: psychoacoustic model(Take 1024 point FFT of audio, group spectrum into critical bands;Identify tonal components (sinusoids) and assign tonal index to each critical band )<br>huffman:  removing coding redundancy: Gives smallest number of code symbols per source symbol.<br>this allows more efficient coding. apply filters because in time domain we can’t view frequency directly. it’s good to transfer continuous data into discrete data.</p>
+</li>
+<li><p>Suppose you are concerned about quantization noise using an 8-bit DAC. What is the improvement in S/N ratio if you upgrade to a 12-bit DAC (assume perfect, noise-free analog circuits)?<br>4 * 6 = 24dB</p>
+</li>
+<li><p>Why do many telephone systems use (8-bit) μLaw rather than 8-bit PCM? Explain an advantage of μLaw over PCM and an advantage of PCM over μLaw.<br>a. scaled to span 13 bit dynamic range. a large range for representation.<br>b. because ulaw is logarithmic. there are more codes for near-zero amplitudes than high amplitude, while pcm is linear, more equally distributed.</p>
+</li>
+<li><p>Roughly how many data bits are on an audio CD (assume 80 minutes)? Hint: 16-bit stereo at 44100 Hz.<br>16 <em> 44100 </em> 2 * 4800</p>
+<h5 id="Use-Nyquist-patterns-to-generate-these-infinite-sequences"><a href="#Use-Nyquist-patterns-to-generate-these-infinite-sequences" class="headerlink" title="Use Nyquist patterns to generate these (infinite) sequences:"></a>Use Nyquist patterns to generate these (infinite) sequences:</h5><h5 id="123123123…"><a href="#123123123…" class="headerlink" title="123123123…"></a>123123123…</h5><h5 id="112123123412345-1121231234-12345-…-123321123321…"><a href="#112123123412345-1121231234-12345-…-123321123321…" class="headerlink" title="112123123412345 1121231234 12345 … 123321123321…"></a>112123123412345 1121231234 12345 … 123321123321…</h5></li>
+</ol>
+<p>make-cycle({a b c}) abcabc<br>make-panlindrome({a b c}, elide: first) abcbaabcba<br>make-heap({a b c}, max: 1) abccabcbaacb(every element randomly chosen)<br>make-accumulation({a b c}) aababcaababc<br>make-copier(make-cycle({a b c}, for: 1), repeat: 2) aabbcc<br>make-accumulate(make-cycle({1 3 -4})) 1 4 0<br>make-line({a b c}) abcccccc</p>
+<h5 id="Write-a-Nyquist-function-to-produce-an-FM-tone-with-approximately-N-harmonics-starting-at-F-Hz-and-with-amplitude-A-where-N-F-and-A-are-parameters"><a href="#Write-a-Nyquist-function-to-produce-an-FM-tone-with-approximately-N-harmonics-starting-at-F-Hz-and-with-amplitude-A-where-N-F-and-A-are-parameters" class="headerlink" title="Write a Nyquist function to produce an FM tone with approximately N harmonics starting at F Hz and with amplitude A, where N, F, and A, are parameters."></a>Write a Nyquist function to produce an FM tone with approximately N harmonics starting at F Hz and with amplitude A, where N, F, and A, are parameters.</h5><p>fmosc(hz-to-step(F), hzosc(F) <em> (N - 2) </em> F)</p>
+<h5 id="What-is-computer-accompaniment"><a href="#What-is-computer-accompaniment" class="headerlink" title="What is computer accompaniment?"></a>What is computer accompaniment?</h5><h5 id="You-should-be-familiar-with-the-topics-in-the-music-understanding-lecture-E-g-define-the-following-terms-style-recognition-onset-detection-score-alignment-music-fingerprinting-music-recommendation-music-distribution-human-computer-music-performance-of-popular-music"><a href="#You-should-be-familiar-with-the-topics-in-the-music-understanding-lecture-E-g-define-the-following-terms-style-recognition-onset-detection-score-alignment-music-fingerprinting-music-recommendation-music-distribution-human-computer-music-performance-of-popular-music" class="headerlink" title="You should be familiar with the topics in the music understanding lecture. E.g. define the following terms: style recognition, onset detection, score alignment, music fingerprinting, music recommendation, music distribution, human computer music performance (of popular music)."></a>You should be familiar with the topics in the music understanding lecture. E.g. define the following terms: style recognition, onset detection, score alignment, music fingerprinting, music recommendation, music distribution, human computer music performance (of popular music).</h5><p>Multiplication in the time domain is equivalent to what in the frequency domain?</p>
+<p>Multiplication in the frequency domain is equivalent to what in the amplitude domain?</p>
+<p>Multiplying by a constant in the time domain is equivalent to what in the frequency domain? (Careful: you might think the answer has to do with convolution, but this is a special case with an especially simple answer.)</p>
+<h5 id="Adding-two-functions-in-the-time-domain-is-equivalent-to-what-with-the-functions-in-the-frequency-domain"><a href="#Adding-two-functions-in-the-time-domain-is-equivalent-to-what-with-the-functions-in-the-frequency-domain" class="headerlink" title="Adding two functions in the time domain is equivalent to what with the functions in the frequency domain?"></a>Adding two functions in the time domain is equivalent to what with the functions in the frequency domain?</h5><h5 id="Superposition-principles"><a href="#Superposition-principles" class="headerlink" title="Superposition principles"></a>Superposition principles</h5><p>in a linear system, different filter can be done through simple sum.</p>
+<h5 id="How-would-you-accomplish-time-stretching-with-granular-synthesis"><a href="#How-would-you-accomplish-time-stretching-with-granular-synthesis" class="headerlink" title="How would you accomplish time stretching with granular synthesis?"></a>How would you accomplish time stretching with granular synthesis?</h5><h5 id="Given-a-time-stretching-method-how-would-you-accomplish-pitch-shifting-without-stretching-or-shrinking"><a href="#Given-a-time-stretching-method-how-would-you-accomplish-pitch-shifting-without-stretching-or-shrinking" class="headerlink" title="Given a time-stretching method, how would you accomplish pitch shifting (without stretching or shrinking)?"></a>Given a time-stretching method, how would you accomplish pitch shifting (without stretching or shrinking)?</h5><p>How does sampling synthesis achieve control of duration and pitch?</p>
+<h5 id="How-does-sampling-avoid-the-problem-that-pitch-shifting-a-recording-can-sound-unnatural-if-you-pitch-shift-by-a-large-amount"><a href="#How-does-sampling-avoid-the-problem-that-pitch-shifting-a-recording-can-sound-unnatural-if-you-pitch-shift-by-a-large-amount" class="headerlink" title="How does sampling avoid the problem that pitch-shifting a recording can sound unnatural if you pitch shift by a large amount?"></a>How does sampling avoid the problem that pitch-shifting a recording can sound unnatural if you pitch shift by a large amount?</h5><p>do multi pitch range sampling and avoid large amount shifting.</p>
+<h5 id="What-are-the-formant-frequencies-for-the-“oo-who-”-and-“ee”-vowels"><a href="#What-are-the-formant-frequencies-for-the-“oo-who-”-and-“ee”-vowels" class="headerlink" title="What are the formant frequencies for the “oo (who)” and “ee” vowels?"></a>What are the formant frequencies for the “oo (who)” and “ee” vowels?</h5><h5 id="You-should-understand-the-components-of-physical-models-such-as-the-clarinet-and-bowed-string-models-discussed-in-class-E-g-identify-the-waveguide-lumped-filter-and-non-linear-elements-in-the-clarinet-and-string-models-What-do-these-correspond-to-in-corresponding-acoustic-instruments"><a href="#You-should-understand-the-components-of-physical-models-such-as-the-clarinet-and-bowed-string-models-discussed-in-class-E-g-identify-the-waveguide-lumped-filter-and-non-linear-elements-in-the-clarinet-and-string-models-What-do-these-correspond-to-in-corresponding-acoustic-instruments" class="headerlink" title="You should understand the components of physical models such as the clarinet and bowed string models discussed in class. E.g. identify the waveguide, lumped filter, and non-linear elements in the clarinet and string models. What do these correspond to in corresponding acoustic instruments?"></a>You should understand the components of physical models such as the clarinet and bowed string models discussed in class. E.g. identify the waveguide, lumped filter, and non-linear elements in the clarinet and string models. What do these correspond to in corresponding acoustic instruments?</h5><h5 id="mcm-models"><a href="#mcm-models" class="headerlink" title="mcm models"></a>mcm models</h5><p>Delay-line loop of one period<br>•  Low-pass filter modeling losses over one loop • Non-linear element to generate oscillation</p>
+<h5 id="How-does-Karplus-Strong-synthesis-work-Describe-the-elements-and-what-they-do-E-g-how-is-pitch-determined-and-what-causes-the-string-to-decay"><a href="#How-does-Karplus-Strong-synthesis-work-Describe-the-elements-and-what-they-do-E-g-how-is-pitch-determined-and-what-causes-the-string-to-decay" class="headerlink" title="How does Karplus Strong synthesis work? Describe the elements and what they do? E.g. how is pitch determined, and what causes the string to decay?"></a>How does Karplus Strong synthesis work? Describe the elements and what they do? E.g. how is pitch determined, and what causes the string to decay?</h5><p>Fill table with noise or initial conditions • Perform table-lookup oscillator on noise • Phase-increment = 1<br>• Average adjacent samples as they are read</p>
+<h5 id="What-is-commuted-synthesis"><a href="#What-is-commuted-synthesis" class="headerlink" title="What is commuted synthesis?"></a>What is commuted synthesis?</h5><p>drive the string with impulse response of body<br>When bow slips on string, it generates a sort of impulse<br>At every bow slip, insert body impulse response into string model</p>
+<h5 id="You-should-understand-the-concepts-of-spectral-interpolation-synthesis-e-g-how-are-spectra-selected"><a href="#You-should-understand-the-concepts-of-spectral-interpolation-synthesis-e-g-how-are-spectra-selected" class="headerlink" title="You should understand the concepts of spectral interpolation synthesis, e.g. how are spectra selected?"></a>You should understand the concepts of spectral interpolation synthesis, e.g. how are spectra selected?</h5><p>use two tables. Interpolate between tables<br>Keep phases coherent so that interpolation is<br>  truly interpolation of spectra<br>  only choose harmonic spectra.</p>
+<h5 id="Why-are-there-two-tables-in-the-synthesizer-What-goes-into-the-tables"><a href="#Why-are-there-two-tables-in-the-synthesizer-What-goes-into-the-tables" class="headerlink" title="Why are there two tables in the synthesizer? What goes into the tables?"></a>Why are there two tables in the synthesizer? What goes into the tables?</h5><h5 id="What-are-HRTFs"><a href="#What-are-HRTFs" class="headerlink" title="What are HRTFs?"></a>What are HRTFs?</h5><p> head related transfer function. a response that characterizes how an ear receives a sound from a point in space;</p>
+<h5 id="How-can-we-perceive-elevation-or-amplitude-when-the-duplex-theory-predicts-a-cone-of-confusion-Why-are-HRTFs-usually-used-with-headphones"><a href="#How-can-we-perceive-elevation-or-amplitude-when-the-duplex-theory-predicts-a-cone-of-confusion-Why-are-HRTFs-usually-used-with-headphones" class="headerlink" title="How can we perceive elevation or amplitude when the duplex theory predicts a cone of confusion? Why are HRTFs usually used with headphones?"></a>How can we perceive elevation or amplitude when the duplex theory predicts a cone of confusion? Why are HRTFs usually used with headphones?</h5><p>distance has close relationship with amplitude and elevation.</p>
+<h5 id="How-would-you-simulate-spatial-location-in-a-concert-hall"><a href="#How-would-you-simulate-spatial-location-in-a-concert-hall" class="headerlink" title="How would you simulate spatial location in a concert hall?"></a>How would you simulate spatial location in a concert hall?</h5><p>build model for the hall. using responses for impulses to calculate the amplitude.</p>
+<p>John Chowning made the point that things do not necessarily seem more distant just because you lower the amplitude. What cues are available for distance?</p>
+<ol>
+<li>In terms of what is sound intensity measured? Write the expression relating this measure with pressure.<br>w/m^2<br>p/a</li>
+<li>What is the most sensitive frequency region of the human ear?<br>2000-5000hz</li>
+<li><p>In three sentences, summarize the functionalities of the outer ear, middle ear and the inner ear.<br>gather sound wave. amplitude<br>frequency<br>timbre</p>
+</li>
+<li><p>What is the difference between reverberation and echo?<br>A reverberation is perceived when the reflected sound wave reaches your ear in less than 0.1 second after the original sound wave. Since the original sound wave is still held in memory, there is no time delay between the perception of the reflected sound wave and the original sound wave.</p>
+</li>
+<li><p>If two sine tones are very close together in frequency, the total loudness perceived is less than the sum of the two loudnesses that would be heard from the tones played separately. Why does this happen?</p>
+</li>
+<li><p>Why is white noise called “white”?</p>
+</li>
+<li><p>What happens if a set of partials is modulated in frequency by a common temporal envelope?<br>they will share the change in frequency.</p>
+</li>
+<li><p>What is the missing-fundamental phenomenon?</p>
+</li>
+</ol>
+<p>LPC = Linear Prediction Coding<br>•  Model: predict next sample as a weighted sum of<br>past samples.</p>
+<ol>
+<li>What are the two aspects of Lord Rayleigh’s Duplex Theory of sound localization?<br>a. Interaural Time Difference and Interaural Level Difference<br>b. Interaural Time Difference and Interaural Frequency Difference<br>c. Interaural Transfer Difference and Interaural Frequency Difference<br>d. Interaural Transfer Difference and Interaural Elevation Difference<br>Answer: <strong>___</strong></li>
+<li>Which of the following has the greatest effect in forming the Head Related Transfer Function (HRTF)?<br>a. Eyes b. Ears c. Hair d. Mouth<br>Answer: <strong>___</strong></li>
+<li>Which of the following is NOT a technique originally developed for voice synthesis?<br>a. Linear Prediction Coding (LPC)<br>b. VOSIM<br>c. Formant W ave-Function Synthesis (FOF)<br>d. Digital Pulse Code Modulation (DPCM)<br>Answer:</li>
+</ol>
+<hr>
+<p>5<br>Study Guide: 15-322 Introduction to Computer Music</p>
+<ol>
+<li>In Linear Panning between 2 speakers, a value α, between 0 and 1, is the portion of the sound coming from the left speaker, and (1- α) is the portion of the sound coming from the right speaker. What is the main problem with using Linear Panning to make a sound “move” from left to right (or vice versa)?<br>a. Mid-range frequencies are attenuated<br>b. It’ s electronically hard to implement<br>c. The power of the signal changes with α, so the perceived loudness of the sound<br>varies with pan position<br>d. Instead of moving from left to right (or vice versa), the sound will seem to move<br>from above to below (or vice versa)<br>Answer: <strong>___</strong></li>
+<li>The advent of “low-fi” popular music in the eighties was brought about by a flood of reasonable-quality, low-cost,<br>a. Magnetic tape (brought home from Germany after the war, but only available cheaply after about 1978)<br>b. Home analog multitrack recording machines<br>c. CD-ROM – equipped “multimedia” PC’s<br>d. Microphones, which replaced the brittle crystal diaphragms of older studios<br>Answer: <strong>___</strong></li>
+<li>What is the hardware arrangement for sound delivery, given a goal of creating the best illusion of 3-D sound using the HRTF?<br>a. Headphones<br>b. Small speakers a few feet away from the ears, such as those of a desktop computer. c. Large wall-mounted stereo speakers.<br>d. 5 or 6 surround / wraparound speakers, such as a Dolby 5.1 arrangement in a room.<br>Answer: <strong>___</strong></li>
+<li>What defines the human range of hearing (typically), and about how large is it?<br>a. quiet whisper – loud shout, about 60 dB<br>b. softest perceivable sound – loudest painless (or softest painful) sound, 120 dB c. eardrum resonance – eardrum rupture, about 200 dB<br>d. there is no limit to human hearing in either loudness or softness, the only reason some noises escape our perception is because they are below the noise threshold of the air around us.<br>6<br>Study Guide: 15-322 Introduction to Computer Music<br>Answer: <strong>___</strong></li>
+<li>The fact that piano wires are made out of steel, which has some inherent rigidity means that the harmonics of a vibrating piano string (in terms of the fundamental frequency f) are actually about<br>a. f, 2.001<em>f, 3.004</em>f, 4.010 <em> f…<br>b. f, 1.999 </em> f, 2.996 <em> f, 3.090 </em> f…<br>c. f, 1.5 <em> f, 2.25 </em> f, (1.5 cubed) * f…<br>d. The vibration is an interaction between gravity and wire tension, and material properties play no measureable part.<br>Answer: <strong>___</strong></li>
+<li>There are five formants in the vowel sounds produced by the human voice, but the most important ones that human listeners use to understand one another are<br>a. The bottom two (in frequency)<br>b. The top two (in frequency)<br>c. The second and third (in frequency, from lowest to highest) d. The highest and lowest (in frequency).<br>Answer: <strong>___</strong></li>
+<li>An impulse response is:<br>a. The signal output by a given filter when the input is just an impulse<br>b. A filter output that consists of just an impulse<br>c. The fastest output a filter can generate<br>d. A certain kind of filter<br>Answer: <strong>___</strong></li>
+<li>Fill in the blank:<br><strong><strong><strong>__</strong></strong></strong> in the time domain is equivalent to multiplication in the frequency domain.<br>a. Addition<br>b. Superposition<br>c. Amplitude modulation<br>d. Convolution<br>Answer: <strong><em>__</em></strong></li>
+<li>Fill in the blank:<br><strong><strong><strong>_</strong></strong></strong> in the frequency domain is equivalent to multiplication in the time domain.<br>7<br>Study Guide: 15-322 Introduction to Computer Music<br>a. Addition<br>b. Superposition<br>c. Amplitude modulation<br>d. Convolution<br>Answer: <strong><em>__</em></strong></li>
+<li>Here is the frequency response for a given filter (only magnitude is shown): Amplitude<br>What kind of filter is this?<br>a. Low-pass<br>b. High-pass<br>c. All-pass<br>d. Forward-pass<br>Answer: <strong><em>__</em></strong><br>Frequency</li>
+<li>Which of the following phenomena is responsible for the behavior of a comb filter?<br>a. Low-pass filtering<br>b. High-pass filtering<br>c. Constructive interference d. Superposition<br>Answer: <strong><em>__</em></strong></li>
+<li>A circuit (see figure) is constructed such that its output is defined recursively by: Out(t + 0.0025 seconds) = In(t) + 0.5 * Out(t).<br>In(t)<br>a. Low-pass filter with the -3 dB point at 250 Hz<br>b. Low-pass filter with the -3 dB point at 400 Hz<br>c. Comb filter strengthening integer multiples (harmonics) of 250 Hz d. Comb filter strengthening integer multiples (harmonics) of 400 Hz<br>Answer: <strong><em>__</em></strong><ul>
+<li>Out(t) This circuit behaves as a:<br>0.0025s delay<br>8<br>Study Guide: 15-322 Introduction to Computer Music</li>
+</ul>
+</li>
+<li>From an original waveform a frequency spectrum is generated by means of a Short-Time Fourier Transform. Were a new waveform to be generated from that spectrum by some inverse operation of the Short-Time Fourier Transform, the new waveform would<br>a. Compare favorably with the original waveform<br>b. Be recognizable as a highly distorted version of the original waveform<br>c. Be completely unrecognizable noise<br>d. The Short-Term Fourier Transform is a mathematical “one-way” function, there is no<br>way to invert it and go from spectra to waveforms.<br>Answer: <strong><em>__</em></strong></li>
+<li>Which of the following is not a cue for judging how far away a sound was generated?<br>a. Diminished amplitude / diminished energy<br>b. Shifted phase<br>c. Loss of high-frequency components<br>d. Loss of low-amplitude frequencies below noise or hearing threshold.<br>Answer: <strong><em>__</em></strong></li>
+<li>Which cue is most indicative of a sound being generated by a source in motion?<br>a. Increasing amplitude<br>b. Decreasing amplitude<br>c. Doppler-shifted frequencies<br>d. Frequency-variable phase shifts<br>Answer: <strong><em>__</em></strong></li>
+<li>Which of the following will the sound generated by the Nyquist code<br>(play (fmosc c5 (mult (pwl 0.05 2000 1 1000 1) (osc c5))))<br>sound most like?<br>a. A click<br>b. Hitting a metallic pipe<br>c. A singer’s voice<br>d. A brass instrument<br>Answer: <strong><strong><strong><strong><strong><strong>_</strong></strong></strong></strong></strong></strong><br>9</li>
+</ol>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/12/12/2016/2016-12-12-computermusicnotes/" rel="next" title="computermusicnotes">
+                <i class="fa fa-chevron-left"></i> computermusicnotes
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2016/12/12/try/"
+     data-title=""
+     data-content=""
+     data-url="http://limmm.com/2016/12/12/try/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/12/12/try/"
+           data-title="" data-url="http://limmm.com/2016/12/12/try/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Rui Tian" href="http://limmm.com"/>
+          <p class="site-author-name" itemprop="name">Rui Tian</p>
+          <p class="site-description motion-element" itemprop="description">Big Head Developer</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">29</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">27</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/rubyfrea" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://weibo.com/" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  微博
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#What-are-the-main-components-of-Schroeder-style-reverb"><span class="nav-number">1.</span> <span class="nav-text">What are the main components of Schroeder-style reverb?</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#What-is-RT60-relating-to-reverberation"><span class="nav-number">2.</span> <span class="nav-text">What is RT60? (relating to reverberation)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Of-the-two-main-types-of-reverb-Schroeder-style-and-Convolution-which-gives-the-most-accurate-model-of-a-room-Which-gives-the-most-parametric-control-Which-is-computationally-the-most-efficient"><span class="nav-number">3.</span> <span class="nav-text">Of the two main types of reverb, Schroeder-style and Convolution, which gives the most accurate model of a room? Which gives the most parametric control? Which is computationally the most efficient?</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#You-should-know-about-amplitude-power-and-intensity-What-change-in-power-corresponds-to-10dB-What-change-in-amplitude-corresponds-to-10dB-What-change-in-amplitude-corresponds-to-6dB-We-did-not-talk-about-intensity-much-in-class-–-intensity-is-power-per-unit-of-area-so-at-a-fixed-distance-from-a-speaker-intensity-is-proportional-to-power"><span class="nav-number">4.</span> <span class="nav-text">You should know about amplitude, power, and intensity. What change in power corresponds to 10dB? What change in amplitude corresponds to 10dB? What change in amplitude corresponds to 6dB? (We did not talk about intensity much in class – intensity is power per unit of area, so at a fixed distance from a speaker, intensity is proportional to power.)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#How-does-intensity-decrease-with-distance-assuming-no-reflections-or-absorption-How-does-amplitude-decrease-with-distance"><span class="nav-number">5.</span> <span class="nav-text">How does intensity decrease with distance (assuming no reflections or absorption)? How does amplitude decrease with distance?</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#What-is-the-speed-of-sound"><span class="nav-number">6.</span> <span class="nav-text">What is the speed of sound?</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#What-is-the-smallest-difference-in-amplitude-we-can-hear"><span class="nav-number">7.</span> <span class="nav-text">What is the smallest difference in amplitude we can hear?</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#What-is-the-smallest-difference-in-frequency-we-can-hear"><span class="nav-number">8.</span> <span class="nav-text">What is the smallest difference in frequency we can hear?</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Explain-the-Fletcher-Munson-graph-How-much-louder-is-the-threshold-of-hearing-at-100-Hz-than-at-1000-Hz-If-you-change-the-frequency-of-a-sinusoid-at-100Hz-and-70-dB-SPL-to-1000Hz-how-many-dB-quieter-should-you-make-the-sound-to-give-the-same-perceptual-loudness"><span class="nav-number">9.</span> <span class="nav-text">Explain the Fletcher Munson graph. How much louder is the threshold of hearing at 100 Hz than at 1000 Hz? If you change the frequency of a sinusoid at 100Hz and 70 dB SPL to 1000Hz, how many dB quieter should you make the sound to give the same perceptual loudness?</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Use-Nyquist-patterns-to-generate-these-infinite-sequences"><span class="nav-number">10.</span> <span class="nav-text">Use Nyquist patterns to generate these (infinite) sequences:</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#123123123…"><span class="nav-number">11.</span> <span class="nav-text">123123123…</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#112123123412345-1121231234-12345-…-123321123321…"><span class="nav-number">12.</span> <span class="nav-text">112123123412345 1121231234 12345 … 123321123321…</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Write-a-Nyquist-function-to-produce-an-FM-tone-with-approximately-N-harmonics-starting-at-F-Hz-and-with-amplitude-A-where-N-F-and-A-are-parameters"><span class="nav-number">13.</span> <span class="nav-text">Write a Nyquist function to produce an FM tone with approximately N harmonics starting at F Hz and with amplitude A, where N, F, and A, are parameters.</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#What-is-computer-accompaniment"><span class="nav-number">14.</span> <span class="nav-text">What is computer accompaniment?</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#You-should-be-familiar-with-the-topics-in-the-music-understanding-lecture-E-g-define-the-following-terms-style-recognition-onset-detection-score-alignment-music-fingerprinting-music-recommendation-music-distribution-human-computer-music-performance-of-popular-music"><span class="nav-number">15.</span> <span class="nav-text">You should be familiar with the topics in the music understanding lecture. E.g. define the following terms: style recognition, onset detection, score alignment, music fingerprinting, music recommendation, music distribution, human computer music performance (of popular music).</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Adding-two-functions-in-the-time-domain-is-equivalent-to-what-with-the-functions-in-the-frequency-domain"><span class="nav-number">16.</span> <span class="nav-text">Adding two functions in the time domain is equivalent to what with the functions in the frequency domain?</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Superposition-principles"><span class="nav-number">17.</span> <span class="nav-text">Superposition principles</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#How-would-you-accomplish-time-stretching-with-granular-synthesis"><span class="nav-number">18.</span> <span class="nav-text">How would you accomplish time stretching with granular synthesis?</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Given-a-time-stretching-method-how-would-you-accomplish-pitch-shifting-without-stretching-or-shrinking"><span class="nav-number">19.</span> <span class="nav-text">Given a time-stretching method, how would you accomplish pitch shifting (without stretching or shrinking)?</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#How-does-sampling-avoid-the-problem-that-pitch-shifting-a-recording-can-sound-unnatural-if-you-pitch-shift-by-a-large-amount"><span class="nav-number">20.</span> <span class="nav-text">How does sampling avoid the problem that pitch-shifting a recording can sound unnatural if you pitch shift by a large amount?</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#What-are-the-formant-frequencies-for-the-“oo-who-”-and-“ee”-vowels"><span class="nav-number">21.</span> <span class="nav-text">What are the formant frequencies for the “oo (who)” and “ee” vowels?</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#You-should-understand-the-components-of-physical-models-such-as-the-clarinet-and-bowed-string-models-discussed-in-class-E-g-identify-the-waveguide-lumped-filter-and-non-linear-elements-in-the-clarinet-and-string-models-What-do-these-correspond-to-in-corresponding-acoustic-instruments"><span class="nav-number">22.</span> <span class="nav-text">You should understand the components of physical models such as the clarinet and bowed string models discussed in class. E.g. identify the waveguide, lumped filter, and non-linear elements in the clarinet and string models. What do these correspond to in corresponding acoustic instruments?</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#mcm-models"><span class="nav-number">23.</span> <span class="nav-text">mcm models</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#How-does-Karplus-Strong-synthesis-work-Describe-the-elements-and-what-they-do-E-g-how-is-pitch-determined-and-what-causes-the-string-to-decay"><span class="nav-number">24.</span> <span class="nav-text">How does Karplus Strong synthesis work? Describe the elements and what they do? E.g. how is pitch determined, and what causes the string to decay?</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#What-is-commuted-synthesis"><span class="nav-number">25.</span> <span class="nav-text">What is commuted synthesis?</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#You-should-understand-the-concepts-of-spectral-interpolation-synthesis-e-g-how-are-spectra-selected"><span class="nav-number">26.</span> <span class="nav-text">You should understand the concepts of spectral interpolation synthesis, e.g. how are spectra selected?</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Why-are-there-two-tables-in-the-synthesizer-What-goes-into-the-tables"><span class="nav-number">27.</span> <span class="nav-text">Why are there two tables in the synthesizer? What goes into the tables?</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#What-are-HRTFs"><span class="nav-number">28.</span> <span class="nav-text">What are HRTFs?</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#How-can-we-perceive-elevation-or-amplitude-when-the-duplex-theory-predicts-a-cone-of-confusion-Why-are-HRTFs-usually-used-with-headphones"><span class="nav-number">29.</span> <span class="nav-text">How can we perceive elevation or amplitude when the duplex theory predicts a cone of confusion? Why are HRTFs usually used with headphones?</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#How-would-you-simulate-spatial-location-in-a-concert-hall"><span class="nav-number">30.</span> <span class="nav-text">How would you simulate spatial location in a concert hall?</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+         <div class="copyright" >
+  
+  &copy;  2016/05/25 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Rui Tian</span>
+</div>
+<!--
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+-->
+</div>
+ 
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"rubyfrea"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+      
+      <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+      <script src="/js/src/hook-duoshuo.js"></script>
+    
+  
+
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+<script type="text/javascript" async src="//push.zhanzhang.baidu.com/push.js">
+</script>
+
+
+</body>
+</html>

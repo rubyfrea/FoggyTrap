@@ -98,7 +98,10 @@
 <meta property="og:image" content="http://limmm.com/image/ft.png">
 <meta property="og:image" content="http://limmm.com/image/sft.png">
 <meta property="og:image" content="http://limmm.com/image/fft.png">
-<meta property="og:updated_time" content="2016-12-12T20:45:24.000Z">
+<meta property="og:image" content="http://limmm.com/image/aliasing.png">
+<meta property="og:image" content="http://limmm.com/image/pulseshift.png">
+<meta property="og:image" content="http://limmm.com/image/overlap.png">
+<meta property="og:updated_time" content="2016-12-12T22:02:15.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="信号处理流程">
 <meta name="twitter:description" content="本篇的信号处理流程主要讲预处理和取样使用的技术手段和出现的各种问题以及解决方法。">
@@ -323,6 +326,17 @@
 <p>bits per sample提升了，就说明取样数增多了，取样结果就会更加精确，主信号就会更加清晰。<br><strong>Can discrete samples really capture a continuous signal?</strong><br>这个问题是在问用sampling的方法真的可以捕捉完整一个信号吗。答案是discrete samples can capture a band-limited signal without loss。其实这个问题和上面第一个问题是一个意思，sampling会出现计量误差和噪音误差。<br>然而，如果知道了频率范围，就可以针对这个范围加入white noise，就不会记丢频率（no lost frequencies）。<br>如果使用perfect sampling来采样，也就不会有噪音误差了（不需要进行rounding）。</p>
 <h1 id="Fourier-Transform"><a href="#Fourier-Transform" class="headerlink" title="Fourier Transform"></a>Fourier Transform</h1><p>采样就是用离散的数据来定义一个连续的信号。得到三种图，波谱图（spectrum），相位图，和振幅－时间图，对应的就是频域，相位域，时域。时域中的信号太过复杂，或重复或变化，难以找到分析的下手点。一个重要的基本理论：任何一个信号都可以表达为一群正弦波的叠加。因而频域中，信号转变成不同正弦波对应频率和振幅的组合，更易于分析。<br>（下面的部分，我之后会拓宽讲）<br>在从时域到频域的转换中，我们需要用到傅立叶变换。具体内容见<a href="http://limmm.com/2016/12/11/2016/2016-12-11-samplingtheory/">傅立叶变换</a>。<br>Formal Fourier Transform:<br><img src="/image/ft.png" alt=""><br><img src="/image/ft.png" alt="ft"><br>由此可得Short-term Fourier Transform<br><img src="/image/sft.png" alt="sft"><br>我们分析的是样本，而不是连续不断的时间。Discrete Fourier Transform<br>待补充<br>把积分变成求和，得到Fast Fourier Transform <strong>O(nlogn)</strong><br><img src="/image/fft.png" alt="fft"></p>
 <p>因为FFT是对[a,b]范围的sample进行傅立叶变换，但傅立叶变换是用于负无穷到正无穷的。Sample边界上波的连续性较强时，波长不完整就不能计算对应的频率，使原本连续的波谱出现断点（奇点），也就是谱泄漏（spectral leakage），而用windowing算法就可以解决这一问题。<br>具体解释看这篇就可以了：<a href="http://blog.sina.com.cn/s/blog_6fb8aa0d0102v2kq.html" target="_blank" rel="external">加窗的原因和效果</a></p>
+<h1 id="Concepts"><a href="#Concepts" class="headerlink" title="Concepts"></a>Concepts</h1><h2 id="Quantization"><a href="#Quantization" class="headerlink" title="Quantization"></a>Quantization</h2><p>量化，近似到最近的整数的过程。<br>＊To analyze the effect of quantization, we model quantization as: starting with the original exact signal and adding a new noise signal consisting of just the rounding error, which is uniformly and randomly distributed at each sample between -0.5 and +0.5.</p>
+<h2 id="White-noise"><a href="#White-noise" class="headerlink" title="White noise"></a>White noise</h2><p>白色噪音是与主信号振幅相同的频率在0到Nyquist Frequency之间的随机信号，用于解决量化误差。</p>
+<h2 id="Dithering"><a href="#Dithering" class="headerlink" title="Dithering"></a>Dithering</h2><p>信号处理中一种降低量化误差的手段，也是noise shaping的一种方式,举例说把24bit的数据量化为16bit的，直接砍掉8bit是不行的，因为量化误差与原始信号相关性很强，会造成频谱上严重的躁声。<br>这时候，给最低bit位补充一个随机信号（white noise），可以化解这个量化误差，让量化误差的能量在频谱上远离信号频率或者平均分布到整个频率。（dithering增加signal能量，相当于提高了信噪比，用提高bits per sample的方式也是在减少noise，提高信噪比）</p>
+<h2 id="Aliasing"><a href="#Aliasing" class="headerlink" title="Aliasing"></a>Aliasing</h2><p>两种情况：</p>
+<ol>
+<li>相近的信号难以分辨，比如用不同的sample rate进行取样时，取样点太少而造成频率错误。</li>
+<li>当频率超过了Nyquist Frequency时，就会出现下图所示的情况。<br><img src="/image/aliasing.png" alt="aliasing"><br>构造波谱的过程是：基本频谱按照sampling rate向右移动。<br><img src="/image/pulseshift.png" alt="shift"><br>如果频率大于1/2 sampling rate，就会出现重叠。<br><img src="/image/overlap.png" alt="overlap"></li>
+</ol>
+<h2 id="Phase-Distortion"><a href="#Phase-Distortion" class="headerlink" title="Phase Distortion"></a>Phase Distortion</h2><p>相位错误导致pulse的方向错误，比如－0.1和0.1都被看作是0造成下降和上升难以分清。</p>
+<h2 id="Oversampling"><a href="#Oversampling" class="headerlink" title="Oversampling"></a>Oversampling</h2><p>用高于nyquist frequency的采样率进行采样。</p>
+<h2 id="Perfect-Sampling"><a href="#Perfect-Sampling" class="headerlink" title="Perfect Sampling"></a>Perfect Sampling</h2><p>理论上按照Nyquist Theorem就可以进行完美采样了。</p>
 
       
     </div>
@@ -448,7 +462,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">26</span>
+              <span class="site-state-item-count">29</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -514,7 +528,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Sampling"><span class="nav-number">1.</span> <span class="nav-text">Sampling</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Fourier-Transform"><span class="nav-number">2.</span> <span class="nav-text">Fourier Transform</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Sampling"><span class="nav-number">1.</span> <span class="nav-text">Sampling</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Fourier-Transform"><span class="nav-number">2.</span> <span class="nav-text">Fourier Transform</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Concepts"><span class="nav-number">3.</span> <span class="nav-text">Concepts</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quantization"><span class="nav-number">3.1.</span> <span class="nav-text">Quantization</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#White-noise"><span class="nav-number">3.2.</span> <span class="nav-text">White noise</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Dithering"><span class="nav-number">3.3.</span> <span class="nav-text">Dithering</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Aliasing"><span class="nav-number">3.4.</span> <span class="nav-text">Aliasing</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Phase-Distortion"><span class="nav-number">3.5.</span> <span class="nav-text">Phase Distortion</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Oversampling"><span class="nav-number">3.6.</span> <span class="nav-text">Oversampling</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Perfect-Sampling"><span class="nav-number">3.7.</span> <span class="nav-text">Perfect Sampling</span></a></li></ol></li></ol></div>
             
           </div>
         </section>
