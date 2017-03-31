@@ -4,7 +4,14 @@
   <url>
     <loc>http://limmm.com/2016/11/20/2016/2016-11-20-mrsorange/</loc>
     
-    <lastmod>2017-01-25T01:34:31.000Z</lastmod>
+    <lastmod>2017-03-31T15:03:48.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://limmm.com/2017/02/16/2017/2017-02-16-bootstrap/</loc>
+    
+    <lastmod>2017-02-16T19:29:55.000Z</lastmod>
     
   </url>
   
@@ -205,7 +212,7 @@
   </url>
   
   <url>
-    <loc>http://limmm.com/2016/08/16/2016/2016-08-16-KissingCouple/</loc>
+    <loc>http://limmm.com/drafts/2016-07-12-TwistedFramework.html</loc>
     
     <lastmod>2016-10-31T22:55:55.000Z</lastmod>
     
@@ -233,27 +240,6 @@
   </url>
   
   <url>
-    <loc>http://limmm.com/2016/06/28/2016/2016-06-29-Feminlism/</loc>
-    
-    <lastmod>2016-10-31T22:55:55.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://limmm.com/drafts/2016-05-25-xpath.html</loc>
-    
-    <lastmod>2016-10-31T22:55:55.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://limmm.com/categories/index.html</loc>
-    
-    <lastmod>2016-10-31T22:55:55.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://limmm.com/2016/06/02/2016/2016-06-02-spark-metrics/</loc>
     
     <lastmod>2016-10-31T22:55:55.000Z</lastmod>
@@ -261,14 +247,7 @@
   </url>
   
   <url>
-    <loc>http://limmm.com/tags/index.html</loc>
-    
-    <lastmod>2016-10-31T22:55:55.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://limmm.com/2016/08/30/2016/2016-08-30-calmDown/</loc>
+    <loc>http://limmm.com/2016/06/03/2016/2016-06-03-beginning/</loc>
     
     <lastmod>2016-10-31T22:55:55.000Z</lastmod>
     
@@ -289,14 +268,42 @@
   </url>
   
   <url>
-    <loc>http://limmm.com/2016/06/03/2016/2016-06-03-beginning/</loc>
+    <loc>http://limmm.com/tags/index.html</loc>
     
     <lastmod>2016-10-31T22:55:55.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://limmm.com/drafts/2016-07-12-TwistedFramework.html</loc>
+    <loc>http://limmm.com/categories/index.html</loc>
+    
+    <lastmod>2016-10-31T22:55:55.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://limmm.com/2016/08/16/2016/2016-08-16-KissingCouple/</loc>
+    
+    <lastmod>2016-10-31T22:55:55.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://limmm.com/2016/08/30/2016/2016-08-30-calmDown/</loc>
+    
+    <lastmod>2016-10-31T22:55:55.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://limmm.com/drafts/2016-05-25-xpath.html</loc>
+    
+    <lastmod>2016-10-31T22:55:55.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://limmm.com/2016/06/28/2016/2016-06-29-Feminlism/</loc>
     
     <lastmod>2016-10-31T22:55:55.000Z</lastmod>
     
