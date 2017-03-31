@@ -1548,7 +1548,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #206b12;
+  background: #63a746;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2077,7 +2077,7 @@ a.search-result {
   border-radius: 50%;
 }
 .category-all-page .category-all-title {
-  text-align: left;
+  text-align: center;
 }
 .category-all-page .category-all {
   margin-top: 20px;
