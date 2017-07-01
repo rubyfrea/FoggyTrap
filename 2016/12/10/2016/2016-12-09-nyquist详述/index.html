@@ -1,0 +1,711 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+<meta name="baidu-site-verification" content="o62nQQzTiW" />
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="技术,Computer Music," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+  <link rel="icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+
+<meta name="description" content="Nyquist是一门底层使用C++语言编写，基于Lisp，自带Lisp编译器，可以使用XLisp或者SAL两种语言格式进行编程来合成声音的声音合成系统。XLisp和SAL可以看作是一种语言，只是使用的标记符号不一样。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Nyquist详述">
+<meta property="og:url" content="http://limmm.com/2016/12/10/2016/2016-12-09-nyquist详述/index.html">
+<meta property="og:site_name" content="P U M E L A">
+<meta property="og:description" content="Nyquist是一门底层使用C++语言编写，基于Lisp，自带Lisp编译器，可以使用XLisp或者SAL两种语言格式进行编程来合成声音的声音合成系统。XLisp和SAL可以看作是一种语言，只是使用的标记符号不一样。">
+<meta property="og:image" content="http://limmm.com/image/nyquistbasicdemo.png">
+<meta property="og:image" content="http://limmm.com/image/scoresort.png">
+<meta property="og:image" content="http://limmm.com/image/am2.png">
+<meta property="og:image" content="http://limmm.com/image/am1.png">
+<meta property="og:image" content="http://limmm.com/image/fm1.png">
+<meta property="og:image" content="http://limmm.com/image/fm2.png">
+<meta property="og:image" content="http://limmm.com/image/fm3.png">
+<meta property="og:image" content="http://limmm.com/image/fm4.png">
+<meta property="og:image" content="http://limmm.com/image/fm5.png">
+<meta property="og:image" content="http://limmm.com/image/fm7.png">
+<meta property="og:image" content="http://limmm.com/image/fm6.png">
+<meta property="og:image" content="http://limmm.com/image/feedbackdelay.png">
+<meta property="og:image" content="http://limmm.com/image/nested.png">
+<meta property="og:updated_time" content="2016-12-13T04:37:05.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Nyquist详述">
+<meta name="twitter:description" content="Nyquist是一门底层使用C++语言编写，基于Lisp，自带Lisp编译器，可以使用XLisp或者SAL两种语言格式进行编程来合成声音的声音合成系统。XLisp和SAL可以看作是一种语言，只是使用的标记符号不一样。">
+<meta name="twitter:image" content="http://limmm.com/image/nyquistbasicdemo.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 6309441470214440000,
+      author: '草字头'
+    }
+  };
+</script>
+
+  <title> Nyquist详述 | P U M E L A </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-81061808-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta custom-logo">
+  
+    <div class="site-meta-headline">
+      <a>
+        <img class="custom-logo-image" src="/image/by3.jpg"
+             alt="P U M E L A"/>
+      </a>
+    </div>
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">P U M E L A</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">SuperEn Rui</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Nyquist详述
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-12-10T07:10:00+09:00" content="2016-12-10">
+              2016-12-10
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/技术/" itemprop="url" rel="index">
+                    <span itemprop="name">技术</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/12/10/2016/2016-12-09-nyquist详述/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/10/2016/2016-12-09-nyquist详述/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <script src="/assets/js/APlayer.min.js"> </script><p>Nyquist是一门底层使用C++语言编写，基于Lisp，自带Lisp编译器，可以使用XLisp或者SAL两种语言格式进行编程来合成声音的声音合成系统。XLisp和SAL可以看作是一种语言，只是使用的标记符号不一样。<br><a id="more"></a><br>Nyquist is a sound synthesis and composition language offering a Lisp syntax as well as an imperative language syntax and a powerful integrated development environment.. Nyquist is an elegant and powerful system based on functional programming.</p>
+<p><img src="/image/nyquistbasicdemo.png" alt="一个简单的声音合成代码示例"></p>
+<h3 id="Building-Waveforms"><a href="#Building-Waveforms" class="headerlink" title="Building Waveforms"></a>Building Waveforms</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">define variable *table* =</div><div class="line">    sim(0.5 * build-harmonic(1.0, 2048),</div><div class="line">        0.25 * build-harmonic(2.0, 2048),</div><div class="line">        0.125 * build-harmonic(3.0, 2048),</div><div class="line">        0.062 * build-harmonic(4.0, 2048))</div><div class="line">set *table* = list(*table*, hz-to-step(1), #t)</div></pre></td></tr></table></figure>
+<p><code>build-harmonic(n periods of sinusoid, table-size)</code><br>table-size指取样时的table大小。</p>
+<h3 id="Envelopes"><a href="#Envelopes" class="headerlink" title="Envelopes"></a>Envelopes</h3><p><strong>Piece-wise Linear Envelope</strong><br><code>pwl(t1, v1, t2, v2,..., tn)</code><br>开始和结局振幅都为0。(可以是振幅，也可以是其他的属性)<br><code>pwlv(v0, t1, v1, t2, v2, ..., tn, vn)</code><br>开始和结局都不为0（也可以为0，多个可选项能进行设置）<br><code>pwlr(i1, v1, i2, v2, ..., in)</code><br>不以时间点而以间隔时间为key</p>
+<p><strong>Piece-wise Exponential Envelope:</strong><br><code>pwe(t1, v1, t2, v2, ..., tn)</code></p>
+<h3 id="Score"><a href="#Score" class="headerlink" title="Score"></a>Score</h3><p><img src="/image/scoresort.png" alt="scoreplay"><br>          取自老师ppt<br>score-gen(score-len: 10, ioi: 1, dur: 1, name: quote(scoreA))</p>
+<h3 id="FM-amp-AM"><a href="#FM-amp-AM" class="headerlink" title="FM &amp; AM"></a>FM &amp; AM</h3><p>lfo(x) 频率为x，振幅为1的正弦波。<br>exec s-plot(2 ＋ lfo(6))<br><img src="/image/am2.png" alt="am2"><br>exec s-plot(pwlv(0.5, 1, 1) <em> (2 + lfo(20)))<br><img src="/image/am1.png" alt="am1"><br>exec s-plot(hzosc(40) </em> lfo(0.5))<br><img src="/image/fm1.png" alt="fm1"><br>exec s-plot(lfo(0.5) + hzosc(40))<br><img src="/image/fm2.png" alt="fm2"><br>exec s-plot(hzosc(lfo(0.5) <em> 40))<br>几乎等同于<br>exec s-plot(hzosc(pwl(0.5, 40, 1)))<br>几乎等同于<br>exec s-plot(fmosc(hz-to-step(4), lfo(0.5) </em> 20, <em>table</em>))<br><img src="/image/fm3.png" alt="fm3"></p>
+<p>Nyquist自带的fm方法<br>exec s-plot(fmosc(hz-to-step(40), lfo(0.5) <em> 8, </em>table<em>))<br>（question：不明白为什么图像和hzosc(40) </em> lfo(0.5)不一样）<br><img src="/image/fm4.png" alt="fm4"><br>exec s-plot(fmosc(hz-to-step(2), lfo(0.5) <em> 8, </em>table<em>)<br><img src="/image/fm5.png" alt="fm5"><br>exec s-plot(fmosc(hz-to-step(4), lfo(0.5) </em> 20, <em>table</em>))<br><img src="/image/fm7.png" alt="fm7"><br>exec s-plot(fmosc(hz-to-step(2), lfo(0.5) <em> 8, </em>table<em>) </em> pwl(0.6, 1, 1))<br><img src="/image/fm6.png" alt="fm6"><br>hzosc(pwl(0.5, 600, 1))</p>
+<p><strong>Produce a harmonic sound with about 10 harmonics and a fundamental of 100Hz.</strong><br>We can choose C = M = 100. Since the number of harmonics is 10 we need<br>9 sidebands, and so I+1 = 9 or I = 8. I = M/D or D = IM, so D = 8∗100 = 800.<br>Finally, we can write fmosc(hz-to-step(100), 800 * hzosc(100)).</p>
+<h3 id="Sound-Effects"><a href="#Sound-Effects" class="headerlink" title="Sound Effects"></a>Sound Effects</h3><p>play feedback-delay(osc(60), 0.25, 0.8)<br>play feedback-delay(osc(60), 0.15, osc(45))<br><img src="/image/feedbackdelay.png" alt="feedbackdelay"></p>
+<h3 id="Pattern"><a href="#Pattern" class="headerlink" title="Pattern"></a>Pattern</h3><p>make-cycle({a b c}) abcabc<br>make-panlindrome({a b c}, elide: first) abcbaabcba<br>make-heap({a b c}, max: 1) abccabcbaacb(every element randomly chosen)<br>make-accumulation({a b c}) aababcaababc<br>make-copier(make-cycle({a b c}, for: 1), repeat: 2) aabbcc<br>make-accumulate(make-cycle({1 3 -4})) 1 4 0<br>make-line({a b c}) abcccccc<br>nested Pattern<br><img src="/image/nested.png" alt="nested"></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/技术/" rel="tag">#技术</a>
+          
+            <a href="/tags/Computer-Music/" rel="tag">#Computer Music</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/12/10/2016/2016-12-09-computer-music-learning-guide/" rel="next" title="Computer Music Learning 1">
+                <i class="fa fa-chevron-left"></i> Computer Music Learning 1
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/12/10/2016/2016-12-10-fayewang/" rel="prev" title="王菲特辑">
+                王菲特辑 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2016/12/10/2016/2016-12-09-nyquist详述/"
+     data-title="Nyquist详述"
+     data-content=""
+     data-url="http://limmm.com/2016/12/10/2016/2016-12-09-nyquist详述/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/12/10/2016/2016-12-09-nyquist详述/"
+           data-title="Nyquist详述" data-url="http://limmm.com/2016/12/10/2016/2016-12-09-nyquist详述/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Rui Tian" href="http://limmm.com"/>
+          <p class="site-author-name" itemprop="name">Rui Tian</p>
+          <p class="site-description motion-element" itemprop="description">Big Head Developer</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">31</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">27</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/rubyfrea" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://weibo.com/" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  微博
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Building-Waveforms"><span class="nav-number">1.</span> <span class="nav-text">Building Waveforms</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Envelopes"><span class="nav-number">2.</span> <span class="nav-text">Envelopes</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Score"><span class="nav-number">3.</span> <span class="nav-text">Score</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#FM-amp-AM"><span class="nav-number">4.</span> <span class="nav-text">FM & AM</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Sound-Effects"><span class="nav-number">5.</span> <span class="nav-text">Sound Effects</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Pattern"><span class="nav-number">6.</span> <span class="nav-text">Pattern</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+         <div class="copyright" >
+  
+  &copy;  2016/05/25 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Rui Tian</span>
+</div>
+<!--
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+-->
+</div>
+ 
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"rubyfrea"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+      
+      <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+      <script src="/js/src/hook-duoshuo.js"></script>
+    
+  
+
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+<script type="text/javascript" async src="//push.zhanzhang.baidu.com/push.js">
+</script>
+
+
+</body>
+</html>
