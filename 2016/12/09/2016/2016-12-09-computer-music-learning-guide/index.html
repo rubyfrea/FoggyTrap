@@ -1,0 +1,688 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+<meta name="baidu-site-verification" content="o62nQQzTiW" />
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="computer Music,技术," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+  <link rel="icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+
+<meta name="description" content="本篇介绍的是计算机音乐的一些基本概念。
+Unit Generator | Harmonics | Wave Table">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Computer Music Learning 1">
+<meta property="og:url" content="http://limmm.com/2016/12/09/2016/2016-12-09-computer-music-learning-guide/index.html">
+<meta property="og:site_name" content="P U M E L A">
+<meta property="og:description" content="本篇介绍的是计算机音乐的一些基本概念。
+Unit Generator | Harmonics | Wave Table">
+<meta property="og:image" content="http://limmm.com/image/unit.png">
+<meta property="og:image" content="http://limmm.com/image/generatesound.png">
+<meta property="og:image" content="http://limmm.com/image/adsr.png">
+<meta property="og:image" content="http://limmm.com/image/wavetable.png">
+<meta property="og:updated_time" content="2016-12-12T22:30:28.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Computer Music Learning 1">
+<meta name="twitter:description" content="本篇介绍的是计算机音乐的一些基本概念。
+Unit Generator | Harmonics | Wave Table">
+<meta name="twitter:image" content="http://limmm.com/image/unit.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 6309441470214440000,
+      author: '草字头'
+    }
+  };
+</script>
+
+  <title> Computer Music Learning 1 | P U M E L A </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-81061808-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta custom-logo">
+  
+    <div class="site-meta-headline">
+      <a>
+        <img class="custom-logo-image" src="/image/by3.jpg"
+             alt="P U M E L A"/>
+      </a>
+    </div>
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">P U M E L A</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">SuperEn Rui</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Computer Music Learning 1
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-12-09T16:18:00-05:00" content="2016-12-09">
+              2016-12-09
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/12/09/2016/2016-12-09-computer-music-learning-guide/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/09/2016/2016-12-09-computer-music-learning-guide/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <script src="/assets/js/APlayer.min.js"> </script><p>本篇介绍的是计算机音乐的一些基本概念。</p>
+<p>Unit Generator | Harmonics | Wave Table<br><a id="more"></a><br>CMU的这门课程15322/15622Introduction to Computer Music<br><a href="">信号处理基础</a><br><a href="">音乐基础</a><br><a href="">Nyquist基础</a><br><a href="">音乐分析</a><br><a href="">计算机音乐的制作技巧</a></p>
+<p>结构： nyquist底层架构及常用方法</p>
+<h1 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h1><p>• What’s a Unit Generator?<br>• What are some unit generators in Nyquist?<br>• Unit Generator Implementation<br>• Functional Programming<br>• Wavetable Synthesis<br>• Scores in Nyquist<br>• Score Manipulation</p>
+<p>Tree:</p>
+<h1 id="Concepts"><a href="#Concepts" class="headerlink" title="Concepts"></a>Concepts</h1><h2 id="Unit-Generator"><a href="#Unit-Generator" class="headerlink" title="Unit Generator"></a>Unit Generator</h2><p>音响单元是音响系统的基础，50年代由<strong>Max Mathews</strong>提出，把组成音响系统的各个基础模块称为“Unit Generator”。<br><img src="/image/unit.png" alt="unit generator"></p>
+<p><strong>音响单元包括Oscillator、Multiplier、Envelope三类。</strong><br><strong>Oscillator决定频率和振幅（音调和响度）。</strong><br><strong>Envelope决定振幅变化</strong>。<br><strong>Multiplier将Oscillator和Envelope结合起来并输出。</strong><br>oscillate的字典翻译是：vary in magnitude or position in a regular manner around a central point。声音也是波，当然就会有频率和振幅。<br><img src="/image/generatesound.png" alt="generate sound"></p>
+<p>左边是Oscillator，右边是Envelope，下面的x是Multiplier。<br>上图中的ADSR代表着Attack Decay Sustain Release，对应的阶段就是在振幅的维度冲上去、回下来、保持住、结束，如下图所示。<br><img src="/image/adsr.png" alt="ADSR"></p>
+<p>这三者的关系用简单的SAL例子来讲就是：<br><code>osc(c4) * pwl(0.03, 1, 0.8, 1, 1)</code><br>调用osc()这个oscillater方法产生一个音阶为c4的音，并且让它按照pwl()这个envelope方法指定的（时间，振幅）进行变化。<br>在大部分软件中，Unit Generators是以对象的形式存在的，比如Max。而在Nyquist中用户不能接触到这些对象，只能通过调用方法得到这些UG产生的SOUNDS对象，UG对象则被包含在SOUNDS对象中（可以说是Nyquist的一个缺点）。<br>Nyquist在执行“exec”、“play”等命令的时候才会进行计算，这样做可以节省空间，所谓的“loose validation”。因为全局变量会被保存在Memory中，在写Nyquist程序的时候尽量少用Set变量的方式来设置产生Sound对象的声音变量（在谱曲中常常会有重复的段落需要使用），而是使用define function的方式。</p>
+<h2 id="Harmonics"><a href="#Harmonics" class="headerlink" title="Harmonics"></a>Harmonics</h2><p>“The individual frequency components of the spectrum can be referred to as harmonics or partials. Harmonic frequencies are simple integer multiples of the fundamental frequency.” 和音就是频率与基础音频率呈整数倍数关系的音。</p>
+<h2 id="Wavetable"><a href="#Wavetable" class="headerlink" title="Wavetable"></a>Wavetable</h2><p>一个用来使声音更为和谐的表格，在相应的位置插入harmonics来动态改变音色。<br><img src="/image/wavetable.png" alt="waveform"></p>
+<p>这张＊table＊的意思就是插入频率为1的四个音，振幅分别是0.5，0.25，0.125，0.062。这样子原始的音就不会是一个单纯的音符了。<br><code>build-harmonic(n periods of sinusoid, table-size)</code><br>table-size指取样时的table大小。这个之后会详细讲。</p>
+<p>综合以上知识，最基础的<strong>基于波表的声音合成</strong>便是：建一张wavetable，在使用Oscillator生成声音的时候加入这张表（比如osc(c4, dur, <em>table</em>)，与一个Envelope相乘。优点是非常直接，缺点是使用的harmonics是固定的，不能按照音阶和时间进行改变，不好听。</p>
+<h2 id="Convolution"><a href="#Convolution" class="headerlink" title="Convolution"></a>Convolution</h2><p>时域里相乘等于频域里的convolution。<br>一个信号被一个正弦波调制，波谱上就会得到一左一右两个边频。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/computer-Music/" rel="tag">#computer Music</a>
+          
+            <a href="/tags/技术/" rel="tag">#技术</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/11/29/2016/2016-11-29-cmu-notes/" rel="next" title="CMU Notes">
+                <i class="fa fa-chevron-left"></i> CMU Notes
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/12/09/2016/2016-12-09-nyquist详述/" rel="prev" title="Nyquist详述">
+                Nyquist详述 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2016/12/09/2016/2016-12-09-computer-music-learning-guide/"
+     data-title="Computer Music Learning 1"
+     data-content=""
+     data-url="http://limmm.com/2016/12/09/2016/2016-12-09-computer-music-learning-guide/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/12/09/2016/2016-12-09-computer-music-learning-guide/"
+           data-title="Computer Music Learning 1" data-url="http://limmm.com/2016/12/09/2016/2016-12-09-computer-music-learning-guide/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Rui Tian" href="http://limmm.com"/>
+          <p class="site-author-name" itemprop="name">Rui Tian</p>
+          <p class="site-description motion-element" itemprop="description">Big Head Developer</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">32</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">27</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/rubyfrea" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://weibo.com/" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  微博
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Abstract"><span class="nav-number">1.</span> <span class="nav-text">Abstract</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Concepts"><span class="nav-number">2.</span> <span class="nav-text">Concepts</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Unit-Generator"><span class="nav-number">2.1.</span> <span class="nav-text">Unit Generator</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Harmonics"><span class="nav-number">2.2.</span> <span class="nav-text">Harmonics</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Wavetable"><span class="nav-number">2.3.</span> <span class="nav-text">Wavetable</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Convolution"><span class="nav-number">2.4.</span> <span class="nav-text">Convolution</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+         <div class="copyright" >
+  
+  &copy;  2016/05/25 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Rui Tian</span>
+</div>
+<!--
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+-->
+</div>
+ 
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"rubyfrea"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+      
+      <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+      <script src="/js/src/hook-duoshuo.js"></script>
+    
+  
+
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+<script type="text/javascript" async src="//push.zhanzhang.baidu.com/push.js">
+</script>
+
+
+</body>
+</html>
