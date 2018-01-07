@@ -2,9 +2,9 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://limmm.com/2017/07/08/2017/2017-07-08-pumeladiary1/</loc>
+    <loc>http://limmm.com/2017/10/18/2017/2017-10-18-suoxiang/</loc>
     
-    <lastmod>2017-07-08T11:41:21.000Z</lastmod>
+    <lastmod>2017-10-19T03:10:40.000Z</lastmod>
     
   </url>
   
@@ -23,7 +23,7 @@
   </url>
   
   <url>
-    <loc>http://limmm.com/2017/06/30/2017/2017-07-01-tomynewlife/</loc>
+    <loc>http://limmm.com/2017/07/01/2017/2017-07-01-tomynewlife/</loc>
     
     <lastmod>2017-07-01T02:35:06.000Z</lastmod>
     
@@ -240,14 +240,21 @@
   </url>
   
   <url>
-    <loc>http://limmm.com/2016/06/03/2016/2016-06-03-beginning/</loc>
+    <loc>http://limmm.com/2016/06/14/2016/2016-06-14-boringLife/</loc>
     
     <lastmod>2016-10-31T22:55:55.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://limmm.com/drafts/2016-06-03-MySQLdatabackup.html</loc>
+    <loc>http://limmm.com/2016/05/24/2016/2016-06-08-JAVAstorage/</loc>
+    
+    <lastmod>2016-10-31T22:55:55.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://limmm.com/2016/06/03/2016/2016-06-03-beginning/</loc>
     
     <lastmod>2016-10-31T22:55:55.000Z</lastmod>
     
@@ -268,13 +275,6 @@
   </url>
   
   <url>
-    <loc>http://limmm.com/2016/05/24/2016/2016-06-08-JAVAstorage/</loc>
-    
-    <lastmod>2016-10-31T22:55:55.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://limmm.com/2016/06/02/2016/2016-06-02-spark-metrics/</loc>
     
     <lastmod>2016-10-31T22:55:55.000Z</lastmod>
@@ -282,7 +282,7 @@
   </url>
   
   <url>
-    <loc>http://limmm.com/drafts/2016-05-25-xpath.html</loc>
+    <loc>http://limmm.com/drafts/2016-06-02-parallel-replication.html</loc>
     
     <lastmod>2016-10-31T22:55:55.000Z</lastmod>
     
@@ -296,7 +296,7 @@
   </url>
   
   <url>
-    <loc>http://limmm.com/categories/index.html</loc>
+    <loc>http://limmm.com/drafts/2016-06-03-MySQLdatabackup.html</loc>
     
     <lastmod>2016-10-31T22:55:55.000Z</lastmod>
     
@@ -317,7 +317,14 @@
   </url>
   
   <url>
-    <loc>http://limmm.com/drafts/2016-06-02-parallel-replication.html</loc>
+    <loc>http://limmm.com/drafts/2016-05-25-xpath.html</loc>
+    
+    <lastmod>2016-10-31T22:55:55.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://limmm.com/categories/index.html</loc>
     
     <lastmod>2016-10-31T22:55:55.000Z</lastmod>
     
@@ -325,13 +332,6 @@
   
   <url>
     <loc>http://limmm.com/tags/index.html</loc>
-    
-    <lastmod>2016-10-31T22:55:55.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://limmm.com/2016/06/14/2016/2016-06-14-boringLife/</loc>
     
     <lastmod>2016-10-31T22:55:55.000Z</lastmod>
     
