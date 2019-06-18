@@ -254,13 +254,6 @@
   </url>
   
   <url>
-    <loc>http://rubyfrea.github.io/drafts/2016-06-03-MySQLindexPrincipalsandApplication.html</loc>
-    
-    <lastmod>2016-10-31T22:55:55.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://rubyfrea.github.io/2016/06/02/2016/2016-06-02-spark-metrics/</loc>
     
     <lastmod>2016-10-31T22:55:55.000Z</lastmod>
@@ -268,7 +261,14 @@
   </url>
   
   <url>
-    <loc>http://rubyfrea.github.io/2016/06/28/2016/2016-06-29-Feminlism/</loc>
+    <loc>http://rubyfrea.github.io/drafts/2016-06-03-MySQLindexPrincipalsandApplication.html</loc>
+    
+    <lastmod>2016-10-31T22:55:55.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://rubyfrea.github.io/drafts/2016-06-03-MySQLdatabackup.html</loc>
     
     <lastmod>2016-10-31T22:55:55.000Z</lastmod>
     
@@ -289,7 +289,35 @@
   </url>
   
   <url>
+    <loc>http://rubyfrea.github.io/categories/index.html</loc>
+    
+    <lastmod>2016-10-31T22:55:55.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://rubyfrea.github.io/2016/06/03/2016/2016-06-03-beginning/</loc>
+    
+    <lastmod>2016-10-31T22:55:55.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://rubyfrea.github.io/2016/06/14/2016/2016-06-14-boringLife/</loc>
+    
+    <lastmod>2016-10-31T22:55:55.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://rubyfrea.github.io/drafts/2016-05-25-xpath.html</loc>
+    
+    <lastmod>2016-10-31T22:55:55.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://rubyfrea.github.io/2016/06/28/2016/2016-06-29-Feminlism/</loc>
     
     <lastmod>2016-10-31T22:55:55.000Z</lastmod>
     
@@ -317,35 +345,7 @@
   </url>
   
   <url>
-    <loc>http://rubyfrea.github.io/2016/06/03/2016/2016-06-03-beginning/</loc>
-    
-    <lastmod>2016-10-31T22:55:55.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://rubyfrea.github.io/2016/06/14/2016/2016-06-14-boringLife/</loc>
-    
-    <lastmod>2016-10-31T22:55:55.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://rubyfrea.github.io/categories/index.html</loc>
-    
-    <lastmod>2016-10-31T22:55:55.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://rubyfrea.github.io/tags/index.html</loc>
-    
-    <lastmod>2016-10-31T22:55:55.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://rubyfrea.github.io/drafts/2016-06-03-MySQLdatabackup.html</loc>
     
     <lastmod>2016-10-31T22:55:55.000Z</lastmod>
     
