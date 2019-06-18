@@ -6,16 +6,16 @@
 
 
 <html class="theme-next muse use-motion">
-<head>
-<meta name="baidu-site-verification" content="o62nQQzTiW" />
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<head><meta name="generator" content="Hexo 3.9.0">
+<meta name="baidu-site-verification" content="o62nQQzTiW">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -30,7 +30,7 @@
 
   
   
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
 
 
 
@@ -64,22 +64,22 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="Rui, Tech, Balance" />
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css">
 
 
+  <meta name="keywords" content="Rui, Tech, Balance">
 
 
 
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
-  <link rel="icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico?v=5.0.1">
 
 
 
@@ -90,22 +90,23 @@
 <meta name="description" content="本篇的信号处理流程主要讲预处理和取样使用的技术手段和出现的各种问题以及解决方法。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="信号处理流程">
-<meta property="og:url" content="http://limmm.com/2016/12/12/2016/2016-12-12-samplingproblems/index.html">
+<meta property="og:url" content="http://rubyfrea.github.io/2016/12/12/2016/2016-12-12-samplingproblems/index.html">
 <meta property="og:site_name" content="P U M E L A">
 <meta property="og:description" content="本篇的信号处理流程主要讲预处理和取样使用的技术手段和出现的各种问题以及解决方法。">
-<meta property="og:image" content="http://limmm.com/image/adcdac.png">
-<meta property="og:image" content="http://limmm.com/image/ft.png">
-<meta property="og:image" content="http://limmm.com/image/ft.png">
-<meta property="og:image" content="http://limmm.com/image/sft.png">
-<meta property="og:image" content="http://limmm.com/image/fft.png">
-<meta property="og:image" content="http://limmm.com/image/aliasing.png">
-<meta property="og:image" content="http://limmm.com/image/pulseshift.png">
-<meta property="og:image" content="http://limmm.com/image/overlap.png">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://rubyfrea.github.io/image/adcdac.png">
+<meta property="og:image" content="http://rubyfrea.github.io/image/ft.png">
+<meta property="og:image" content="http://rubyfrea.github.io/image/ft.png">
+<meta property="og:image" content="http://rubyfrea.github.io/image/sft.png">
+<meta property="og:image" content="http://rubyfrea.github.io/image/fft.png">
+<meta property="og:image" content="http://rubyfrea.github.io/image/aliasing.png">
+<meta property="og:image" content="http://rubyfrea.github.io/image/pulseshift.png">
+<meta property="og:image" content="http://rubyfrea.github.io/image/overlap.png">
 <meta property="og:updated_time" content="2016-12-12T22:02:15.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="信号处理流程">
 <meta name="twitter:description" content="本篇的信号处理流程主要讲预处理和取样使用的技术手段和出现的各种问题以及解决方法。">
-<meta name="twitter:image" content="http://limmm.com/image/adcdac.png">
+<meta name="twitter:image" content="http://rubyfrea.github.io/image/adcdac.png">
 
 
 
@@ -161,14 +162,13 @@
   
     <div class="site-meta-headline">
       <a>
-        <img class="custom-logo-image" src="/image/by3.jpg"
-             alt="P U M E L A"/>
+        <img class="custom-logo-image" src="/image/by3.jpg" alt="P U M E L A">
       </a>
     </div>
   
 
   <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
+    <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
       <span class="site-title">P U M E L A</span>
       <span class="logo-line-after"><i></i></span>
@@ -195,7 +195,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
             
             首页
           </a>
@@ -205,7 +205,7 @@
         <li class="menu-item menu-item-categories">
           <a href="/categories" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
             
             分类
           </a>
@@ -215,7 +215,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
             
             归档
           </a>
@@ -225,7 +225,7 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
             
             标签
           </a>
@@ -322,10 +322,10 @@
 <li>analog数据量太大。</li>
 <li>想用的filter没法在analog数据上应用。<br>首先要对一个信号进行采样，涉及到一秒采多少次（sampling rate），一次用多大的size（bits per sample），记录的时候要不要取近似值（rounding），取近似值会不会产生重大误差（quantization errors），影响信号之后的重建（reconstruction）。<br>在采样的过程中，波谱是不断复制并且以sample rate为单位移动的。</li>
 </ol>
-<p><strong>为什么要quantization呢？</strong><br>将原本的数据转化成可计量的占用空间更小的数据。<br><strong>如何减少quantization errors呢？</strong><br>用oversampling和dithering。<br><strong>为什么要dithering呢？</strong><br>因为量化误差和信号本身相关性很强，在量化前先使用dithering可以减少这个相关性，量化的时候误差就会少一些。－0.4（original) + -0.4(whitenoise) -&gt; -0.8 -&gt; -1(quantized)<br><strong>Does sampling every details of a signal really exist?</strong><br>不。因为有记录时的失误和噪音。<br>记录时，可能会使用Rounding的方法来平滑曲线，可能会把－0.1和0.1都记作0，这就造成了quantization errors。可以用添加white noise的方法来减轻这个问题。white noise将整个信号各个位置的intensity至少增大了一倍，可能－0.1和0.1依然没法解决，但－0.3就会变成－0.6，就会被近似到－1。因此，quantization error在大部分情况下只能减轻而不能避免。<br>而信噪比是由bits per sample决定的。公式为<code>SNR = 6.02M + 1.76</code>：M是number of bits， 6.02是基础数。一般来说，SNR大约是6dB／bit。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">10dB = 10</div><div class="line">20dB = 100</div><div class="line">6dB = 2</div></pre></td></tr></table></figure></p>
+<p><strong>为什么要quantization呢？</strong><br>将原本的数据转化成可计量的占用空间更小的数据。<br><strong>如何减少quantization errors呢？</strong><br>用oversampling和dithering。<br><strong>为什么要dithering呢？</strong><br>因为量化误差和信号本身相关性很强，在量化前先使用dithering可以减少这个相关性，量化的时候误差就会少一些。－0.4（original) + -0.4(whitenoise) -&gt; -0.8 -&gt; -1(quantized)<br><strong>Does sampling every details of a signal really exist?</strong><br>不。因为有记录时的失误和噪音。<br>记录时，可能会使用Rounding的方法来平滑曲线，可能会把－0.1和0.1都记作0，这就造成了quantization errors。可以用添加white noise的方法来减轻这个问题。white noise将整个信号各个位置的intensity至少增大了一倍，可能－0.1和0.1依然没法解决，但－0.3就会变成－0.6，就会被近似到－1。因此，quantization error在大部分情况下只能减轻而不能避免。<br>而信噪比是由bits per sample决定的。公式为<code>SNR = 6.02M + 1.76</code>：M是number of bits， 6.02是基础数。一般来说，SNR大约是6dB／bit。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">10dB = 10</span><br><span class="line">20dB = 100</span><br><span class="line">6dB = 2</span><br></pre></td></tr></table></figure></p>
 <p>bits per sample提升了，就说明取样数增多了，取样结果就会更加精确，主信号就会更加清晰。<br><strong>Can discrete samples really capture a continuous signal?</strong><br>这个问题是在问用sampling的方法真的可以捕捉完整一个信号吗。答案是discrete samples can capture a band-limited signal without loss。其实这个问题和上面第一个问题是一个意思，sampling会出现计量误差和噪音误差。<br>然而，如果知道了频率范围，就可以针对这个范围加入white noise，就不会记丢频率（no lost frequencies）。<br>如果使用perfect sampling来采样，也就不会有噪音误差了（不需要进行rounding）。</p>
-<h1 id="Fourier-Transform"><a href="#Fourier-Transform" class="headerlink" title="Fourier Transform"></a>Fourier Transform</h1><p>采样就是用离散的数据来定义一个连续的信号。得到三种图，波谱图（spectrum），相位图，和振幅－时间图，对应的就是频域，相位域，时域。时域中的信号太过复杂，或重复或变化，难以找到分析的下手点。一个重要的基本理论：任何一个信号都可以表达为一群正弦波的叠加。因而频域中，信号转变成不同正弦波对应频率和振幅的组合，更易于分析。<br>（下面的部分，我之后会拓宽讲）<br>在从时域到频域的转换中，我们需要用到傅立叶变换。具体内容见<a href="http://limmm.com/2016/12/11/2016/2016-12-11-samplingtheory/">傅立叶变换</a>。<br>Formal Fourier Transform:<br><img src="/image/ft.png" alt=""><br><img src="/image/ft.png" alt="ft"><br>由此可得Short-term Fourier Transform<br><img src="/image/sft.png" alt="sft"><br>我们分析的是样本，而不是连续不断的时间。Discrete Fourier Transform<br>待补充<br>把积分变成求和，得到Fast Fourier Transform <strong>O(nlogn)</strong><br><img src="/image/fft.png" alt="fft"></p>
-<p>因为FFT是对[a,b]范围的sample进行傅立叶变换，但傅立叶变换是用于负无穷到正无穷的。Sample边界上波的连续性较强时，波长不完整就不能计算对应的频率，使原本连续的波谱出现断点（奇点），也就是谱泄漏（spectral leakage），而用windowing算法就可以解决这一问题。<br>具体解释看这篇就可以了：<a href="http://blog.sina.com.cn/s/blog_6fb8aa0d0102v2kq.html" target="_blank" rel="external">加窗的原因和效果</a></p>
+<h1 id="Fourier-Transform"><a href="#Fourier-Transform" class="headerlink" title="Fourier Transform"></a>Fourier Transform</h1><p>采样就是用离散的数据来定义一个连续的信号。得到三种图，波谱图（spectrum），相位图，和振幅－时间图，对应的就是频域，相位域，时域。时域中的信号太过复杂，或重复或变化，难以找到分析的下手点。一个重要的基本理论：任何一个信号都可以表达为一群正弦波的叠加。因而频域中，信号转变成不同正弦波对应频率和振幅的组合，更易于分析。<br>（下面的部分，我之后会拓宽讲）<br>在从时域到频域的转换中，我们需要用到傅立叶变换。具体内容见<a href="http://limmm.com/2016/12/11/2016/2016-12-11-samplingtheory/" target="_blank" rel="noopener">傅立叶变换</a>。<br>Formal Fourier Transform:<br><img src="/image/ft.png" alt><br><img src="/image/ft.png" alt="ft"><br>由此可得Short-term Fourier Transform<br><img src="/image/sft.png" alt="sft"><br>我们分析的是样本，而不是连续不断的时间。Discrete Fourier Transform<br>待补充<br>把积分变成求和，得到Fast Fourier Transform <strong>O(nlogn)</strong><br><img src="/image/fft.png" alt="fft"></p>
+<p>因为FFT是对[a,b]范围的sample进行傅立叶变换，但傅立叶变换是用于负无穷到正无穷的。Sample边界上波的连续性较强时，波长不完整就不能计算对应的频率，使原本连续的波谱出现断点（奇点），也就是谱泄漏（spectral leakage），而用windowing算法就可以解决这一问题。<br>具体解释看这篇就可以了：<a href="http://blog.sina.com.cn/s/blog_6fb8aa0d0102v2kq.html" target="_blank" rel="noopener">加窗的原因和效果</a></p>
 <h1 id="Concepts"><a href="#Concepts" class="headerlink" title="Concepts"></a>Concepts</h1><h2 id="Quantization"><a href="#Quantization" class="headerlink" title="Quantization"></a>Quantization</h2><p>量化，近似到最近的整数的过程。<br>＊To analyze the effect of quantization, we model quantization as: starting with the original exact signal and adding a new noise signal consisting of just the rounding error, which is uniformly and randomly distributed at each sample between -0.5 and +0.5.</p>
 <h2 id="White-noise"><a href="#White-noise" class="headerlink" title="White noise"></a>White noise</h2><p>白色噪音是与主信号振幅相同的频率在0到Nyquist Frequency之间的随机信号，用于解决量化误差。</p>
 <h2 id="Dithering"><a href="#Dithering" class="headerlink" title="Dithering"></a>Dithering</h2><p>信号处理中一种降低量化误差的手段，也是noise shaping的一种方式,举例说把24bit的数据量化为16bit的，直接砍掉8bit是不行的，因为量化误差与原始信号相关性很强，会造成频谱上严重的躁声。<br>这时候，给最低bit位补充一个随机信号（white noise），可以化解这个量化误差，让量化误差的能量在频谱上远离信号频率或者平均分布到整个频率。（dithering增加signal能量，相当于提高了信噪比，用提高bits per sample的方式也是在减少noise，提高信噪比）</p>
@@ -386,12 +386,9 @@
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2016/12/12/2016/2016-12-12-samplingproblems/"
-     data-title="信号处理流程"
-     data-content=""
-     data-url="http://limmm.com/2016/12/12/2016/2016-12-12-samplingproblems/">
+        <div class="ds-share flat" data-thread-key="2016/12/12/2016/2016-12-12-samplingproblems/" data-title="信号处理流程" data-content data-url="http://rubyfrea.github.io/2016/12/12/2016/2016-12-12-samplingproblems/">
   <div class="ds-share-inline">
-    <ul  class="ds-share-icons-16">
+    <ul class="ds-share-icons-16">
 
       <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
       <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
@@ -416,8 +413,7 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/12/12/2016/2016-12-12-samplingproblems/"
-           data-title="信号处理流程" data-url="http://limmm.com/2016/12/12/2016/2016-12-12-samplingproblems/">
+      <div class="ds-thread" data-thread-key="2016/12/12/2016/2016-12-12-samplingproblems/" data-title="信号处理流程" data-url="http://rubyfrea.github.io/2016/12/12/2016/2016-12-12-samplingproblems/">
       </div>
     
   </div>
@@ -442,7 +438,7 @@
 
       
         <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
             文章目录
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
@@ -453,16 +449,14 @@
 
       <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="/images/avatar.gif"
-               alt="Rui Tian" href="http://limmm.com"/>
+          <img class="site-author-image" itemprop="image" src="/images/avatar.gif" alt="Rui Tian" href="http://limmm.com">
           <p class="site-author-name" itemprop="name">Rui Tian</p>
           <p class="site-description motion-element" itemprop="description">Big Head Developer</p>
         </div>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">33</span>
+              <span class="site-state-item-count">34</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -544,10 +538,10 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-         <div class="copyright" >
+         <div class="copyright">
   
   &copy;  2016/05/25 - 
-  <span itemprop="copyrightYear">2018</span>
+  <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -569,13 +563,13 @@
         
 
         
-      </div>
-    </footer>
+      </footer></div>
+    
 
     <div class="back-to-top">
       <i class="fa fa-arrow-up"></i>
     </div>
-  </div>
+  
 
   
 

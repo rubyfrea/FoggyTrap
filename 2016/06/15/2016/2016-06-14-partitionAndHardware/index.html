@@ -6,16 +6,16 @@
 
 
 <html class="theme-next muse use-motion">
-<head>
-<meta name="baidu-site-verification" content="o62nQQzTiW" />
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<head><meta name="generator" content="Hexo 3.9.0">
+<meta name="baidu-site-verification" content="o62nQQzTiW">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -30,7 +30,7 @@
 
   
   
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
 
 
 
@@ -64,22 +64,12 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="硬件,固件," />
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css">
 
 
-
-
-
-
-
-
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
-  <link rel="icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+  <meta name="keywords" content="硬件,固件,">
 
 
 
@@ -87,24 +77,33 @@
 
 
 
-<meta name="description" content="By Rui
-本文只是对一些概念，一些逻辑进行论述，并不深入探索，如果有兴趣，可以阅读文中的链接。本文只是初稿，若有没写对的地方希望指教，稍后会做修改。">
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico?v=5.0.1">
+
+
+
+
+
+
+
+<meta name="description" content="By Rui 本文只是对一些概念，一些逻辑进行论述，并不深入探索，如果有兴趣，可以阅读文中的链接。本文只是初稿，若有没写对的地方希望指教，稍后会做修改。">
+<meta name="keywords" content="硬件,固件">
 <meta property="og:type" content="article">
 <meta property="og:title" content="硬件分区格式、启动管理固件（一）">
-<meta property="og:url" content="http://limmm.com/2016/06/15/2016/2016-06-14-partitionAndHardware/index.html">
+<meta property="og:url" content="http://rubyfrea.github.io/2016/06/15/2016/2016-06-14-partitionAndHardware/index.html">
 <meta property="og:site_name" content="P U M E L A">
-<meta property="og:description" content="By Rui
-本文只是对一些概念，一些逻辑进行论述，并不深入探索，如果有兴趣，可以阅读文中的链接。本文只是初稿，若有没写对的地方希望指教，稍后会做修改。">
-<meta property="og:image" content="http://limmm.com/image/MBRstructure.png">
-<meta property="og:image" content="http://limmm.com/image/GPTstructure.png">
-<meta property="og:image" content="http://limmm.com/image/GPTstructure2.png">
-<meta property="og:image" content="http://limmm.com/image/UEFIghost.png">
+<meta property="og:description" content="By Rui 本文只是对一些概念，一些逻辑进行论述，并不深入探索，如果有兴趣，可以阅读文中的链接。本文只是初稿，若有没写对的地方希望指教，稍后会做修改。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://rubyfrea.github.io/image/MBRstructure.png">
+<meta property="og:image" content="http://rubyfrea.github.io/image/GPTstructure.png">
+<meta property="og:image" content="http://rubyfrea.github.io/image/GPTstructure2.png">
+<meta property="og:image" content="http://rubyfrea.github.io/image/UEFIghost.png">
 <meta property="og:updated_time" content="2016-11-01T00:32:54.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="硬件分区格式、启动管理固件（一）">
-<meta name="twitter:description" content="By Rui
-本文只是对一些概念，一些逻辑进行论述，并不深入探索，如果有兴趣，可以阅读文中的链接。本文只是初稿，若有没写对的地方希望指教，稍后会做修改。">
-<meta name="twitter:image" content="http://limmm.com/image/MBRstructure.png">
+<meta name="twitter:description" content="By Rui 本文只是对一些概念，一些逻辑进行论述，并不深入探索，如果有兴趣，可以阅读文中的链接。本文只是初稿，若有没写对的地方希望指教，稍后会做修改。">
+<meta name="twitter:image" content="http://rubyfrea.github.io/image/MBRstructure.png">
 
 
 
@@ -160,14 +159,13 @@
   
     <div class="site-meta-headline">
       <a>
-        <img class="custom-logo-image" src="/image/by3.jpg"
-             alt="P U M E L A"/>
+        <img class="custom-logo-image" src="/image/by3.jpg" alt="P U M E L A">
       </a>
     </div>
   
 
   <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
+    <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
       <span class="site-title">P U M E L A</span>
       <span class="logo-line-after"><i></i></span>
@@ -194,7 +192,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
             
             首页
           </a>
@@ -204,7 +202,7 @@
         <li class="menu-item menu-item-categories">
           <a href="/categories" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
             
             分类
           </a>
@@ -214,7 +212,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
             
             归档
           </a>
@@ -224,7 +222,7 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
             
             标签
           </a>
@@ -286,7 +284,7 @@
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
               &nbsp; | &nbsp;
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
@@ -334,7 +332,7 @@
       
 
       
-        <script src="/assets/js/APlayer.min.js"> </script><p>By <em><a href="https://github.com/rubyfrea" target="_blank" rel="external">Rui</a></em></p>
+        <script src="/assets/js/APlayer.min.js"> </script><p>By <em><a href="https://github.com/rubyfrea" target="_blank" rel="noopener">Rui</a></em></p>
 <p>本文只是对一些概念，一些逻辑进行论述，并不深入探索，如果有兴趣，可以阅读文中的链接。本文只是初稿，若有没写对的地方希望指教，稍后会做修改。<br><a id="more"></a></p>
 <h2 id="硬件分区格式-GPT-MBR"><a href="#硬件分区格式-GPT-MBR" class="headerlink" title="硬件分区格式 GPT,MBR"></a>硬件分区格式 GPT,MBR</h2><p><strong>MBR + BIOS</strong></p>
 <p><strong>GPT + UEFI</strong></p>
@@ -351,10 +349,10 @@
 <p><img src="/image/GPTstructure.png" alt="GUID分区模型"><br><img src="/image/GPTstructure2.png" alt="GPT模型2"></p>
 <p>如图所示，PMBR类似于MBR的引导信息，在操作系统不支持GPT时，保护硬盘数据不被破坏。GPT有一个分区表和一个备份分区表，可以自定义分区大小，最多可以有128个分区（windows限制，有资料介绍实际无限），扇区逻辑块地址用64位表示，最大支持9.4ZB（9.4ZB=94亿TB）容量。<br>GPT分区的一大优势就是针对不同的数据建立不同的分区，同时为不同的分区创建不同的权限(具体方式？)。不能整盘复制，保证不同权限分区数据的安全性。<br>一块硬盘如果想从MBR分区转换成GPT分区的话，就会丢失硬盘内的所有数据。所以我们在更改硬盘分区格式之前需要先将硬盘备份，然后使用Windows自带的磁盘管理功能或者使用DiskGenius等磁盘管理软件就可以轻松地将硬盘转换成GPT（GUID）格式。<br>用闪存盘和硬盘做分区实验，会有不同的结果。在MAC下进行GPT分区会默认生成MBR/GPT混合分区表，在windows下闪存盘只能被识别第一个分区，而这个分区很有可能是GPT分区受保护的分区表，而非真正的分区。而用硬盘做实验，可以被正常识别。但是MBR只能有4个主分区，因此GPT分区超过4个的分区是不能被老windows系统识别的。</p>
 <p>有帮助的链接：</p>
-<p><a href="http://http://itbbs.pconline.com.cn/diy/15657192.html" title="希捷西数硬盘在win7和xp系统上的实践" target="_blank" rel="external">希捷西数硬盘在win7和xp系统上的实践</a></p>
-<p><a href="http://mb.zol.com.cn/371/3719903.html" title="实战UEFI安装WIN8" target="_blank" rel="external">实战UEFI安装WIN8</a></p>
-<p><a href="http://bbs.feng.com/read-htm-tid-5969091.html" title="分区实验" target="_blank" rel="external">GPT/MBR分区实验 非常有帮助</a></p>
-<p><a href="http://www.cnblogs.com/kzloser/articles/2673689.html" title="不太明白启动管理 MBR 和BOOT SECTOR的分别。以及究竟是BIOS了解从哪个硬盘读取又在哪里启动还是MBR已经包括了所有的信息" target="_blank" rel="external">启动管理</a></p>
+<p><a href="http://http://itbbs.pconline.com.cn/diy/15657192.html" title="希捷西数硬盘在win7和xp系统上的实践" target="_blank" rel="noopener">希捷西数硬盘在win7和xp系统上的实践</a></p>
+<p><a href="http://mb.zol.com.cn/371/3719903.html" title="实战UEFI安装WIN8" target="_blank" rel="noopener">实战UEFI安装WIN8</a></p>
+<p><a href="http://bbs.feng.com/read-htm-tid-5969091.html" title="分区实验" target="_blank" rel="noopener">GPT/MBR分区实验 非常有帮助</a></p>
+<p><a href="http://www.cnblogs.com/kzloser/articles/2673689.html" title="不太明白启动管理 MBR 和BOOT SECTOR的分别。以及究竟是BIOS了解从哪个硬盘读取又在哪里启动还是MBR已经包括了所有的信息" target="_blank" rel="noopener">启动管理</a></p>
 <h2 id="启动管理-UEFI-BIOS"><a href="#启动管理-UEFI-BIOS" class="headerlink" title="启动管理 UEFI,BIOS"></a>启动管理 UEFI,BIOS</h2><blockquote>
 <p>还有一种是CORE BOOT</p>
 </blockquote>
@@ -368,7 +366,7 @@
 <blockquote>
 <p>UEFI有一个BIOS兼容模式：CSM。</p>
 </blockquote>
-<p>完整的一篇UEFI的<a href="https://www.happyassassin.net/2014/01/25/uefi-boot-how-does-that-actually-work-then/" title="UEFI" target="_blank" rel="external">国外文档</a><br>对国外文档的<a href="http://www.tuicool.com/articles/NNf26jB/" title="生涩" target="_blank" rel="external">翻译</a></p>
+<p>完整的一篇UEFI的<a href="https://www.happyassassin.net/2014/01/25/uefi-boot-how-does-that-actually-work-then/" title="UEFI" target="_blank" rel="noopener">国外文档</a><br>对国外文档的<a href="http://www.tuicool.com/articles/NNf26jB/" title="生涩" target="_blank" rel="noopener">翻译</a></p>
 <p>如果你想进一步了解，反正我是读不下去了，14年初的。</p>
 
       
@@ -427,12 +425,9 @@
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2016/06/15/2016/2016-06-14-partitionAndHardware/"
-     data-title="硬件分区格式、启动管理固件（一）"
-     data-content=""
-     data-url="http://limmm.com/2016/06/15/2016/2016-06-14-partitionAndHardware/">
+        <div class="ds-share flat" data-thread-key="2016/06/15/2016/2016-06-14-partitionAndHardware/" data-title="硬件分区格式、启动管理固件（一）" data-content data-url="http://rubyfrea.github.io/2016/06/15/2016/2016-06-14-partitionAndHardware/">
   <div class="ds-share-inline">
-    <ul  class="ds-share-icons-16">
+    <ul class="ds-share-icons-16">
 
       <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
       <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
@@ -457,8 +452,7 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/06/15/2016/2016-06-14-partitionAndHardware/"
-           data-title="硬件分区格式、启动管理固件（一）" data-url="http://limmm.com/2016/06/15/2016/2016-06-14-partitionAndHardware/">
+      <div class="ds-thread" data-thread-key="2016/06/15/2016/2016-06-14-partitionAndHardware/" data-title="硬件分区格式、启动管理固件（一）" data-url="http://rubyfrea.github.io/2016/06/15/2016/2016-06-14-partitionAndHardware/">
       </div>
     
   </div>
@@ -483,7 +477,7 @@
 
       
         <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
             文章目录
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
@@ -494,16 +488,14 @@
 
       <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="/images/avatar.gif"
-               alt="Rui Tian" href="http://limmm.com"/>
+          <img class="site-author-image" itemprop="image" src="/images/avatar.gif" alt="Rui Tian" href="http://limmm.com">
           <p class="site-author-name" itemprop="name">Rui Tian</p>
           <p class="site-description motion-element" itemprop="description">Big Head Developer</p>
         </div>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">33</span>
+              <span class="site-state-item-count">34</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -585,10 +577,10 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-         <div class="copyright" >
+         <div class="copyright">
   
   &copy;  2016/05/25 - 
-  <span itemprop="copyrightYear">2018</span>
+  <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -610,13 +602,13 @@
         
 
         
-      </div>
-    </footer>
+      </footer></div>
+    
 
     <div class="back-to-top">
       <i class="fa fa-arrow-up"></i>
     </div>
-  </div>
+  
 
   
 
