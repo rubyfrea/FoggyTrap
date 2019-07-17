@@ -87,22 +87,16 @@
 
 
 
-<meta name="description" content="范围：• Fourier Transform• Interpolation: How can we interpolatesamples to recover the sampled signal?• How do we convert analog from digital?">
-<meta property="og:type" content="article">
-<meta property="og:title" content="傅立叶变换">
-<meta property="og:url" content="http://limmm.com/2016/12/11/2016/2016-12-11-samplingtheory/index.html">
+<meta name="description" content="Big Head Developer">
+<meta property="og:type" content="website">
+<meta property="og:title" content="P U M E L A">
+<meta property="og:url" content="http://limmm.com/archives/2019/page/2/index.html">
 <meta property="og:site_name" content="P U M E L A">
-<meta property="og:description" content="范围：• Fourier Transform• Interpolation: How can we interpolatesamples to recover the sampled signal?• How do we convert analog from digital?">
+<meta property="og:description" content="Big Head Developer">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://limmm.com/image/fourier.png">
-<meta property="og:image" content="http://limmm.com/image/eura.png">
-<meta property="og:image" content="http://limmm.com/image/euro1.png">
-<meta property="og:image" content="http://limmm.com/image/fourierppt.png">
-<meta property="og:updated_time" content="2016-12-12T20:36:45.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="傅立叶变换">
-<meta name="twitter:description" content="范围：• Fourier Transform• Interpolation: How can we interpolatesamples to recover the sampled signal?• How do we convert analog from digital?">
-<meta name="twitter:image" content="http://limmm.com/image/fourier.png">
+<meta name="twitter:title" content="P U M E L A">
+<meta name="twitter:description" content="Big Head Developer">
 
 
 
@@ -120,7 +114,7 @@
   };
 </script>
 
-  <title> 傅立叶变换 | P U M E L A </title>
+  <title> 归档 | P U M E L A </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -150,7 +144,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left page-post-detail ">
+  <div class="container one-collumn sidebar-position-left  page-archive  ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -244,154 +238,67 @@
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-expand">
+  <section id="posts" class="posts-collapse">
+    <span class="archive-move-on"></span>
+
+    <span class="archive-page-counter">
+      
+      
+       
+      
+      OK! 目前共计 39 篇日志。 继续努力。
+    </span>
+
     
 
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                傅立叶变换
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-12-11T00:27:00-05:00" content="2016-12-11">
-              2016-12-11
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/12/11/2016/2016-12-11-samplingtheory/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/11/2016/2016-12-11-samplingtheory/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
+      
       
       
 
-      
-        <script src="/assets/js/APlayer.min.js"> </script><h2 id="范围："><a href="#范围：" class="headerlink" title="范围："></a>范围：</h2><p>• Fourier Transform<br>• Interpolation: How can we interpolate<br>samples to recover the sampled signal?<br>• How do we convert analog from digital?<br><a id="more"></a><br>采样就是用离散的数据来定义一个连续的信号。<br>采样的结果有三种图，波谱图（spectrum），相位图，和振幅－时间图，对应的就是频域，相位域，时域。时域中的信号太过复杂，或重复或变化，难以找到分析的下手点。一个重要的基本理论：任何一个信号都可以表达为一群正弦波的叠加。因而频域中，信号转变成不同正弦波对应频率和振幅的组合，更易于分析。<br>在从时域到频域的转换中，我们需要用到傅立叶变换。<br>(在analog to digital的过程里，每个sampling的位置乘以一个电压的impulse，同时使用了傅立叶变换得到波谱，每增加一个sample就向右边平移一个sample rate的距离，每个sample的值还要用sinc方法来求得最终值)</p>
-<h2 id="Fourier-Transform"><a href="#Fourier-Transform" class="headerlink" title="Fourier Transform"></a>Fourier Transform</h2><p>首先推荐一个很不错的网站：<a href="http://www.thefouriertransform.com/" title="傅立叶变换" target="_blank" rel="noopener">点这里</a></p>
-<p>一个意会的文章： <a href="http://blog.jobbole.com/70549/" target="_blank" rel="noopener">傅立叶级数与欧拉公式</a><br>傅立叶级数就是把一个周期函数分解成许多正弦波的和。<br>傅立叶变换基本上就是用欧拉公式来将在时间维度变化的振幅图转化为一段波谱。<br><img src="/image/fourier.png" alt="fourier"></p>
-<p>欧拉公式的形式是 <img src="/image/eura.png" alt="欧拉公式"><br>对应的图是一条螺旋线，点随时间变化在复平面上做圆周运动，而投影到左侧的实数部分就是一个余弦函数。而波的振幅随时间周期性改变投影到频域就是频率振幅图。这个公式关键的作用，是将正弦波统一成了简单的指数形式。<br>使用欧拉公式的另一种表达方式<br><img src="/image/euro1.png" alt></p>
-<p>e^(it)可以理解为一条逆时针旋转的螺旋线，那么e^(-it)则可以理解为一条顺时针旋转的螺旋线。</p>
-<p>总的来说，傅立叶变换就是利用欧拉公式投影。<br>思路：</p>
-<ol>
-<li>一个正弦波的振幅－时间图就是圆心圆周连线逆时针旋转的余弦投影的长度变化图</li>
-<li>从欧拉公式：一条正弦波可以理解为点随时间在复平面上做圆周运动，画出图就是螺旋线，此时随t变化的公式转化为cosx + isinx。</li>
-<li>在余弦平面（实平面）的投影就是在频域的投影也就是cos(t)。又根据欧拉公式，得到cos(t) = (e^it + e^-it)/2，对t进行积分就是波谱的公式了。</li>
-<li>如果要求一个正弦波随时间变化的表达式，那么一开始的公式f(t) = A*sin(wt + a) 经由欧拉公式就成了以下：<br><img src="/image/fourierppt.png" alt="fourier result"></li>
-<li>将不同的螺旋线叠加起来就得到了一开始采样的波。<br>若是有表达不清的，请参加文章开头两个网站。</li>
-</ol>
-
-      
-    </div>
-
-    <div>
       
         
-      
-    </div>
-
-    <div>
-      
-        
-
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2016/12/10/2016/2016-12-10-fayewang/" rel="next" title="王菲特辑">
-                <i class="fa fa-chevron-left"></i> 王菲特辑
-              </a>
-            
-          </div>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/12/12/2016/2016-12-12-samplingproblems/" rel="prev" title="信号处理流程">
-                信号处理流程 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
+        <div class="collection-title">
+          <h2 class="archive-year motion-element" id="archive-year-2019">2019</h2>
         </div>
       
+      
 
       
-      
-    </footer>
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <h1 class="post-title">
+        
+            <a class="post-title-link" href="/2019/06/18/2019/2019-06-18-虚无的世界/" itemprop="url">
+              
+                <span itemprop="name">虚无的世界</span>
+              
+            </a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated" datetime="2019-06-18T17:30:00-04:00" content="2019-06-18">
+          06-18
+        </time>
+      </div>
+
+    </header>
   </article>
 
 
 
-    <div class="post-spread">
-      
-        <div class="ds-share flat" data-thread-key="2016/12/11/2016/2016-12-11-samplingtheory/" data-title="傅立叶变换" data-content data-url="http://limmm.com/2016/12/11/2016/2016-12-11-samplingtheory/">
-  <div class="ds-share-inline">
-    <ul class="ds-share-icons-16">
+    
 
-      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
-      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
-      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
-      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
-      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+  </section>
 
-    </ul>
-    <div class="ds-share-icons-more">
-    </div>
-  </div>
-</div>
-      
-    </div>
-  </div>
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/archives/2019/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/archives/2019/">1</a><span class="page-number current">2</span>
+  </nav>
+
+
 
 
           </div>
@@ -399,13 +306,6 @@
 
 
           
-  <div class="comments" id="comments">
-    
-      <div class="ds-thread" data-thread-key="2016/12/11/2016/2016-12-11-samplingtheory/" data-title="傅立叶变换" data-url="http://limmm.com/2016/12/11/2016/2016-12-11-samplingtheory/">
-      </div>
-    
-  </div>
-
 
         </div>
         
@@ -425,17 +325,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview sidebar-panel ">
+      <section class="site-overview sidebar-panel  sidebar-panel-active ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image" src="/images/avatar.gif" alt="Rui Tian" href="http://limmm.com">
           <p class="site-author-name" itemprop="name">Rui Tian</p>
@@ -503,17 +394,6 @@
 
       </section>
 
-      
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-            
-              
-            
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#范围："><span class="nav-number">1.</span> <span class="nav-text">范围：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Fourier-Transform"><span class="nav-number">2.</span> <span class="nav-text">Fourier Transform</span></a></li></ol></div>
-            
-          </div>
-        </section>
       
 
     </div>
@@ -611,9 +491,11 @@
   
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
-
+  
+    <script type="text/javascript" id="motion.page.archive">
+      $('.archive-year').velocity('transition.slideLeftIn');
+    </script>
+  
 
 
   
